@@ -1,11 +1,9 @@
 import FilmApiService from '../api/api-service';
 import filmCardTpl from '../templates/film-card.hbs';
-const gallery = document.querySelector('.gallery')
+import {refs} from '../references/refs'
 
-const searchForm = document.querySelector('.js-header-form');
-
-searchForm.addEventListener('input',formInput);
-searchForm.addEventListener('submit',formSumbit);
+refs.searchForm.addEventListener('input',formInput);
+refs.searchForm.addEventListener('submit',formSumbit);
 
 const headerSearch = new FilmApiService();
 
@@ -15,13 +13,13 @@ function formInput(e){
 
 function formSumbit(e){
     e.preventDefault();
-    searchForm.reset();
+    refs.searchForm.reset();
     return headerSearch.getBySearchQuery()
     .then(renderData)
     .catch(error=>{console.log(error)});
 }
 
 function renderData(results){
-gallery.innerHTML = filmCardTpl(results);
+refs.gallery.innerHTML = filmCardTpl(results);
 
 }
