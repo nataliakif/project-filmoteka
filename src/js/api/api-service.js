@@ -9,12 +9,12 @@ export default class FilmsApiService{
           this.page = 1;
         }
     getBySearchQuery(){
-        return fetch(`${BASE_URL}search/movie?api_key=${this.apiKey}`)
+        return fetch(`${BASE_URL}search/movie?api_key=${this.apiKey}&query=${this.query}`)
         .then(response => response.json())
         .then(data => data.results)
         } 
     getPopularFilms(){
-        return fetch(`${BASE_URL}trending/movie/week?api_key=${this.apiKey}&query=${this.query}`)
+        return fetch(`${BASE_URL}trending/movie/week?api_key=${this.apiKey}`)
         .then(response => response.json())
         .then(data => data.results)     
         }
