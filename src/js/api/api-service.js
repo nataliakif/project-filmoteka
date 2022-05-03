@@ -23,5 +23,10 @@ export default class FilmsApiService{
         .then(response => response.json())
         .then(data => data.genres)
     }
+      searchFilms (){
+      return fetch(`${BASE_URL}search/movie?api_key=${this.apiKey}&query=${this.query}`)
+      .then(response => response.json())
+      .then(data=>data.results);
+  }
 }
 
