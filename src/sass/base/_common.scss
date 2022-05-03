@@ -1,31 +1,41 @@
-body {
-   font-family: Roboto, sans-serif;
-   background-color: #ffffff;
-}
-
 html {
-   scroll-behavior: smooth;
-}
-
-h1,
-h2,
-h3,
-p {
-   margin: 0;
-}
-
-ul {
-   margin: 0;
-   padding: 0;
-   list-style: none;
-}
-
-a {
-   text-decoration: none;
-}
-
+    scroll-behavior: smooth;
+ }
+ 
+ body {
+    font-family: 'Roboto';
+    background-color: #E5E5E5;
+    font-size: 12px;
+    line-height: 1.17;
+    font-weight: 500;
+    cursor: default;
+ }
+ 
+ h1,
+ h2,
+ h3,
+ p {
+    margin: 0;
+ }
+ 
+ ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+ }
+ 
+ a {
+    text-decoration: none;
+ }
 img {
    display: block;
    max-width: 100%;
    height: auto;
+}
+
+ 
+ img {
+    display: block;
+    max-width: 100%;
+    height: auto;
 }

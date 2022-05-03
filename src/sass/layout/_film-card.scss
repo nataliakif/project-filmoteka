@@ -1,0 +1,25 @@
+.film-card__image{
+    border-radius: 5px;
+    width: 280px;
+    height: 398px;
+    @media screen and (min-width: 768px) {
+        width: 294px;
+        height: 398px;
+    }
+    @media screen and (min-width: 1024px){
+        width: 274px;
+        height: 398px;
+    }
+}
+.film-card__description{
+    margin-top: 10px;
+}
+.film-card__title{
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    color: #000000;
+    
+}
+.film-card__genre{
+    color: #FF6B08;
+}
