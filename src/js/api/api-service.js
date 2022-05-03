@@ -8,15 +8,20 @@ export default class FilmsApiService{
           this.query = '';
           this.page = 1;
         }
-    getPopularFilms(){
+    getBySearchQuery(){
         return fetch(`${BASE_URL}search/movie?api_key=${this.apiKey}`)
         .then(response => response.json())
         .then(data => data.results)
         } 
-  getPopularFilms(){
-    return fetch(`${BASE_URL}trending/movie/week?api_key=${this.apiKey}&query=${this.query}`)
-    .then(response => response.json())
-    .then(data => data.results)
-        
+    getPopularFilms(){
+        return fetch(`${BASE_URL}trending/movie/week?api_key=${this.apiKey}&query=${this.query}`)
+        .then(response => response.json())
+        .then(data => data.results)     
+        }
+    getGenres(){
+        return fetch(`${BASE_URL}genre/movie/list?api_key=${this.apiKey}`)
+        .then(response => response.json())
+        .then(data => data.genres)
     }
 }
+
