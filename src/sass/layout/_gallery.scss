@@ -1,5 +1,4 @@
-<<<<<<< Updated upstream
-=======
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -12,7 +11,9 @@ img {
 ul {
   list-style: none;
 }
+
 .gallery{
+
   display: grid;
   justify-content: center;
   margin-top: 60px;
@@ -36,6 +37,7 @@ ul {
 }
 
 /////------------- Only For test----------/////
+
 // .gallery__image {
 //   background-color: lightgrey;
 //   width: 309px;
@@ -49,4 +51,4 @@ ul {
 //     height: 398px;
 //   }
 // }
->>>>>>> Stashed changes
+
