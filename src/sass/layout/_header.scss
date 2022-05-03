@@ -35,27 +35,26 @@
 }
 //add header class on click "MY LIBRARY"
 .header_libr{
+    background-color: rgb(39, 1, 4);
     width:100%;
     height: 230px;
     margin: auto;
     background-image: linear-gradient(rgba(0, 0, 0, 0.56),rgba(0, 0, 0, 0.56)),url(../images/header/header-lib-bg-mobile.jpg);
     background-position: center;
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
-    padding: 46px 20px 20px 21px;
+    padding-top: 46px;
     margin-bottom: 20px;
 
     @media screen and (min-width: 768px) {
         width: 100%;
         background-image: linear-gradient(rgba(0, 0, 0, 0.56),rgba(0, 0, 0, 0.56)),url(../images/header/header-lib-bg-tablet.jpg);
-        padding: 46px 76px 59px 71px;
         margin-bottom: 60px; 
     }
 
     @media screen and (min-width: 1024px) {
         width:100%;
         background-image: linear-gradient(rgba(0, 0, 0, 0.56),rgba(0, 0, 0, 0.56)),url(../images/header/header-lib-bg-desktop.jpg);
-        padding: 46px 71px 59px 71px;
         margin-bottom: 60px;
     }
 }
