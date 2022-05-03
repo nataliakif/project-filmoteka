@@ -16,7 +16,7 @@ function formInput(e){
 function formSumbit(e){
     e.preventDefault();
     searchForm.reset();
-    return headerSearch.searchFilms()
+    return headerSearch.getBySearchQuery()
     .then(renderData)
     .catch(error=>{console.log(error)});
 }
