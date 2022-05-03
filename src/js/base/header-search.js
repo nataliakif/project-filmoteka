@@ -20,6 +20,12 @@ function formSumbit(e){
 }
 
 function renderData(results){
-refs.gallery.innerHTML = filmCardTpl(results);
-
+    let arr = []
+    results.map(res=>{
+        if(res.poster_path !== null){
+            arr.push(res)
+            refs.gallery.innerHTML= filmCardTpl(arr);
+        }
+    });
 }
+
