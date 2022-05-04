@@ -9,10 +9,6 @@ filmApiService
     console.log(error);
   });
 
-function renderData(results) {
-  console.log(results);
-  gallery.insertAdjacentHTML('beforeend', filmCardTpl(results));
-}
 
 function renderData(response) {
   // console.log(response.data.results);
