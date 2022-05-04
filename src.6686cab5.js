@@ -90,4 +90,4 @@ module.exports=require("./lib/axios");
 },{"../api/api-service":"aE0C","../references/refs":"EBuD"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/api/api-service"),require("./js/base/start-page"),require("./js/base/header-search");
 },{"./sass/main.scss":"clu1","./js/api/api-service":"aE0C","./js/base/start-page":"LPwY","./js/base/header-search":"bNx9"}]},{},["Focm"], null)
-//# sourceMappingURL=/project-filmoteka/src.bffaf85a.js.map
+//# sourceMappingURL=/project-filmoteka/src.6686cab5.js.map
