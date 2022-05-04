@@ -21,14 +21,14 @@ function formSumbit(e){
     }else {
 
         refs.gallery.innerHTML = '';
-        return headerSearch.getBySearchQuery()
+        return headerSearch.insertGenresSearchCard()
         .then(renderData)
         .catch(error=>{console.log(error)});
     }
 }
     function renderData(data){
     let arrFilm=[]
-    data.results.map((elem) => {
+    data.map((elem) => {
         if(elem.poster_path !== null){
             arrFilm.push(elem)
         } 
