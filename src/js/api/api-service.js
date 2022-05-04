@@ -1,5 +1,5 @@
 
-
+import axios from 'axios';
 const BASE_URL ='https://api.themoviedb.org/3/';
  
 export default class FilmsApiService{
@@ -8,20 +8,18 @@ export default class FilmsApiService{
           this.query = '';
           this.page = 1;
         }
-    getBySearchQuery(){
-        return fetch(`${BASE_URL}search/movie?api_key=${this.apiKey}&query=${this.query}`)
-        .then(response => response.json())
-        .then(data => data.results)
+
+    async getBySearchQuery(){
+        const response = await axios.get(`${BASE_URL}search/movie?api_key=${this.apiKey}&query=${this.query}&page=${this.page}`);
+        return response.data;
         } 
-    getPopularFilms(){
-        return fetch(`${BASE_URL}trending/movie/week?api_key=${this.apiKey}`)
-        .then(response => response.json())
-        .then(data => data.results)     
+    async getPopularFilms(){
+        const response = await axios.get(`${BASE_URL}trending/movie/week?api_key=${this.apiKey}&page=${this.page}`);
+        return response;     
         }
-    getGenres(){
-        return fetch(`${BASE_URL}genre/movie/list?api_key=${this.apiKey}`)
-        .then(response => response.json())
-        .then(data => data.genres)
+    async getGenres(){
+        const response = await axios.get(`${BASE_URL}genre/movie/list?api_key=${this.apiKey}`)
+        return response.genres;
     }
 }
-
+ 
