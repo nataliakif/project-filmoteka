@@ -19,13 +19,12 @@ function formSumbit(e){
     if(headerSearch.query === ""){
         notyf.error("Search result not successful. Enter the correct movie name and ")
     }else {
+
         refs.gallery.innerHTML = '';
         return headerSearch.getBySearchQuery()
         .then(renderData)
         .catch(error=>{console.log(error)});
     }
-    refs.searchForm.reset();
-    headerSearch.query = ""
 }
     function renderData(data){
     let arrFilm=[]
