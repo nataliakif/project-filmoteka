@@ -17,4 +17,4 @@ var e,t=arguments[3];!function(t,r){"object"==typeof exports&&"object"==typeof m
 },{"../api/api-service":"aE0C","../templates/film-card.hbs":"fq7D","../references/refs":"EBuD"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/api/api-service"),require("./js/base/start-page"),require("./js/base/header-search");
 },{"./sass/main.scss":"clu1","./js/api/api-service":"aE0C","./js/base/start-page":"LPwY","./js/base/header-search":"bNx9"}]},{},["Focm"], null)
-//# sourceMappingURL=/project-filmoteka/src.1f4dfb5b.js.map
+//# sourceMappingURL=/project-filmoteka/src.84d2ed1b.js.map
