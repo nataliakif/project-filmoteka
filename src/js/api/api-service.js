@@ -8,20 +8,7 @@ export default class FilmsApiService{
           this.query = '';
           this.page = 1;
         }
-<<<<<<< Updated upstream
-    getPopularFilms(){
-        return fetch(`${BASE_URL}search/movie?api_key=${this.apiKey}`)
-        .then(response => response.json())
-        .then(data => data.results)
-        } 
-  getPopularFilms(){
-    return fetch(`${BASE_URL}trending/movie/week?api_key=${this.apiKey}&query=${this.query}`)
-    .then(response => response.json())
-    .then(data => data.results)
-        
-    }
-}
-=======
+
     async getBySearchQuery(){
         const response = await axios.get(`${BASE_URL}search/movie?api_key=${this.apiKey}&query=${this.query}&page=${this.page}`);
         return response.data;
@@ -36,5 +23,3 @@ export default class FilmsApiService{
     }
 }
  
-
->>>>>>> Stashed changes

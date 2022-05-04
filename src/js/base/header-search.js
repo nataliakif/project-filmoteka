@@ -18,7 +18,6 @@ function formSumbit(e){
     .then(renderData)
     .catch(error=>{console.log(error)});
 }
-
     function renderData(data){
         console.log(data.results);
         const markupFilmCard = data.results.map((film) => {
