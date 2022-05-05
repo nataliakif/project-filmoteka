@@ -41,10 +41,26 @@
    }
 }
 
-.footer__icon {
-   margin: 0 10px;
+.footer-box__text--after {
+   position: relative;
+   margin-right: 25px;
+}
+
+.footer-box__text--after::after {
+   position: absolute;
+   top: 2px;
+   right: -20px;
+   content: url("/images//svg/heart.svg");
    width: 14px;
    height: 14px;
+   animation: beat 800ms infinite cubic-bezier(0.4, 0, 0.2, 1);
+   transform-origin: center;
+}
+
+@keyframes beat {
+   to {
+      transform: scale(1.4);
+   }
 }
 
 .footer__link {
