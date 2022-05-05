@@ -21,12 +21,11 @@ const state = {
 //должна возвращать объект с данными, но если ничего нет то возвращает базовый state
 
 function readState() {
+  let savedState = null;
   try {
-    const savedState = sessionStorage.getItem(SS_KEY);
-    return savedState === null ? state : JSON.parse(savedState);
-  } catch (error) {
-    console.log(error.message);
-  }
+    savedState = sessionStorage.getItem(SS_KEY);
+  } catch (error) {}
+  return savedState === null ? state : JSON.parse(savedState);
 }
 
 //функция, которая перезаписывает переданный state в session storage
