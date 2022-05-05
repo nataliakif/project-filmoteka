@@ -1,9 +1,14 @@
 import FilmApiService from '../api/api-service';
+<<<<<<< Updated upstream
 import {refs} from '../references/refs'
+=======
+import {refs} from '../references/refs';
+import {updateInterface} from './update';
 
-refs.searchForm.addEventListener('input',formInput);
-refs.searchForm.addEventListener('submit',formSumbit);
+>>>>>>> Stashed changes
 
+
+<<<<<<< Updated upstream
 const headerSearch = new FilmApiService();
 
 function formInput(e){
@@ -36,3 +41,5 @@ function formSumbit(e){
             }
 
 
+=======
+>>>>>>> Stashed changes
