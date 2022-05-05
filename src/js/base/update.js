@@ -11,7 +11,6 @@ import { renderTeamModal } from '../render/renderTeamModal';
 import { setGenres } from './setGenres';
 import { getPopularFilms, getGenres, getBySearchQuery} from '../api/api-service'
 
-
 //самая главная функция, которая будет обновлять весь интерфейс
 function updateInterface() {
   //считываем из sessionStorage state

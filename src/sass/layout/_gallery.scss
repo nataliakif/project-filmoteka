@@ -1,52 +1,94 @@
-<<<<<<< Updated upstream
-=======
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
 }
 img {
-  display: block;
-  width: 100%;
+   display: block;
+   width: 100%;
 }
 ul {
-  list-style: none;
+   list-style: none;
 }
-.gallery{
-  display: grid;
+
+.gallery {
+   flex: 1 0 auto;
+   display: grid;
+   justify-content: center;
+   margin-top: 60px;
+   grid-template-columns: repeat(3, 274px);
+   column-gap: 16px;
+   row-gap: 32px;
+
+   @media screen and (max-width: 1023px) {
+      grid-template-columns: repeat(2, 294px);
+      grid-gap: 32px;
+   }
+
+   @media screen and (max-width: 767px) {
+      margin-top: 20px;
+      grid-template-columns: repeat(1, 280px);
+      row-gap: 20px;
+   }
+}
+///------///
+.preloader {
+  position: fixed;
+  display: flex;
   justify-content: center;
-  margin-top: 60px;
+  align-items: center;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(#000000, 0.3);
+  z-index: 1001;
 
-  @media screen and (min-width: 1024px) {
-    grid-template-columns: repeat(3, 309px);
-    column-gap: 16px;
-    row-gap: 32px;
+  
+}
+
+.preloade__loader {
+  width: 15px;
+  height: 15px;
+  box-shadow: 0 30px, 0 -30px;
+  border-radius: 4px;
+  background: currentColor;
+  display: inline-block;
+  position: relative;
+  color: #fff;
+  left: 0;
+  animation: animloader 2s ease infinite;
+  &::after,
+  &::before {
+    content: '';
+    width: 15px;
+    height: 15px;
+    box-shadow: 0 30px, 0 -30px;
+    border-radius: 4px;
+    background: currentColor;
+    color: #fff;
+    position: absolute;
+    left: 30px;
+    top: 0;
+    animation: animloader 2s 0.2s ease infinite;
   }
-
-  @media screen and (max-width: 1023px) {
-    grid-template-columns: repeat(2, 336px);
-    grid-gap: 32px;
-  }
-
-  @media screen and (max-width: 767px) {
-    margin-top: 20px;
-    grid-template-columns: repeat(1, 280px);
-    row-gap: 20px;
+  &::before {
+    animation-delay: 0.5s;
+    left: 60px;
   }
 }
 
-/////------------- Only For test----------/////
-// .gallery__image {
-//   background-color: lightgrey;
-//   width: 309px;
-//   height: 449px;
-//   @media screen and (max-width: 1023px) {
-//     width: 336px;
-//     height: 455px;
-//   }
-//   @media screen and (max-width: 767px) {
-//     width: 280px;
-//     height: 398px;
-//   }
-// }
->>>>>>> Stashed changes
+@keyframes animloader {
+  0% {
+    top: 0;
+    color: rgba(#fff, 1);
+  }
+  50% {
+    top: 30px;
+    color: rgba(#fff, 0.2);
+  }
+  100% {
+    top: 0;
+    color: rgba(#fff, 1);
+  }
+}

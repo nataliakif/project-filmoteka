@@ -31,7 +31,7 @@ function myLibLinkClick(e) {
 
 //обработчик submit на форме поиска
 function onFormSubmit(e) {
-  console.log(e)
+  //e.currentTarger.ClassList.add() - делаем ее активной через css
   writeState({
     pageType: PAGE_TYPE.SEARCH,
     currentPage: 1,
@@ -77,4 +77,6 @@ function onGalleryClick(e) {
   writeState(state);
   updateInterface();
 }
+
 export {onFormSubmit}
+

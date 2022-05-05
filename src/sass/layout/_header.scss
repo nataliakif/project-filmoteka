@@ -1,0 +1,227 @@
+li {
+   list-style: none;
+}
+* {
+   margin: 0;
+   padding: 0;
+   border: 0;
+}
+a {
+   text-decoration: none;
+}
+.header {
+   flex: 0 0 auto;
+   background-color: black;
+   width: 100%;
+   height: 230px;
+   margin: auto;
+   background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url(../images/header/header-bg-mobile.jpg);
+   background-position: center;
+   background-size: contain;
+   background-repeat: no-repeat;
+   padding-top: 46px;
+   margin-bottom: 20px;
+
+   @media screen and (min-width: 768px) {
+      width: 100%;
+      background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+         url(../images/header/header-bg-tablet.jpg);
+      margin-bottom: 60px;
+   }
+
+   @media screen and (min-width: 1024px) {
+      width: 100%;
+      background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+         url(../images/header/header-bg-desktop.jpg);
+      margin-bottom: 60px;
+   }
+}
+//add header class on click "MY LIBRARY"
+.header_libr {
+   background-color: rgb(39, 1, 4);
+   width: 100%;
+   height: 230px;
+   margin: auto;
+   background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url(../images/header/header-lib-bg-mobile.jpg);
+   background-position: center;
+   background-size: contain;
+   background-repeat: no-repeat;
+   padding-top: 46px;
+   margin-bottom: 20px;
+
+   @media screen and (min-width: 768px) {
+      width: 100%;
+      background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+         url(../images/header/header-lib-bg-tablet.jpg);
+      margin-bottom: 60px;
+   }
+
+   @media screen and (min-width: 1024px) {
+      width: 100%;
+      background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+         url(../images/header/header-lib-bg-desktop.jpg);
+      margin-bottom: 60px;
+   }
+}
+//header logo
+.header-logo__link {
+   @media screen and (min-width: 768px) {
+      display: flex;
+      align-items: center;
+      color: white;
+   }
+
+   @media screen and (min-width: 1024px) {
+   }
+}
+.header-logo__svg {
+   stroke: #818181;
+
+   @media screen and (min-width: 768px) {
+      margin-right: 10px;
+   }
+
+   @media screen and (min-width: 1024px) {
+   }
+}
+.header-logo__text {
+   @media screen and (max-width: 767px) {
+      display: none;
+      font-weight: 500;
+      font-size: 30px;
+      line-height: 1.16;
+   }
+
+   @media screen and (min-width: 1024px) {
+   }
+}
+//header logo END
+
+//header nav-menu
+.header-nav__container {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   margin-bottom: 38px;
+   color: white;
+
+   @media screen and (min-width: 768px) {
+   }
+
+   @media screen and (min-width: 1024px) {
+   }
+}
+.header-nav__list {
+   display: flex;
+}
+.header-nav__item {
+   font-weight: 500;
+   font-size: 12px;
+   line-height: 1.16;
+}
+.header-nav__item-link {
+   color: white;
+   &:hover,
+   &:focus {
+      color: #818181;
+   }
+}
+.header-nav__item:not(:last-child) {
+   margin-right: 39px;
+}
+// Current style hav menu
+.header-nav__item-current::after {
+   content: "";
+   height: 4px;
+   width: 100%;
+   background-color: #ff6b08;
+   display: block;
+}
+//header nav-menu END
+//Form search
+.header-form {
+   display: flex;
+   justify-content: center;
+   position: relative;
+   margin: auto;
+   margin-bottom: 22px;
+   @media screen and (min-width: 768px) {
+      width: 336px;
+   }
+
+   @media screen and (min-width: 1024px) {
+      width: 336px;
+   }
+}
+.header-form__input {
+   background: transparent;
+   width: 100%;
+   border: 0px;
+   outline: 0;
+   border-bottom: 0.5px solid white;
+
+   font-weight: 400;
+   font-size: 14px;
+   color: white;
+   line-height: 1.14px;
+   padding: 0 25px 4px 0;
+   &:hover,
+   &:focus {
+      border-color: #ff6b08;
+   }
+   @media screen and (min-width: 768px) {
+      width: 336px;
+   }
+
+   @media screen and (min-width: 1024px) {
+      width: 336px;
+   }
+}
+.header-form__input::placeholder {
+   color: white;
+   font-weight: 400;
+   font-size: 14px;
+   line-height: 1.14;
+}
+.header-form__btn {
+   background-color: transparent;
+   border: 0;
+   position: absolute;
+   right: 0;
+}
+.header-form__svg {
+   fill: white;
+}
+//END Form search
+
+//BTN from MYLIBRARY
+.header-filter {
+   display: flex;
+   justify-content: center;
+}
+.header-filter__btn {
+   padding: 14px 36px 12px 36px;
+   background-color: transparent;
+   color: white;
+   border-radius: 5px;
+   border: 1px solid white;
+   min-width: 130px;
+   font-weight: 500;
+   font-size: 12px;
+   line-height: 1.3;
+   color: #ffffff;
+
+   &:hover,
+   &:focus {
+      border: 0px;
+      outline: 0;
+      background-color: #ff6b08;
+      box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
+   }
+}
+.header-filter__btn:not(:last-child) {
+   margin-right: 20px;
+}
+//END BTN from MYLIBRARY
