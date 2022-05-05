@@ -1,3 +1,7 @@
+export { readState, writeState, PAGE_TYPE };
+
+const SS_KEY = 'state';
+
 const PAGE_TYPE = {
   TRENDS: 'TRENDS_PAGE',
   SEARCH: 'SEARCH_PAGE',
@@ -13,16 +17,21 @@ const state = {
   modalFilmId: null,
 };
 
-function readState() {
-  //функция, которая считывает state из session storage
+//функция, которая считывает state из session storage
+//должна возвращать объект с данными, но если ничего нет то возвращает базовый state
 
-  //должна возвращать объект с данными, но если ничего нет то возвращает базовый state
-  return state;
+function readState() {
+  try {
+    const savedState = sessionStorage.getItem(SS_KEY);
+    return savedState === null ? state : JSON.parse(savedState);
+  } catch (error) {
+    console.log(error.message);
+  }
 }
+
+//функция, которая перезаписывает переданный state в session storage
+//ничего не возвращает
 
 function writeState(state) {
-  //функция, которая перезаписывает переданный state в session storage
-  //ничего не возвращает
+  sessionStorage.setItem(SS_KEY, JSON.stringify(state));
 }
-
-export { readState, writeState, PAGE_TYPE };
