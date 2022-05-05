@@ -93,7 +93,9 @@ module.exports=require("./lib/axios");
 
 },{}],"bNx9":[function(require,module,exports) {
 "use strict";var e=n(require("../api/api-service")),r=require("../references/refs"),t=require("notyf");function n(e){return e&&e.__esModule?e:{default:e}}require("notyf/notyf.min.css");const s=new t.Notyf;r.refs.searchForm.addEventListener("input",a),r.refs.searchForm.addEventListener("submit",c);const i=new e.default;function a(e){i.query=e.currentTarget.elements.input.value}function c(e){if(e.preventDefault(),""!==i.query)return r.refs.gallery.innerHTML="",i.insertGenresSearchCard().then(l).catch(e=>{console.log(e)});s.error("Search result not successful. Enter the correct movie name and ")}function l(e){let t=[];e.map(e=>{null!==e.poster_path&&t.push(e)});const n=t.map(e=>`\n        <li class="film-card">\n        <img class="film-card__image" src='https://image.tmdb.org/t/p/w500/${e.poster_path}' alt="${e.title}"/>\n        <div class="film-card__description">\n            <p class="film-card__title">${e.title}</p>\n            <p class="film-card__genre">${e.genres} | ${e.release_date.substr(0,4)}</p>\n        </div>\n        </li>`).join("");return r.refs.gallery.insertAdjacentHTML("beforeend",n)}
-},{"../api/api-service":"aE0C","../references/refs":"EBuD","notyf":"hCvX","notyf/notyf.min.css":"PFvE"}],"Focm":[function(require,module,exports) {
-"use strict";require("./sass/main.scss"),require("./js/api/api-service"),require("./js/base/start-page"),require("./js/base/header-search");
-},{"./sass/main.scss":"clu1","./js/api/api-service":"aE0C","./js/base/start-page":"LPwY","./js/base/header-search":"bNx9"}]},{},["Focm"], null)
-//# sourceMappingURL=/project-filmoteka/src.7d6bb129.js.map
+},{"../api/api-service":"aE0C","../references/refs":"EBuD","notyf":"hCvX","notyf/notyf.min.css":"PFvE"}],"H5Kt":[function(require,module,exports) {
+window.addEventListener("load",()=>{document.querySelector(".preloader").style.display="none",document.querySelector(".preloader").style.visibility="hidden"});
+},{}],"Focm":[function(require,module,exports) {
+"use strict";require("./sass/main.scss"),require("./js/api/api-service"),require("./js/base/start-page"),require("./js/base/header-search"),require("./js/base/spiner");
+},{"./sass/main.scss":"clu1","./js/api/api-service":"aE0C","./js/base/start-page":"LPwY","./js/base/header-search":"bNx9","./js/base/spiner":"H5Kt"}]},{},["Focm"], null)
+//# sourceMappingURL=/project-filmoteka/src.b8209807.js.map
