@@ -71,10 +71,9 @@ function libTypeQueueBtnClick(e) {
   updateInterface();
 }
 //обработчик клика на пагинатор
-function onPaginatorClick(e) {
-  const value = e.currentTarget.value; //пагинатор при клике на него должен вернуть номер страницы на которую кликнули
+function onPaginatorClick(page) {
   const state = readState();
-  state.currentPage = value;
+  state.currentPage = page;
   writeState(state);
   updateInterface();
 }
@@ -97,4 +96,5 @@ export {
   myLibLinkClick,
   libTypeWatchedBtnClick,
   libTypeQueueBtnClick,
+  onPaginatorClick,
 };

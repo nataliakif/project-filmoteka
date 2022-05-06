@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "axios": "^0.27.2",
-    "notyf": "^3.10.0"
+    "notyf": "^3.10.0",
+    "tui-pagination": "^3.4.1"
   }
 }
