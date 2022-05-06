@@ -17,7 +17,7 @@ function onOpenLink() {
 
 function onCloseLink() {
     document.body.classList.remove('show-modal')
-    window.remoweEventListener('keydown', onCloseEscKey)
+    window.removeEventListener('keydown', onCloseEscKey)
 
 }
 
