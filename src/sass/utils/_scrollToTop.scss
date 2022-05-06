@@ -1,0 +1,50 @@
+.scrolltop {
+   position: fixed;
+   bottom: 10px;
+   right: 10px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border-radius: 10px;
+   width: 30px;
+   height: 30px;
+   opacity: 0;
+   z-index: 99;
+   padding-top: 5px;
+   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+   background-color: rgba(0, 0, 0, 0.2);
+
+   @media screen and (min-width: 768px) {
+      width: 40px;
+      height: 40px;
+   }
+
+   @media screen and (min-width: 1024px) {
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+   }
+
+   &:hover,
+   &:focus {
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+      background-color: rgb(0, 0, 0, 0.5);
+   }
+}
+
+.showBtn {
+   opacity: 1;
+}
+
+.scroll-top__icon {
+   border: solid rgba(255, 255, 255, 0.6);
+   border-width: 0 4px 4px 0;
+
+   display: inline-block;
+   padding: 5px;
+
+   &--up {
+      transform: rotate(-135deg);
+   }
+}
