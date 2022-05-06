@@ -2,6 +2,7 @@ import { readState, writeState } from './state';
 import { PAGE_TYPE } from './state';
 import { updateInterface } from './update';
 
+
 //Обработчик на ссылку Home
 function homeLinkClick(e) {
   //e.currentTarger.ClassList.add() - делаем ее активной через css
@@ -76,3 +77,6 @@ function onGalleryClick(e) {
   writeState(state);
   updateInterface();
 }
+
+export {onFormSubmit}
+

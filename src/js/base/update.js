@@ -8,6 +8,8 @@ import { renderFilmModal } from '../render/renderFilmModal';
 import { LS_KEY_TYPE, readLocalStorage } from '../utils/localStorage';
 import { divideOnPages } from '../utils/devideOnPages';
 import { renderTeamModal } from '../render/renderTeamModal';
+import { setGenres } from './setGenres';
+import { getPopularFilms, getGenres, getBySearchQuery} from '../api/api-service'
 
 //самая главная функция, которая будет обновлять весь интерфейс
 function updateInterface() {
@@ -19,20 +21,31 @@ function updateInterface() {
 
   switch (state.pageType) {
     case PAGE_TYPE.TRENDS:
-      data = []; //вызывавем api функцию которая получает тренды, в параметры ей передаем номер страницы из state.currentPage
-      renderGallery(data);
-      renderPagination(data.pageAmount, state.currentPage);
+      getPopularFilms(state.currentPage)
+        .then(data => {
+          return getGenres().then(genres => setGenres(data.data, genres));
+        })
+        .then(data => {
+          renderGallery(data.results);
+          renderPagination(data.total_pages, state.currentPage);
+        });
       renderHeader('шаблонная строка с разметкой поисковой формы');
+      // createFormListner();
       return;
 
-    case PAGE_TYPE.SEARCH:
-      //в форму вводим текст из state.search
-      data = []; //вызывавем api функцию которая получает movies по запросу пользователя, в параметры ей передаем строку поиска из state.search и номер страницы из state.currentPage
-      renderGallery(data);
-      renderPagination(data.pageAmount, state.currentPage);
-      renderHeader('шаблонная строка с разметкой поисковой формы');
-      //снять слушатель с кнопок WATCHED и QUEUE
-      return;
+      case PAGE_TYPE.SEARCH:
+        getBySearchQuery(state.search, state.currentPage)
+          .then(data => {
+            return getGenres().then(genres => setGenres(data.data, genres));
+          })
+          .then(data => {
+            renderGallery(data.results);
+            renderPagination(data.total_pages, state.currentPage);
+          });
+        
+        renderHeader('шаблонная строка с разметкой поисковой формы');
+        // createFormListner();
+        return;
 
     case PAGE_TYPE.LIB_WATCHED:
       moviesIdArr = readLocalStorage(LS_KEY_TYPE.WATCHED); //считываем из localstorage массив фильмов с WATCHED
