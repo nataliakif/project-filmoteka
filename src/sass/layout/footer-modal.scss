@@ -47,6 +47,7 @@
 }
 
 .team__list {
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -154,4 +155,14 @@ body.show-modal .backdrop {
 
 body.show-modal .footer-modal {
     transform: scale(1);
+}
+
+.team__img {
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    display: block;
+    width: 100%;
+    height: auto;
+    text-align: center;
 }
