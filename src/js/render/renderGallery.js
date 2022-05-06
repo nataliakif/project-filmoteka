@@ -20,5 +20,5 @@ function renderGallery(data) {
       })
       .join('');
     refs.gallery.innerHTML = markup;
-
+    }
 export { renderGallery };
