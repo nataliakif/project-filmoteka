@@ -4,13 +4,14 @@
  */
 
 // Стили для файла с примером HTML-фрагмента
-@import './base/modern-normalize';
-@import './base/variables';
-@import './base/common';
-@import './components/container';
-@import './components/section';
-@import './utils/visually-hidden';
-@import './layout/footer';
-@import './layout/gallery';
-@import './layout/header';
-@import './layout/film-card'
+@import "./utils/scrollToTop";
+@import "./base/modern-normalize";
+@import "./base/variables";
+@import "./base/common";
+@import "./components/container";
+@import "./components/section";
+@import "./utils/visually-hidden";
+@import "./layout/footer";
+@import "./layout/gallery";
+@import "./layout/header";
+@import "./layout/film-card";
