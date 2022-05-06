@@ -1,11 +1,12 @@
+import { refs } from '../references/refs';
 import { readState, writeState } from './state';
 import { PAGE_TYPE } from './state';
 import { updateInterface } from './update';
 
-
-//Обработчик на ссылку Home
 function homeLinkClick(e) {
-  //e.currentTarger.ClassList.add() - делаем ее активной через css
+  e.preventDefault();
+  refs.homePageLink.classList.add('header-nav__isActive');
+  refs.myLibPageLink.classList.remove('header-nav__isActive');
   writeState({
     pageType: PAGE_TYPE.TRENDS,
     currentPage: 1,
@@ -18,7 +19,9 @@ function homeLinkClick(e) {
 
 //Обработчик на ссылку MyLibrary
 function myLibLinkClick(e) {
-  //e.currentTarger.ClassList.add() - делаем ее активной через css
+  e.preventDefault();
+  refs.homePageLink.classList.remove('header-nav__isActive');
+  refs.myLibPageLink.classList.add('header-nav__isActive');
   writeState({
     pageType: PAGE_TYPE.LIB_WATCHED,
     currentPage: 1,
@@ -31,6 +34,7 @@ function myLibLinkClick(e) {
 
 //обработчик submit на форме поиска
 function onFormSubmit(e) {
+  e.preventDefault();
   //e.currentTarger.ClassList.add() - делаем ее активной через css
   writeState({
     pageType: PAGE_TYPE.SEARCH,
@@ -43,12 +47,11 @@ function onFormSubmit(e) {
 }
 
 //обработчик на кнопку WATCHED и QUEUE - он будет один
-function libTypeBtnClick(e) {
-  e.currentTarget;
-  const libPageType = PAGE_TYPE.LIB_WATCHED; //если клик по WATCHED
-  libPageType = PAGE_TYPE.LIB_QUEUE; // если клик по QUEUE
+function libTypeWatchedBtnClick(e) {
+
+  //С кнопки queue снимаем "current",а на текущую вешаем
   writeState({
-    pageType: libPageType,
+    pageType: PAGE_TYPE.LIB_WATCHED,
     currentPage: 1,
     search: '',
     isModalOpen: false,
@@ -56,7 +59,17 @@ function libTypeBtnClick(e) {
   });
   updateInterface();
 }
-
+function libTypeQueueBtnClick(e) {
+    //С кнопки WATCHED снимаем "current",а на текущую вешаем
+  writeState({
+    pageType: PAGE_TYPE.LIB_QUEUE,
+    currentPage: 1,
+    search: '',
+    isModalOpen: false,
+    modalFilmId: null,
+  });
+  updateInterface();
+}
 //обработчик клика на пагинатор
 function onPaginatorClick(e) {
   const value = e.currentTarget.value; //пагинатор при клике на него должен вернуть номер страницы на которую кликнули
@@ -78,5 +91,10 @@ function onGalleryClick(e) {
   updateInterface();
 }
 
-export {onFormSubmit}
-
+export {
+  onFormSubmit,
+  homeLinkClick,
+  myLibLinkClick,
+  libTypeWatchedBtnClick,
+  libTypeQueueBtnClick,
+};
