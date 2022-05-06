@@ -13,7 +13,6 @@ refs.headerLogoLink.addEventListener('click', homeLinkClick);
 // refs.searchForm.addEventListener('submit', onFormSubmit);
 
 function addFormListenerHome() {
-  // console.log(refs.searchForm)
   refs.searchForm[0].addEventListener('submit', onFormSubmit);
 }
 

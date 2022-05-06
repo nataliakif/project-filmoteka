@@ -1,4 +1,5 @@
 const refs = {
+  headerContainer: document.querySelector('header'),
   searchForm: document.getElementsByClassName('js-header-form'),
   gallery: document.querySelector('.gallery'),
   homePageLink: document.querySelector('.js-header-nav__home'),

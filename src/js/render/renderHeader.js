@@ -1,4 +1,5 @@
 import { PAGE_TYPE, readState } from '../base/state';
+import { refs } from '../references/refs';
 import { homeMarkup, myLibMarkup } from '../templates/markupHeader';
 const MARKUP_HEADER_TYPE = {
   FORM: 'form',
@@ -17,10 +18,10 @@ function renderHeader(markupType) {
 
       switch (readState().pageType) {
         case PAGE_TYPE.LIB_WATCHED:
-          //Здесь на кнопку watched вешаю класс "isActive"- оранжевій current
+          refs.watchedBtn[0].classList.add('header-filter__btn-isActive');
           return;
         case PAGE_TYPE.LIB_QUEUE:
-          //Здесь на кнопку QUEUE вешаю класс "isActive"- оранжевій current
+          refs.queueBtn[0].classList.add('header-filter__btn-isActive');
           return;
       }
       break;
