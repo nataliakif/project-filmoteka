@@ -132,7 +132,7 @@ a {
    margin-right: 39px;
 }
 // Current style hav menu
-.header-nav__item-current::after {
+.header-nav__isActive::after {
    content: "";
    height: 4px;
    width: 100%;
@@ -147,6 +147,7 @@ a {
    position: relative;
    margin: auto;
    margin-bottom: 22px;
+
    @media screen and (min-width: 768px) {
       width: 336px;
    }
@@ -168,9 +169,10 @@ a {
    line-height: 1.14px;
    padding: 0 25px 4px 0;
    &:hover,
-   &:focus {
+   &:focus{
       border-color: #ff6b08;
    }
+
    @media screen and (min-width: 768px) {
       width: 336px;
    }
@@ -186,14 +188,17 @@ a {
    line-height: 1.14;
 }
 .header-form__btn {
+   width: 12px;
+   height: 12px;
    background-color: transparent;
    border: 0;
    position: absolute;
    right: 0;
+   background-image: url(../images/header/search-bg.png);
+   background-position: center;
+   background-repeat: no-repeat;
 }
-.header-form__svg {
-   fill: white;
-}
+
 //END Form search
 
 //BTN from MYLIBRARY
