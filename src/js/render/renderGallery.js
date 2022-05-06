@@ -10,12 +10,10 @@ function renderGallery(data) {
         }
         return `
             <li class="film-card" data-id=${id}>
-            <img class="film-card__image" src='https://image.tmdb.org/t/p/w500/${poster_path}' alt="${title}"/>
-            <div class="film-card__description">
-                <h2 class="film-card__title">${title}</h2>
-                 <p class="film-card__genre">${genre_ids.join(', ')} | ${release_date.substr(0,4,)}
-                 </p>
-            </div>
+              <img class="film-card__image" src='https://image.tmdb.org/t/p/w500/${poster_path}' alt="${title}"/>
+              <h2 class="film-card__title">${title}</h2>
+              <p class="film-card__genre">${genre_ids.join(', ')} | ${release_date.substr(0,4,)}</p>
+            
             </li>`;
       })
       .join('');
