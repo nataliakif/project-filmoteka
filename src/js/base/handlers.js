@@ -5,6 +5,7 @@ import { updateInterface } from './update';
 
 function homeLinkClick(e) {
   e.preventDefault();
+  refs.headerContainer.classList.remove('header_libr');
   refs.homePageLink.classList.add('header-nav__isActive');
   refs.myLibPageLink.classList.remove('header-nav__isActive');
   writeState({
@@ -20,6 +21,7 @@ function homeLinkClick(e) {
 //Обработчик на ссылку MyLibrary
 function myLibLinkClick(e) {
   e.preventDefault();
+  refs.headerContainer.classList.add('header_libr');
   refs.homePageLink.classList.remove('header-nav__isActive');
   refs.myLibPageLink.classList.add('header-nav__isActive');
   writeState({
@@ -48,7 +50,6 @@ function onFormSubmit(e) {
 
 //обработчик на кнопку WATCHED и QUEUE - он будет один
 function libTypeWatchedBtnClick(e) {
-
   //С кнопки queue снимаем "current",а на текущую вешаем
   writeState({
     pageType: PAGE_TYPE.LIB_WATCHED,
@@ -60,7 +61,7 @@ function libTypeWatchedBtnClick(e) {
   updateInterface();
 }
 function libTypeQueueBtnClick(e) {
-    //С кнопки WATCHED снимаем "current",а на текущую вешаем
+  //С кнопки WATCHED снимаем "current",а на текущую вешаем
   writeState({
     pageType: PAGE_TYPE.LIB_QUEUE,
     currentPage: 1,

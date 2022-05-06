@@ -208,6 +208,7 @@ a {
 }
 .header-filter__btn {
    padding: 14px 36px 12px 36px;
+   height: 44px;
    background-color: transparent;
    color: white;
    border-radius: 5px;
@@ -228,5 +229,11 @@ a {
 }
 .header-filter__btn:not(:last-child) {
    margin-right: 20px;
+}
+.header-filter__btn-isActive {
+   border: 0px;
+   outline: 0;
+   background-color: #ff6b08;
+   box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
 }
 //END BTN from MYLIBRARY
