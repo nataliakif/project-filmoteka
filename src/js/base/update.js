@@ -1,3 +1,5 @@
+import { openModal, closeModal } from './handlers';
+
 import { readState } from './state';
 import { PAGE_TYPE } from './state';
 import { renderGallery } from '../render/renderGallery';
@@ -49,7 +51,7 @@ function updateInterface(needModalUpdate = true) {
       return;
     }
   }
-
+  checkReloadSite();
   removeBtnHeaderListener();
   removeFormListenerHome();
 
