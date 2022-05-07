@@ -1,4 +1,4 @@
-import { openModal, closeModal } from './handlers';
+import { checkReloadSite } from './handlers';
 
 import { readState } from './state';
 import { PAGE_TYPE } from './state';
