@@ -12,7 +12,6 @@ function homeLinkClick(e) {
     isModalOpen: false,
     modalFilmId: null,
   });
-  checkReloadSite();
   updateInterface();
 }
 
@@ -27,7 +26,6 @@ function myLibLinkClick(e) {
     isModalOpen: false,
     modalFilmId: null,
   });
-  checkReloadSite();
   updateInterface();
 }
 
