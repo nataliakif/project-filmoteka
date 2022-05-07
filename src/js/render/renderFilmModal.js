@@ -47,10 +47,10 @@ function renderFilmModal(data) {
               </p>
             </div>
             <div class="modal__buttons">
-              <button name="modalBtnWatched" type="submit" class="modal__button watched">
+              <button name="modalBtnWatched" type="submit" class="modal__button watched checked">
                 <span name="modalBtnWatchedTextField" class="add-button-watched-text">ADD TO WATCHED</span>
               </button>
-              <button name="modalBtnQueue" type="submit" class="modal__button queue">
+              <button name="modalBtnQueue" type="submit" class="modal__button queue checked">
                 <span name="modalBtnQueueTextField" class="add-button-queue-text">ADD TO QUEUE</span>
               </button>
             </div>
@@ -72,6 +72,12 @@ function checkStorageStatusOfFilm() {
   const queueBtnText = isInQueue ? 'REMOVE FROM QUEUE' : 'ADD TO QUEUE';
   refs.modalBtnWatchedTextField[0].textContent = watchedBtnText;
   refs.modalBtnQueueTextField[0].textContent = queueBtnText;
+  isInWatched
+    ? refs.modalBtnWatched[0].classList.remove('checked')
+    : refs.modalBtnWatched[0].classList.add('checked');
+  isInQueue
+    ? refs.modalBtnQueue[0].classList.remove('checked')
+    : refs.modalBtnQueue[0].classList.add('checked');
 }
 
 export { renderFilmModal, checkStorageStatusOfFilm };

@@ -90,7 +90,7 @@ function onPaginatorClick(page) {
 //обработчик клика по галерее
 function onGalleryClick(e) {
   let nodeWithId = null;
-  if (e.target.nodeName === 'IMG' || e.target.nodeName === 'P' || e.target.nodeName === 'P') {
+  if (e.target.nodeName === 'IMG' || e.target.nodeName === 'H2' || e.target.nodeName === 'P') {
     nodeWithId = e.target.parentNode;
   }
   if (e.target.nodeName === 'LI') {
@@ -135,7 +135,7 @@ function onModalBackdropClick(e) {
     onCloseModalWindow();
   }
 }
-//собрал в 1 функцию все действия для того чтобы модалка открылась в функции updateInterface
+//собрал в 1 функцию все действия для того чтобы модалка открылась из функции updateInterface
 function openModal() {
   refs.modal.classList.remove('is-hidden');
   refs.scrollLock.classList.add('modal-open');
@@ -143,7 +143,7 @@ function openModal() {
   refs.backdrop.addEventListener('click', onModalBackdropClick);
   window.addEventListener('keydown', onEscKeyCloseModal);
 }
-//собрал в 1 функцию все действия для того чтобы модалка закрылась в функции updateInterface
+//собрал в 1 функцию все действия для того чтобы модалка закрылась из функции updateInterface
 function closeModal() {
   refs.modal.classList.add('is-hidden');
   refs.scrollLock.classList.remove('modal-open');
@@ -169,7 +169,7 @@ function onModalBtnWatchedClick() {
   refs.modalBtnWatchedTextField[0].textContent = watchedBtnText;
   setTimeout(() => {
     checkStorageStatusOfFilm();
-    if (state.pageType === PAGE_TYPE.LIB_WATCHED || state.pageType === PAGE_TYPE.LIB_WATCHED)
+    if (state.pageType === PAGE_TYPE.LIB_WATCHED || state.pageType === PAGE_TYPE.LIB_QUEUE)
       updateInterface(false);
   }, 500);
 }
@@ -185,7 +185,7 @@ function onModalBtnQueueClick() {
   refs.modalBtnQueueTextField[0].textContent = watchedBtnText;
   setTimeout(() => {
     checkStorageStatusOfFilm();
-    if (state.pageType === PAGE_TYPE.LIB_WATCHED || state.pageType === PAGE_TYPE.LIB_WATCHED)
+    if (state.pageType === PAGE_TYPE.LIB_WATCHED || state.pageType === PAGE_TYPE.LIB_QUEUE)
       updateInterface(false);
   }, 500);
 }

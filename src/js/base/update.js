@@ -18,6 +18,8 @@ import {
 import { refs } from '../references/refs';
 import { openModal, closeModal } from './handlers';
 
+let firstRender = true;
+
 function updateInterface(needModalUpdate = true) {
   const state = readState();
 
@@ -28,7 +30,10 @@ function updateInterface(needModalUpdate = true) {
       getFilmById(state.modalFilmId).then(renderFilmModal);
     }
     openModal();
-    if (state.pageType === PAGE_TYPE.TRENDS || state.pageType === PAGE_TYPE.SEARCH) {
+    if (
+      !firstRender &&
+      (state.pageType === PAGE_TYPE.TRENDS || state.pageType === PAGE_TYPE.SEARCH)
+    ) {
       return;
     }
   } else {
@@ -93,6 +98,7 @@ function updateInterface(needModalUpdate = true) {
       //на ссылку MyLib вешаем класс active - это нужно только для того случая, если пользователь перезагрузит страницу
       break;
   }
+  firstRender = false;
 }
 
 export { updateInterface };
