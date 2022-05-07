@@ -2,6 +2,14 @@ import { refs } from '../references/refs';
 import { readState, writeState } from './state';
 import { PAGE_TYPE } from './state';
 import { updateInterface } from './update';
+import { handleScroll } from './scrollToTop';
+import {
+  addIdToLocalStorage,
+  LS_KEY_TYPE,
+  removeIdFromLocalStorage,
+  checkIdInLocalStorage,
+} from '../utils/localStorage';
+import { checkStorageStatusOfFilm } from '../render/renderFilmModal';
 
 function homeLinkClick(e) {
   e.preventDefault();
@@ -105,14 +113,105 @@ function onPaginatorClick(page) {
 
 //обработчик клика по галерее
 function onGalleryClick(e) {
-  const filmId = null;
-  //при клике по карточке фильма в галерее, проверяем e.currentTarget.nodename, если это img или h2, то получаем из дата атрибута родительского элемента id фильма
-  //считываем текущий state из sessionStorage
+  let nodeWithId = null;
+  if (e.target.nodeName === 'IMG' || e.target.nodeName === 'H2' || e.target.nodeName === 'P') {
+    nodeWithId = e.target.parentNode;
+  }
+  if (e.target.nodeName === 'LI') {
+    nodeWithId = e.target;
+  }
+  if (!nodeWithId) {
+    return;
+  }
   const state = readState();
-  state.modalFilmId = filmId;
+  state.modalFilmId = nodeWithId.dataset.id;
   state.isModalOpen = true;
   writeState(state);
   updateInterface();
+}
+//обработчик на клик по сслыке в footer
+function onOpenTeamModal(e) {
+  e.preventDefault();
+  const state = readState();
+  state.modalFilmId = null;
+  state.isModalOpen = true;
+  writeState(state);
+  updateInterface();
+}
+//обработчик на кнопку закрытия в модалке
+function onCloseModalWindow() {
+  const state = readState();
+  state.modalFilmId = null;
+  state.isModalOpen = false;
+  writeState(state);
+  updateInterface();
+}
+//обработчик на ESC на закрытие модалки
+function onEscKeyCloseModal(e) {
+  const ESC_KEY_CODE = 'Escape';
+  if (e.code === ESC_KEY_CODE) {
+    onCloseModalWindow();
+  }
+}
+
+function onModalBackdropClick(e) {
+  if (e.currentTarget === e.target) {
+    onCloseModalWindow();
+  }
+}
+//собрал в 1 функцию все действия для того чтобы модалка открылась из функции updateInterface
+function openModal() {
+  refs.modal.classList.remove('is-hidden');
+  refs.scrollLock.classList.add('modal-open');
+  refs.scrolltop.classList.remove('showBtn');
+  refs.backdrop.addEventListener('click', onModalBackdropClick);
+  window.addEventListener('keydown', onEscKeyCloseModal);
+}
+//собрал в 1 функцию все действия для того чтобы модалка закрылась из функции updateInterface
+function closeModal() {
+  refs.modal.classList.add('is-hidden');
+  refs.scrollLock.classList.remove('modal-open');
+  handleScroll();
+  refs.backdrop.removeEventListener('click', onModalBackdropClick);
+  window.removeEventListener('keydown', onEscKeyCloseModal);
+  refs.modalContent.innerHTML = '';
+  if (!readState().modalFilmId) {
+    return;
+  }
+  refs.modalBtnWatched[0].removeEventListener('click', onModalBtnWatchedClick);
+}
+
+//обработчик на клик по кнопке Watched в модалке
+function onModalBtnWatchedClick() {
+  const state = readState();
+  const filmId = state.modalFilmId;
+  let isInWatched = checkIdInLocalStorage(filmId, LS_KEY_TYPE.WATCHED);
+  isInWatched
+    ? removeIdFromLocalStorage(filmId, LS_KEY_TYPE.WATCHED)
+    : addIdToLocalStorage(filmId, LS_KEY_TYPE.WATCHED);
+  const watchedBtnText = isInWatched ? 'REMOVING FROM WATCHED' : 'ADDING TO WATCHED';
+  refs.modalBtnWatchedTextField[0].textContent = watchedBtnText;
+  setTimeout(() => {
+    checkStorageStatusOfFilm();
+    if (state.pageType === PAGE_TYPE.LIB_WATCHED || state.pageType === PAGE_TYPE.LIB_QUEUE)
+      updateInterface(false);
+  }, 500);
+}
+
+function onModalBtnQueueClick() {
+  const state = readState();
+  const filmId = state.modalFilmId;
+  let isInWatched = checkIdInLocalStorage(filmId, LS_KEY_TYPE.QUEUE);
+  isInWatched
+    ? removeIdFromLocalStorage(filmId, LS_KEY_TYPE.QUEUE)
+    : addIdToLocalStorage(filmId, LS_KEY_TYPE.QUEUE);
+  const watchedBtnText = isInWatched ? 'REMOVING FROM WATCHED' : 'ADDING TO WATCHED';
+  refs.modalBtnQueueTextField[0].textContent = watchedBtnText;
+  setTimeout(() => {
+    checkStorageStatusOfFilm();
+    if (state.pageType === PAGE_TYPE.LIB_WATCHED || state.pageType === PAGE_TYPE.LIB_QUEUE)
+      updateInterface(false);
+  }, 500);
 }
 
 export {
@@ -122,5 +221,12 @@ export {
   libTypeWatchedBtnClick,
   libTypeQueueBtnClick,
   onPaginatorClick,
+  onGalleryClick,
+  onCloseModalWindow,
+  onOpenTeamModal,
+  openModal,
+  closeModal,
+  onModalBtnWatchedClick,
+  onModalBtnQueueClick,
   checkReloadSite,
 };

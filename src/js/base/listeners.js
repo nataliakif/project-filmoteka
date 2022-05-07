@@ -5,12 +5,17 @@ import {
   libTypeWatchedBtnClick,
   myLibLinkClick,
   onFormSubmit,
+  onGalleryClick,
+  onCloseModalWindow,
+  onOpenTeamModal,
 } from './handlers';
 
 refs.homePageLink.addEventListener('click', homeLinkClick);
 refs.myLibPageLink.addEventListener('click', myLibLinkClick);
 refs.headerLogoLink.addEventListener('click', homeLinkClick);
-// refs.searchForm.addEventListener('submit', onFormSubmit);
+refs.gallery.addEventListener('click', onGalleryClick);
+refs.closeModalBtn.addEventListener('click', onCloseModalWindow);
+refs.footerModalLink.addEventListener('click', onOpenTeamModal);
 
 function addFormListenerHome() {
   refs.searchForm[0].addEventListener('submit', onFormSubmit);

@@ -11,7 +11,7 @@ function renderHeader(markupType) {
   switch (markupType) {
     case MARKUP_HEADER_TYPE.FORM:
       containerMarkup.innerHTML = homeMarkup;
-      return;
+      break;
 
     case MARKUP_HEADER_TYPE.BUTTONS:
       containerMarkup.innerHTML = myLibMarkup;
@@ -19,10 +19,10 @@ function renderHeader(markupType) {
       switch (readState().pageType) {
         case PAGE_TYPE.LIB_WATCHED:
           refs.watchedBtn[0].classList.add('header-filter__btn-isActive');
-          return;
+          break;
         case PAGE_TYPE.LIB_QUEUE:
           refs.queueBtn[0].classList.add('header-filter__btn-isActive');
-          return;
+          break;
       }
       break;
   }
