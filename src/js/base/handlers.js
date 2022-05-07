@@ -5,9 +5,6 @@ import { updateInterface } from './update';
 
 function homeLinkClick(e) {
   e.preventDefault();
-  // refs.headerContainer.classList.remove('header_libr');
-  // refs.homePageLink.classList.add('header-nav__isActive');
-  // refs.myLibPageLink.classList.remove('header-nav__isActive');
   writeState({
     pageType: PAGE_TYPE.TRENDS,
     currentPage: 1,
@@ -18,6 +15,23 @@ function homeLinkClick(e) {
   checkReloadSite();
   updateInterface();
 }
+
+//Обработчик на ссылку MyLibrary
+function myLibLinkClick(e) {
+  e.preventDefault();
+
+  writeState({
+    pageType: PAGE_TYPE.LIB_WATCHED,
+    currentPage: 1,
+    search: '',
+    isModalOpen: false,
+    modalFilmId: null,
+  });
+  checkReloadSite();
+  updateInterface();
+}
+
+//Проверка стейта для добавления и удаления классов при перезагрузке 
 function checkReloadSite() {
   switch (readState().pageType) {
     case PAGE_TYPE.TRENDS:
@@ -44,23 +58,6 @@ function checkReloadSite() {
       refs.myLibPageLink.classList.add('header-nav__isActive');
       break;
   }
-}
-
-//Обработчик на ссылку MyLibrary
-function myLibLinkClick(e) {
-  e.preventDefault();
-  // refs.headerContainer.classList.add('header_libr');
-  // refs.homePageLink.classList.remove('header-nav__isActive');
-  // refs.myLibPageLink.classList.add('header-nav__isActive');
-  writeState({
-    pageType: PAGE_TYPE.LIB_WATCHED,
-    currentPage: 1,
-    search: '',
-    isModalOpen: false,
-    modalFilmId: null,
-  });
-  checkReloadSite();
-  updateInterface();
 }
 
 //обработчик submit на форме поиска
