@@ -8,7 +8,13 @@ import { LS_KEY_TYPE, readLocalStorage } from '../utils/localStorage';
 import { divideOnPages } from '../utils/devideOnPages';
 import { renderTeamModal } from '../render/renderTeamModal';
 import { setGenres } from './setGenres';
-import { getPopularFilms, getGenres, getBySearchQuery, getFilmById } from '../api/api-service';
+import {
+  getPopularFilms,
+  getGenres,
+  getBySearchQuery,
+  getFilmById,
+  getFilmsByIdArray,
+} from '../api/api-service';
 import {
   addBtnHeaderListener,
   addFormListenerHome,
@@ -77,7 +83,10 @@ function updateInterface(needModalUpdate = true) {
     case PAGE_TYPE.LIB_WATCHED:
       renderHeader(MARKUP_HEADER_TYPE.BUTTONS);
       addBtnHeaderListener();
-      // moviesIdArr = readLocalStorage(LS_KEY_TYPE.WATCHED); //считываем из localstorage массив фильмов с WATCHED
+      console.log(readLocalStorage(LS_KEY_TYPE.WATCHED));
+      /* getFilmsByIdArray(divideOnPages(readLocalStorage(LS_KEY_TYPE.WATCHED), 6)).then(data => {
+        console.log(data);
+      }); */
       // moviesIdArrPaged = divideOnPages(moviesIdArr, 8);
       // data = []; //вызываем api функцию которая получает movies в параметры передаем moviesIdArrPaged[state.currentPage-1]
       // renderGallery(data);

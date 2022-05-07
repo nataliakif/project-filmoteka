@@ -62,4 +62,7 @@
 
 body.modal-open {
   overflow: hidden;
+  @media screen and (min-width: 1024px) {
+    padding-right: 17px;
+  }
 }
