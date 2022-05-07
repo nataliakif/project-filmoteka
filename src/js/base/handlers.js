@@ -9,6 +9,7 @@ import {
   removeIdFromLocalStorage,
   checkIdInLocalStorage,
 } from '../utils/localStorage';
+import { checkStorageStatusOfFilm } from '../render/renderFilmModal';
 
 function homeLinkClick(e) {
   e.preventDefault();
@@ -149,6 +150,7 @@ function closeModal() {
   handleScroll();
   refs.backdrop.removeEventListener('click', onModalBackdropClick);
   window.removeEventListener('keydown', onEscKeyCloseModal);
+  refs.modalContent.innerHTML = '';
   if (!readState().modalFilmId) {
     return;
   }
@@ -157,7 +159,8 @@ function closeModal() {
 
 //обработчик на клик по кнопке Watched в модалке
 function onModalBtnWatchedClick() {
-  const filmId = readState().modalFilmId;
+  const state = readState();
+  const filmId = state.modalFilmId;
   let isInWatched = checkIdInLocalStorage(filmId, LS_KEY_TYPE.WATCHED);
   isInWatched
     ? removeIdFromLocalStorage(filmId, LS_KEY_TYPE.WATCHED)
@@ -165,8 +168,25 @@ function onModalBtnWatchedClick() {
   const watchedBtnText = isInWatched ? 'REMOVING FROM WATCHED' : 'ADDING TO WATCHED';
   refs.modalBtnWatchedTextField[0].textContent = watchedBtnText;
   setTimeout(() => {
-    updateInterface(false);
     checkStorageStatusOfFilm();
+    if (state.pageType === PAGE_TYPE.LIB_WATCHED || state.pageType === PAGE_TYPE.LIB_WATCHED)
+      updateInterface(false);
+  }, 500);
+}
+
+function onModalBtnQueueClick() {
+  const state = readState();
+  const filmId = state.modalFilmId;
+  let isInWatched = checkIdInLocalStorage(filmId, LS_KEY_TYPE.QUEUE);
+  isInWatched
+    ? removeIdFromLocalStorage(filmId, LS_KEY_TYPE.QUEUE)
+    : addIdToLocalStorage(filmId, LS_KEY_TYPE.QUEUE);
+  const watchedBtnText = isInWatched ? 'REMOVING FROM WATCHED' : 'ADDING TO WATCHED';
+  refs.modalBtnQueueTextField[0].textContent = watchedBtnText;
+  setTimeout(() => {
+    checkStorageStatusOfFilm();
+    if (state.pageType === PAGE_TYPE.LIB_WATCHED || state.pageType === PAGE_TYPE.LIB_WATCHED)
+      updateInterface(false);
   }, 500);
 }
 
@@ -183,4 +203,5 @@ export {
   openModal,
   closeModal,
   onModalBtnWatchedClick,
+  onModalBtnQueueClick,
 };

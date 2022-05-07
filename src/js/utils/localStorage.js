@@ -29,7 +29,6 @@ function addIdToLocalStorage(id, keyType) {
 }
 
 function checkIdInLocalStorage(id, keyType) {
-  console.log(readLocalStorage(keyType));
   return readLocalStorage(keyType).includes(id);
 }
 

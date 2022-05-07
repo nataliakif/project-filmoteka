@@ -2,7 +2,6 @@ import { readState } from './state';
 import { PAGE_TYPE } from './state';
 import { renderGallery } from '../render/renderGallery';
 import { MARKUP_HEADER_TYPE, renderHeader } from '../render/renderHeader';
-import { renderNotification } from '../render/renderNotification';
 import { renderPagination } from '../render/renderPagination';
 import { renderFilmModal } from '../render/renderFilmModal';
 import { LS_KEY_TYPE, readLocalStorage } from '../utils/localStorage';
@@ -10,7 +9,6 @@ import { divideOnPages } from '../utils/devideOnPages';
 import { renderTeamModal } from '../render/renderTeamModal';
 import { setGenres } from './setGenres';
 import { getPopularFilms, getGenres, getBySearchQuery, getFilmById } from '../api/api-service';
-
 import {
   addBtnHeaderListener,
   addFormListenerHome,

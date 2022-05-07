@@ -1,7 +1,7 @@
 import { checkIdInLocalStorage, LS_KEY_TYPE } from '../utils/localStorage';
 import { refs } from '../references/refs';
 import { readState } from '../base/state';
-import { onModalBtnWatchedClick } from '../base/handlers';
+import { onModalBtnWatchedClick, onModalBtnQueueClick } from '../base/handlers';
 
 function renderFilmModal(data) {
   const { original_title, genres, poster_path, overview, popularity, vote_average, vote_count } =
@@ -61,6 +61,7 @@ function renderFilmModal(data) {
   refs.modalContent.innerHTML = markup;
   checkStorageStatusOfFilm();
   refs.modalBtnWatched[0].addEventListener('click', onModalBtnWatchedClick);
+  refs.modalBtnQueue[0].addEventListener('click', onModalBtnQueueClick);
 }
 
 function checkStorageStatusOfFilm() {
