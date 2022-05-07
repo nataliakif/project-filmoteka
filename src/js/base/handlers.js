@@ -1,4 +1,5 @@
 import { refs } from '../references/refs';
+import { openModalWindow } from './listeners';
 import { readState, writeState } from './state';
 import { PAGE_TYPE } from './state';
 import { updateInterface } from './update';
@@ -81,12 +82,27 @@ function onPaginatorClick(page) {
 
 //обработчик клика по галерее
 function onGalleryClick(e) {
-  const filmId = null;
-  //при клике по карточке фильма в галерее, проверяем e.currentTarget.nodename, если это img или h2, то получаем из дата атрибута родительского элемента id фильма
-  //считываем текущий state из sessionStorage
+  let nodeWithId = null;
+  if (e.target.nodeName === 'IMG' || e.target.nodeName === 'P' || e.target.nodeName === 'P') {
+    nodeWithId = e.target.parentNode;
+  }
+  if (e.target.nodeName === 'LI') {
+    nodeWithId = e.target;
+  }
+  if (!nodeWithId) {
+    return;
+  }
   const state = readState();
-  state.modalFilmId = filmId;
+  state.modalFilmId = nodeWithId.dataset.id;
   state.isModalOpen = true;
+  writeState(state);
+  updateInterface();
+}
+
+function closeModalWindow() {
+  const state = readState();
+  state.modalFilmId = null;
+  state.isModalOpen = false;
   writeState(state);
   updateInterface();
 }
@@ -98,4 +114,6 @@ export {
   libTypeWatchedBtnClick,
   libTypeQueueBtnClick,
   onPaginatorClick,
+  onGalleryClick,
+  closeModalWindow,
 };

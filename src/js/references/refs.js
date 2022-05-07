@@ -7,6 +7,9 @@ const refs = {
   headerLogoLink: document.querySelector('.header-logo__link'),
   watchedBtn: document.getElementsByName('watched-btn'),
   queueBtn: document.getElementsByName('queue-btn'),
+  modal: document.querySelector('[data-modal]'),
+  modalContent: document.querySelector('#modal-content'),
+  closeModalBtn: document.querySelector('[data-modal-close]'),
 };
 
 export { refs };

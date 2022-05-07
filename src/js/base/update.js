@@ -9,8 +9,8 @@ import { LS_KEY_TYPE, readLocalStorage } from '../utils/localStorage';
 import { divideOnPages } from '../utils/devideOnPages';
 import { renderTeamModal } from '../render/renderTeamModal';
 import { setGenres } from './setGenres';
-import { getPopularFilms, getGenres, getBySearchQuery } from '../api/api-service';
-import { homeMarkup, myLibMarkup } from '../templates/markupHeader';
+import { getPopularFilms, getGenres, getBySearchQuery, getFilmById } from '../api/api-service';
+
 import {
   addBtnHeaderListener,
   addFormListenerHome,
@@ -25,10 +25,7 @@ function updateInterface() {
   removeBtnHeaderListener();
   removeFormListenerHome();
   const state = readState();
-  const data = [];
-  const moviesIdArr = [];
-  const moviesIdArrPaged = [];
-
+  console.log(state);
   switch (state.pageType) {
     case PAGE_TYPE.TRENDS:
       getPopularFilms(state.currentPage)
@@ -42,7 +39,7 @@ function updateInterface() {
       renderHeader(MARKUP_HEADER_TYPE.FORM);
       addFormListenerHome();
 
-      return;
+      break;
 
     case PAGE_TYPE.SEARCH:
       getBySearchQuery(state.search, state.currentPage)
@@ -57,7 +54,7 @@ function updateInterface() {
       refs.searchForm[0].elements[0].value = state.search;
       addFormListenerHome();
       // createFormListner();
-      return;
+      break;
 
     case PAGE_TYPE.LIB_WATCHED:
       renderHeader(MARKUP_HEADER_TYPE.BUTTONS);
@@ -69,7 +66,7 @@ function updateInterface() {
       // renderPagination(moviesIdArrPaged.length, state.currentPage);
 
       //на ссылку MyLib вешаем класс active - это нужно только для того случая, если пользователь перезагрузит страницу
-      return;
+      break;
 
     case PAGE_TYPE.LIB_QUEUE:
       renderHeader(MARKUP_HEADER_TYPE.BUTTONS);
@@ -81,16 +78,18 @@ function updateInterface() {
       // renderPagination(moviesIdArrPaged.length, state.currentPage);
       //cнять слушатель с формы поиска
       //на ссылку MyLib вешаем класс active - это нужно только для того случая, если пользователь перезагрузит страницу
-      return;
+      break;
   }
-
   if (state.isModalOpen) {
     //у div с модалкой убираем class visually-hidden
     if (state.modalFilmId === null) {
-      renderTeamModal(); //так как в state нет записанного filmID то рендерим в модалку команду
+      //renderTeamModal(); //так как в state нет записанного filmID то рендерим в модалку команду
     }
-    const filmDetailsData = null; //делаем запрос по modalFilmId
-    renderFilmModal(filmDetailsData); //рендерим в модалку информацию о фильме
+
+    refs.modal.classList.remove('is-hidden');
+    getFilmById(state.modalFilmId).then(renderFilmModal);
+  } else {
+    !refs.modal.classList.contains('is-hidden') ? refs.modal.classList.add('is-hidden') : '';
   }
 }
 
