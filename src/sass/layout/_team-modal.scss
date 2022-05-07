@@ -1,3 +1,19 @@
+.footer-modal__window {
+  height: 80vh;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.footer-modal__window::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
 .team {
   overflow: hidden;
   position: relative;

@@ -25,7 +25,28 @@ function updateInterface() {
   removeBtnHeaderListener();
   removeFormListenerHome();
   const state = readState();
-  console.log(state);
+
+  if (state.isModalOpen) {
+    //у div с модалкой убираем class visually-hidden
+    if (state.modalFilmId === null) {
+      //renderTeamModal(); //так как в state нет записанного filmID то рендерим в модалку команду
+      renderTeamModal();
+    } else {
+      getFilmById(state.modalFilmId).then(renderFilmModal);
+    }
+    refs.modal.classList.remove('is-hidden');
+    if (state.pageType === PAGE_TYPE.TRENDS || state.pageType === PAGE_TYPE.SEARCH) {
+      return;
+    }
+  } else {
+    if (!refs.modal.classList.contains('is-hidden')) {
+      refs.modal.classList.add('is-hidden');
+      if (state.pageType === PAGE_TYPE.TRENDS || state.pageType === PAGE_TYPE.SEARCH) {
+        return;
+      }
+    }
+  }
+
   switch (state.pageType) {
     case PAGE_TYPE.TRENDS:
       getPopularFilms(state.currentPage)
@@ -79,17 +100,6 @@ function updateInterface() {
       //cнять слушатель с формы поиска
       //на ссылку MyLib вешаем класс active - это нужно только для того случая, если пользователь перезагрузит страницу
       break;
-  }
-  if (state.isModalOpen) {
-    //у div с модалкой убираем class visually-hidden
-    if (state.modalFilmId === null) {
-      //renderTeamModal(); //так как в state нет записанного filmID то рендерим в модалку команду
-    }
-
-    refs.modal.classList.remove('is-hidden');
-    getFilmById(state.modalFilmId).then(renderFilmModal);
-  } else {
-    !refs.modal.classList.contains('is-hidden') ? refs.modal.classList.add('is-hidden') : '';
   }
 }
 

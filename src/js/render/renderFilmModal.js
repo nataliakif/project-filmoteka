@@ -2,9 +2,9 @@ import { checkIdInLocalStorage, LS_KEY_TYPE } from '../utils/localStorage';
 import { refs } from '../references/refs';
 
 function renderFilmModal(data) {
-  console.log(data);
   const { original_title, genres, poster_path, overview, popularity, vote_average, vote_count } =
     data.data;
+  const genreStr = genres.map(genre => genre.name).join(', ');
   //функция, которая принимает filminfo с сервера и рендерит ее в контейнер модалки
   //в data будет id фильма. нужно во время создания разметки проверить id на наличие записей в localStorage
   //checkIdInLocalStorage(data.id, LS_KEY_TYPE.QUEUE); //если true - то на кнопку QUEUE вешаем класс active и текст кнопки "Remove from QUEUE" если false то текст кнопки "Add to QUEUE"
@@ -14,7 +14,7 @@ function renderFilmModal(data) {
         <div class="modal__wrapper">
           <div class="modal__image-wrapper">
             <a class="js-teaser" href="#">
-              <img class="modal__image" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="original_title" width="396 " />
+              <img class="modal__image" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${original_title}" width="396" height="531" />
             </a>
           </div>
           <div class="modal__info-wrapper">
@@ -39,7 +39,7 @@ function renderFilmModal(data) {
               </tr>
               <tr class="modal__param">
                 <td class="modal__param-titel">Genre</td>
-                <td class="modal__param-value">GENRES</td>
+                <td class="modal__param-value">${genreStr}</td>
               </tr>
             </table>
             <span class="modal__film-owervier">ABOUT</span>

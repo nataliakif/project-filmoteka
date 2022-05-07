@@ -99,6 +99,15 @@ function onGalleryClick(e) {
   updateInterface();
 }
 
+function openTeamModal(e) {
+  e.preventDefault();
+  const state = readState();
+  state.modalFilmId = null;
+  state.isModalOpen = true;
+  writeState(state);
+  updateInterface();
+}
+
 function closeModalWindow() {
   const state = readState();
   state.modalFilmId = null;
@@ -116,4 +125,5 @@ export {
   onPaginatorClick,
   onGalleryClick,
   closeModalWindow,
+  openTeamModal,
 };

@@ -7,6 +7,7 @@ import {
   onFormSubmit,
   onGalleryClick,
   closeModalWindow,
+  openTeamModal,
 } from './handlers';
 
 refs.homePageLink.addEventListener('click', homeLinkClick);
@@ -14,6 +15,7 @@ refs.myLibPageLink.addEventListener('click', myLibLinkClick);
 refs.headerLogoLink.addEventListener('click', homeLinkClick);
 refs.gallery.addEventListener('click', onGalleryClick);
 refs.closeModalBtn.addEventListener('click', closeModalWindow);
+refs.footerModalLink.addEventListener('click', openTeamModal);
 
 function addFormListenerHome() {
   refs.searchForm[0].addEventListener('submit', onFormSubmit);

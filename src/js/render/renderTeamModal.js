@@ -1,5 +1,8 @@
+import { teamModalMarkup } from '../templates/markupTeamModal';
+import { refs } from '../references/refs';
+
 function renderTeamModal() {
-  //в контейнер модалки вставляем разметку с командой
+  refs.modalContent.innerHTML = teamModalMarkup;
 }
 
 export { renderTeamModal };

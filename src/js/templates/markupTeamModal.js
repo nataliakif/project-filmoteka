@@ -1,4 +1,6 @@
-const teamModalMarkup = `<div class="team">
+const teamModalMarkup = `
+<div class="footer-modal__window">
+<div class="team">
 <img src="./images/team/Kyforenko.jpg" alt="nataliakyforenko" class=" team__img ">
 <div class="team__list ">
     <span class="team__name ">Natalia Kyforenko </span>
@@ -313,4 +315,7 @@ const teamModalMarkup = `<div class="team">
         </li>
     </ul>
 </div>
+</div>
 </div>`;
+
+export { teamModalMarkup };

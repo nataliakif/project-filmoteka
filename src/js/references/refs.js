@@ -10,6 +10,7 @@ const refs = {
   modal: document.querySelector('[data-modal]'),
   modalContent: document.querySelector('#modal-content'),
   closeModalBtn: document.querySelector('[data-modal-close]'),
+  footerModalLink: document.querySelector('#footer-modal-link'),
 };
 
 export { refs };
