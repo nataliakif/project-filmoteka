@@ -11,6 +11,9 @@ const refs = {
   modalContent: document.querySelector('#modal-content'),
   closeModalBtn: document.querySelector('[data-modal-close]'),
   footerModalLink: document.querySelector('#footer-modal-link'),
+  scrollLock: document.querySelector('[data-modal-scroll-lock]'),
+  scrolltop: document.querySelector('.scrolltop'),
+  rootElement: document.documentElement,
 };
 
 export { refs };

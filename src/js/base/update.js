@@ -18,32 +18,30 @@ import {
   removeFormListenerHome,
 } from '../base/listeners';
 import { refs } from '../references/refs';
+import { handleScroll } from './scrollToTop';
 
-//самая главная функция, которая будет обновлять весь интерфейс
 function updateInterface() {
-  //считываем из sessionStorage state
   removeBtnHeaderListener();
   removeFormListenerHome();
   const state = readState();
-
   if (state.isModalOpen) {
-    //у div с модалкой убираем class visually-hidden
     if (state.modalFilmId === null) {
-      //renderTeamModal(); //так как в state нет записанного filmID то рендерим в модалку команду
       renderTeamModal();
     } else {
       getFilmById(state.modalFilmId).then(renderFilmModal);
     }
     refs.modal.classList.remove('is-hidden');
+    refs.scrollLock.classList.add('modal-open');
+    refs.scrolltop.classList.remove('showBtn');
     if (state.pageType === PAGE_TYPE.TRENDS || state.pageType === PAGE_TYPE.SEARCH) {
       return;
     }
   } else {
     if (!refs.modal.classList.contains('is-hidden')) {
       refs.modal.classList.add('is-hidden');
-      if (state.pageType === PAGE_TYPE.TRENDS || state.pageType === PAGE_TYPE.SEARCH) {
-        return;
-      }
+      refs.scrollLock.classList.remove('modal-open');
+      handleScroll();
+      return;
     }
   }
 
@@ -59,7 +57,6 @@ function updateInterface() {
         });
       renderHeader(MARKUP_HEADER_TYPE.FORM);
       addFormListenerHome();
-
       break;
 
     case PAGE_TYPE.SEARCH:
@@ -74,7 +71,6 @@ function updateInterface() {
       renderHeader(MARKUP_HEADER_TYPE.FORM);
       refs.searchForm[0].elements[0].value = state.search;
       addFormListenerHome();
-      // createFormListner();
       break;
 
     case PAGE_TYPE.LIB_WATCHED:

@@ -3,23 +3,41 @@ const LS_KEY_TYPE = {
   QUEUE: 'queue',
 };
 
-// в localStorage храним массив id фильмов WATCHED и массив фильмов QEUE
-
 function readLocalStorage(keyType) {
-  //считывает массив фильмов в зависимости от typeKey (либо WATCHED либо QUEUE)
+  let arrayId = [];
+  let result;
+  try {
+    result = JSON.parse(window.localStorage.getItem(keyType));
+  } catch (e) {}
+  if (result) {
+    arrayId = result;
+  }
+  return arrayId;
 }
 
 function addIdToLocalStorage(id, keyType) {
-  //считывает массив фильмов в зависимости от typeKey (либо WATCHED либо QUEUE), добавляет в массив новый элемент и перезаписывает массив в LocalStorage
+  let arrayId = [];
+  let result;
+  try {
+    result = JSON.parse(window.localStorage.getItem(keyType));
+  } catch (e) {}
+  if (result) {
+    arrayId = result;
+  }
+  arrayId.push(id);
+  window.localStorage.setItem(keyType, JSON.stringify(arrayId));
 }
 
 function checkIdInLocalStorage(id, keyType) {
-  //функция для кнопок в модалке, для проверки добавлен ли этот id в localStorage
-  //возвращает true/false
+  console.log(readLocalStorage(keyType));
+  return readLocalStorage(keyType).includes(id);
 }
 
 function removeIdFromLocalStorage(id, keyType) {
-  //считывает массив фильмов в зависимости от typeKey (либо WATCHED либо QUEUE), удаляет из массива элемент с указанным id и перезаписывает массив в LocalStorage
+  window.localStorage.setItem(
+    keyType,
+    JSON.stringify(readLocalStorage(keyType).filter(item => item !== id)),
+  );
 }
 
 export {
