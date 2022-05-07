@@ -4,8 +4,8 @@
   overflow: auto;
   max-height: calc(100vh - 55px);
   @media screen and (min-width: 768px) and (max-width: 1024px) {
-    width: 704px;
-    padding: 10px 72px 40px 36px;
+    width: 562px;
+    padding: 12px 30px 41px 20px;
   }
   @media screen and (min-width: 1024px) {
     width: 814px;
@@ -20,12 +20,9 @@
 
 .modal__film-titel {
   margin-bottom: 20px;
-  font-family: 'Roboto';
-  font-style: normal;
   font-weight: 500;
   font-size: 20px;
   line-height: 1.15;
-  color: black;
   @media screen and (min-width: 1024px) {
     font-size: 30px;
     line-height: 1.17;
@@ -63,6 +60,10 @@
   }
 }
 
+.modal__film-votes {
+  display: inline-flex;
+}
+
 tbody {
   display: block;
   margin-bottom: 20px;
@@ -73,7 +74,7 @@ tr {
   margin-bottom: 10px;
 }
 .modal__param-titel {
-  color: #121212;
+  color: #8c8c8c;
   width: 105px;
   @media screen and (min-width: 1024px) {
     width: 150px;
@@ -97,7 +98,7 @@ tr {
     width: 36px;
     height: 16px;
     line-height: 1.17;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     text-transform: uppercase;
@@ -110,7 +111,7 @@ tr {
     width: 36px;
     height: 16px;
     line-height: 1.17;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     text-transform: uppercase;
@@ -131,10 +132,6 @@ tr {
   width: 113px;
   height: 41px;
   padding: 14px 7px 12px 7px;
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
   line-height: 1.33;
   border-radius: 5px;
   cursor: pointer;
@@ -145,6 +142,14 @@ tr {
   }
   @media screen and (min-width: 1024px) {
     width: 136px;
+  }
+
+  &:hover,
+  &:focus {
+    border: 0px;
+    outline: 0;
+    background-color: white;
+    box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.3);
   }
 
   &.watched,
@@ -168,4 +173,9 @@ tr {
 .modal_btn-siActive {
   background-color: #f7f7f7;
   color: #000000;
+}
+
+.close_modal_butt:hover,
+.close_modal_butt:focus {
+  fill: #ff6b01;
 }
