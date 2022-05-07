@@ -14,7 +14,7 @@ function renderFilmModal(data) {
         <div class="modal__wrapper">
           <div class="modal__image-wrapper">
             <a class="js-teaser" href="#">
-              <img class="modal__image" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${original_title}" width="396" height="531" />
+              <img class="modal__image" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${original_title}" height="531" />
             </a>
           </div>
           <div class="modal__info-wrapper">

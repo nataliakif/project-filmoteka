@@ -1,7 +1,10 @@
+import images from '../../images/team/*.jpg';
+import imagesPNG from '../../images/team/*.png';
+
 const teamModalMarkup = `
 <div class="footer-modal__window">
 <div class="team">
-<img src="./images/team/Kyforenko.jpg" alt="nataliakyforenko" class=" team__img ">
+<img src="${images['Kyforenko']}" alt="nataliakyforenko" class=" team__img ">
 <div class="team__list ">
     <span class="team__name ">Natalia Kyforenko </span>
     <span class="team__work ">Team Lead</span>
@@ -32,7 +35,7 @@ const teamModalMarkup = `
 </div>
 
 <div class="team ">
-<img src="./images/team/Zhosan.jpg " alt="zhosanserhii " class="team__img ">
+<img src="${images['Zhosan']}" alt="zhosanserhii " class="team__img ">
 <div class="team__list ">
     <span class="team__name ">Zhosan Serhii</span>
     <span class="team__work ">Scrum Master</span>
@@ -63,7 +66,7 @@ const teamModalMarkup = `
 </div>
 
 <div class="team ">
-<img src="./images/team/Rybin.jpg " alt="Sergiy Rybin " class="team__img ">
+<img src="${images['Rybin']}" alt="Sergiy Rybin " class="team__img ">
 <div class="team__list ">
     <span class="team__name ">Sergiy Rybin</span>
     <span class="team__work ">Developer</span>
@@ -94,7 +97,7 @@ const teamModalMarkup = `
 </div>
 
 <div class="team ">
-<img src="./images/team/Soloviev.jpg " alt="oleksandrsoloviov " class="team__img ">
+<img src="${images['Soloviev']}" alt="oleksandrsoloviov " class="team__img ">
 <div class="team__list ">
     <span class="team__name ">Oleksandr Soloviov</span>
     <span class="team__work ">Developer</span>
@@ -126,7 +129,7 @@ const teamModalMarkup = `
 
 
 <div class="team ">
-<img src="./images/team/Saveliev.png " alt="denyssaveliev " class="team__img ">
+<img src="${imagesPNG['Saveliev']}" alt="denyssaveliev " class="team__img ">
 <div class="team__list ">
     <span class="team__name ">Denys Saveliev</span>
     <span class="team__work ">Developer</span>
@@ -158,7 +161,7 @@ const teamModalMarkup = `
 
 
 <div class="team ">
-<img src="./images/team/Chuzhdiuk.png " alt="olhachuzhdiuk " class="team__img ">
+<img src="${imagesPNG['Chuzhdiuk']}" alt="olhachuzhdiuk " class="team__img ">
 <div class="team__list ">
     <span class="team__name ">Olha Chuzhdiuk</span>
     <span class="team__work ">Developer</span>
@@ -192,7 +195,7 @@ const teamModalMarkup = `
 
 
 <div class="team ">
-<img src="./images/team/Mishyn.jpg " alt="mishynmykhailo " class="team__img ">
+<img src="${images['Mishyn']}" alt="mishynmykhailo " class="team__img ">
 <div class="team__list ">
     <span class="team__name ">Mishyn Mykhailo</span>
     <span class="team__work ">Developer</span>
@@ -224,7 +227,7 @@ const teamModalMarkup = `
 
 
 <div class="team ">
-<img src="./images/team/Ivanyan.png " alt="haikivanyan " class="team__img ">
+<img src="${imagesPNG['Ivanyan']}" alt="haikivanyan " class="team__img ">
 <div class="team__list ">
     <span class="team__name ">Haik Ivanyan</span>
     <span class="team__work ">Developer</span>
@@ -255,7 +258,7 @@ const teamModalMarkup = `
 </div>
 
 <div class="team ">
-<img src="./images/team/Filchenko.jpg " alt="serhiifilchenko " class="team__img ">
+<img src="${images['Filchenko']}" alt="serhiifilchenko " class="team__img ">
 <div class="team__list ">
     <span class="team__name ">Serhii Filchenko</span>
     <span class="team__work ">Developer</span>
@@ -287,7 +290,7 @@ const teamModalMarkup = `
 
 
 <div class="team ">
-<img src="./images/team/Gashutin.png " alt="dmytrogashutin " class="team__img ">
+<img src="${imagesPNG['Gashutin']}" alt="dmytrogashutin " class="team__img ">
 <div class="team__list ">
     <span class="team__name ">Dmytro Gashutin</span>
     <span class="team__work ">Developer</span>
