@@ -27,6 +27,7 @@ import { openModal, closeModal } from './handlers';
 let firstRender = true;
 
 function updateInterface(needModalUpdate = true) {
+  let pagedArrayOfIds = [];
   const state = readState();
 
   if (state.isModalOpen && needModalUpdate) {
@@ -83,28 +84,21 @@ function updateInterface(needModalUpdate = true) {
     case PAGE_TYPE.LIB_WATCHED:
       renderHeader(MARKUP_HEADER_TYPE.BUTTONS);
       addBtnHeaderListener();
-      console.log(readLocalStorage(LS_KEY_TYPE.WATCHED));
-      /* getFilmsByIdArray(divideOnPages(readLocalStorage(LS_KEY_TYPE.WATCHED), 6)).then(data => {
-        console.log(data);
-      }); */
-      // moviesIdArrPaged = divideOnPages(moviesIdArr, 8);
-      // data = []; //вызываем api функцию которая получает movies в параметры передаем moviesIdArrPaged[state.currentPage-1]
-      // renderGallery(data);
-      // renderPagination(moviesIdArrPaged.length, state.currentPage);
-
-      //на ссылку MyLib вешаем класс active - это нужно только для того случая, если пользователь перезагрузит страницу
+      pagedArrayOfIds = divideOnPages(readLocalStorage(LS_KEY_TYPE.WATCHED), 6);
+      getFilmsByIdArray(pagedArrayOfIds[state.currentPage - 1]).then(data => {
+        renderGallery(data);
+        renderPagination(pagedArrayOfIds.length, state.currentPage);
+      });
       break;
 
     case PAGE_TYPE.LIB_QUEUE:
       renderHeader(MARKUP_HEADER_TYPE.BUTTONS);
       addBtnHeaderListener();
-      // moviesIdArr = readLocalStorage(LS_KEY_TYPE.QUEUE); //считываем из localstorage массив фильмов с WATCHED
-      // moviesIdArrPaged = divideOnPages(moviesIdArr, 8);
-      // data = []; //вызываем api функцию которая получает movies в параметры передаем moviesIdArrPaged[state.currentPage-1]
-      // renderGallery(data);
-      // renderPagination(moviesIdArrPaged.length, state.currentPage);
-      //cнять слушатель с формы поиска
-      //на ссылку MyLib вешаем класс active - это нужно только для того случая, если пользователь перезагрузит страницу
+      pagedArrayOfIds = divideOnPages(readLocalStorage(LS_KEY_TYPE.QUEUE), 6);
+      getFilmsByIdArray(pagedArrayOfIds[state.currentPage - 1]).then(data => {
+        renderGallery(data);
+        renderPagination(pagedArrayOfIds.length, state.currentPage);
+      });
       break;
   }
   firstRender = false;

@@ -43,7 +43,6 @@ async function getFilmById(id) {
 }
 
 async function getFilmsByIdArray(arrayOfIds) {
-  console.log(arrayOfIds);
   const promises = arrayOfIds.map(async id => {
     const response = await axios.get(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`);
     return response.data;
