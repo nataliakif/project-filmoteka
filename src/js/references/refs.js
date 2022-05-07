@@ -14,6 +14,11 @@ const refs = {
   scrollLock: document.querySelector('[data-modal-scroll-lock]'),
   scrolltop: document.querySelector('.scrolltop'),
   rootElement: document.documentElement,
+  backdrop: document.querySelector('.backdrop'),
+  modalBtnWatchedTextField: document.getElementsByName('modalBtnWatchedTextField'),
+  modalBtnQueueTextField: document.getElementsByName('modalBtnQueueTextField'),
+  modalBtnWatched: document.getElementsByName('modalBtnWatched'),
+  modalBtnQueue: document.getElementsByName('modalBtnQueue'),
 };
 
 export { refs };

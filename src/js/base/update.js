@@ -18,32 +18,30 @@ import {
   removeFormListenerHome,
 } from '../base/listeners';
 import { refs } from '../references/refs';
-import { handleScroll } from './scrollToTop';
+import { openModal, closeModal } from './handlers';
 
-function updateInterface() {
-  removeBtnHeaderListener();
-  removeFormListenerHome();
+function updateInterface(needModalUpdate = true) {
   const state = readState();
-  if (state.isModalOpen) {
+
+  if (state.isModalOpen && needModalUpdate) {
     if (state.modalFilmId === null) {
       renderTeamModal();
     } else {
       getFilmById(state.modalFilmId).then(renderFilmModal);
     }
-    refs.modal.classList.remove('is-hidden');
-    refs.scrollLock.classList.add('modal-open');
-    refs.scrolltop.classList.remove('showBtn');
+    openModal();
     if (state.pageType === PAGE_TYPE.TRENDS || state.pageType === PAGE_TYPE.SEARCH) {
       return;
     }
   } else {
-    if (!refs.modal.classList.contains('is-hidden')) {
-      refs.modal.classList.add('is-hidden');
-      refs.scrollLock.classList.remove('modal-open');
-      handleScroll();
+    if (!refs.modal.classList.contains('is-hidden') && needModalUpdate) {
+      closeModal();
       return;
     }
   }
+
+  removeBtnHeaderListener();
+  removeFormListenerHome();
 
   switch (state.pageType) {
     case PAGE_TYPE.TRENDS:

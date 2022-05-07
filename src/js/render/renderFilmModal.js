@@ -1,5 +1,7 @@
 import { checkIdInLocalStorage, LS_KEY_TYPE } from '../utils/localStorage';
 import { refs } from '../references/refs';
+import { readState } from '../base/state';
+import { onModalBtnWatchedClick } from '../base/handlers';
 
 function renderFilmModal(data) {
   const { original_title, genres, poster_path, overview, popularity, vote_average, vote_count } =
@@ -45,11 +47,11 @@ function renderFilmModal(data) {
               </p>
             </div>
             <div class="modal__buttons">
-              <button type="submit" class="modal__button watched">
-                <span class="add-button-watched-text">ADD TO WATCHED</span>
+              <button name="modalBtnWatched" type="submit" class="modal__button watched">
+                <span name="modalBtnWatchedTextField" class="add-button-watched-text">ADD TO WATCHED</span>
               </button>
-              <button type="submit" class="modal__button queue">
-                <span class="add-button-queue-text">ADD TO QUEUE</span>
+              <button name="modalBtnQueue" type="submit" class="modal__button queue">
+                <span name="modalBtnQueueTextField" class="add-button-queue-text">ADD TO QUEUE</span>
               </button>
             </div>
           </div>
@@ -57,6 +59,18 @@ function renderFilmModal(data) {
       </div>
     `;
   refs.modalContent.innerHTML = markup;
+  checkStorageStatusOfFilm();
+  refs.modalBtnWatched[0].addEventListener('click', onModalBtnWatchedClick);
 }
 
-export { renderFilmModal };
+function checkStorageStatusOfFilm() {
+  const filmId = readState().modalFilmId;
+  let isInWatched = checkIdInLocalStorage(filmId, LS_KEY_TYPE.WATCHED);
+  let isInQueue = checkIdInLocalStorage(filmId, LS_KEY_TYPE.QUEUE);
+  const watchedBtnText = isInWatched ? 'REMOVE FROM WATCHED' : 'ADD TO WATCHED';
+  const queueBtnText = isInQueue ? 'REMOVE FROM QUEUE' : 'ADD TO QUEUE';
+  refs.modalBtnWatchedTextField[0].textContent = watchedBtnText;
+  refs.modalBtnQueueTextField[0].textContent = queueBtnText;
+}
+
+export { renderFilmModal, checkStorageStatusOfFilm };

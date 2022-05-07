@@ -1,8 +1,14 @@
 import { refs } from '../references/refs';
-import { openModalWindow } from './listeners';
 import { readState, writeState } from './state';
 import { PAGE_TYPE } from './state';
 import { updateInterface } from './update';
+import { handleScroll } from './scrollToTop';
+import {
+  addIdToLocalStorage,
+  LS_KEY_TYPE,
+  removeIdFromLocalStorage,
+  checkIdInLocalStorage,
+} from '../utils/localStorage';
 
 function homeLinkClick(e) {
   e.preventDefault();
@@ -98,8 +104,8 @@ function onGalleryClick(e) {
   writeState(state);
   updateInterface();
 }
-
-function openTeamModal(e) {
+//обработчик на клик по сслыке в footer
+function onOpenTeamModal(e) {
   e.preventDefault();
   const state = readState();
   state.modalFilmId = null;
@@ -107,13 +113,61 @@ function openTeamModal(e) {
   writeState(state);
   updateInterface();
 }
-
-function closeModalWindow() {
+//обработчик на кнопку закрытия в модалке
+function onCloseModalWindow() {
   const state = readState();
   state.modalFilmId = null;
   state.isModalOpen = false;
   writeState(state);
   updateInterface();
+}
+//обработчик на ESC на закрытие модалки
+function onEscKeyCloseModal(e) {
+  const ESC_KEY_CODE = 'Escape';
+  if (e.code === ESC_KEY_CODE) {
+    onCloseModalWindow();
+  }
+}
+
+function onModalBackdropClick(e) {
+  if (e.currentTarget === e.target) {
+    onCloseModalWindow();
+  }
+}
+//собрал в 1 функцию все действия для того чтобы модалка открылась в функции updateInterface
+function openModal() {
+  refs.modal.classList.remove('is-hidden');
+  refs.scrollLock.classList.add('modal-open');
+  refs.scrolltop.classList.remove('showBtn');
+  refs.backdrop.addEventListener('click', onModalBackdropClick);
+  window.addEventListener('keydown', onEscKeyCloseModal);
+}
+//собрал в 1 функцию все действия для того чтобы модалка закрылась в функции updateInterface
+function closeModal() {
+  refs.modal.classList.add('is-hidden');
+  refs.scrollLock.classList.remove('modal-open');
+  handleScroll();
+  refs.backdrop.removeEventListener('click', onModalBackdropClick);
+  window.removeEventListener('keydown', onEscKeyCloseModal);
+  if (!readState().modalFilmId) {
+    return;
+  }
+  refs.modalBtnWatched[0].removeEventListener('click', onModalBtnWatchedClick);
+}
+
+//обработчик на клик по кнопке Watched в модалке
+function onModalBtnWatchedClick() {
+  const filmId = readState().modalFilmId;
+  let isInWatched = checkIdInLocalStorage(filmId, LS_KEY_TYPE.WATCHED);
+  isInWatched
+    ? removeIdFromLocalStorage(filmId, LS_KEY_TYPE.WATCHED)
+    : addIdToLocalStorage(filmId, LS_KEY_TYPE.WATCHED);
+  const watchedBtnText = isInWatched ? 'REMOVING FROM WATCHED' : 'ADDING TO WATCHED';
+  refs.modalBtnWatchedTextField[0].textContent = watchedBtnText;
+  setTimeout(() => {
+    updateInterface(false);
+    checkStorageStatusOfFilm();
+  }, 500);
 }
 
 export {
@@ -124,6 +178,9 @@ export {
   libTypeQueueBtnClick,
   onPaginatorClick,
   onGalleryClick,
-  closeModalWindow,
-  openTeamModal,
+  onCloseModalWindow,
+  onOpenTeamModal,
+  openModal,
+  closeModal,
+  onModalBtnWatchedClick,
 };

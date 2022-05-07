@@ -1,5 +1,5 @@
 .footer-modal__window {
-  height: 80vh;
+  max-height: calc(100vh - 70px);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
