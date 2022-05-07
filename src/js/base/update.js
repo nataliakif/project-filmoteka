@@ -16,13 +16,14 @@ import {
   addFormListenerHome,
   removeBtnHeaderListener,
   removeFormListenerHome,
-} from '../base/listeners';
+} from '../base/listeners'
 import { refs } from '../references/refs';
 import { checkReloadSite } from './handlers';
 
 //самая главная функция, которая будет обновлять весь интерфейс
 function updateInterface() {
   //считываем из sessionStorage state
+  checkReloadSite();
   removeBtnHeaderListener();
   removeFormListenerHome();
   const state = readState();
@@ -41,7 +42,7 @@ function updateInterface() {
           renderPagination(data.total_pages, state.currentPage);
         });
       renderHeader(MARKUP_HEADER_TYPE.FORM);
-      checkReloadSite();
+
       addFormListenerHome();
 
       return;
@@ -57,14 +58,12 @@ function updateInterface() {
         });
       renderHeader(MARKUP_HEADER_TYPE.FORM);
       refs.searchForm[0].elements[0].value = state.search;
-      checkReloadSite();
       addFormListenerHome();
       // createFormListner();
       return;
 
     case PAGE_TYPE.LIB_WATCHED:
       renderHeader(MARKUP_HEADER_TYPE.BUTTONS);
-      checkReloadSite();
       addBtnHeaderListener();
       // moviesIdArr = readLocalStorage(LS_KEY_TYPE.WATCHED); //считываем из localstorage массив фильмов с WATCHED
       // moviesIdArrPaged = divideOnPages(moviesIdArr, 8);
@@ -77,7 +76,6 @@ function updateInterface() {
 
     case PAGE_TYPE.LIB_QUEUE:
       renderHeader(MARKUP_HEADER_TYPE.BUTTONS);
-      checkReloadSite();
       addBtnHeaderListener();
       // moviesIdArr = readLocalStorage(LS_KEY_TYPE.QUEUE); //считываем из localstorage массив фильмов с WATCHED
       // moviesIdArrPaged = divideOnPages(moviesIdArr, 8);
