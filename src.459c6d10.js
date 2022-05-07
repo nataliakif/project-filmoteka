@@ -147,4 +147,4 @@ module.exports={Chuzhdiuk:require("./Chuzhdiuk.png"),Gashutin:require("./Gashuti
 },{"../references/refs":"EBuD","./state":"aDog","./update":"OQtY","./scrollToTop":"CDPP","../utils/localStorage":"qayt","../render/renderFilmModal":"naeK"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/api/api-service"),require("./js/base/spiner"),require("./js/base/handlers.js"),require("./js/base/state"),require("./js/base/listeners");var e=require("./js/base/update");require("./js/base/scrollToTop"),(0,e.updateInterface)();
 },{"./sass/main.scss":"clu1","./js/api/api-service":"aE0C","./js/base/spiner":"H5Kt","./js/base/handlers.js":"fkEw","./js/base/state":"aDog","./js/base/listeners":"VeTH","./js/base/update":"OQtY","./js/base/scrollToTop":"CDPP"}]},{},["Focm"], null)
-//# sourceMappingURL=/project-filmoteka/src.c1cf0889.js.map
+//# sourceMappingURL=/project-filmoteka/src.459c6d10.js.map
