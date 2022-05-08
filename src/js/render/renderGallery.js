@@ -1,8 +1,22 @@
 import { refs } from '../references/refs';
+import images from '../../images/plug/*.png'
 
 function renderGallery(data) {
   //функция которая принимает массив объектов, полученный от api (при чем не важно будут это тренды, либо поисковой запрос пользователя, либо бибилиотека)
   //ничего не возвращает
+
+  if(data.length === 0 || data === null){
+      const plugMarkup =`<div class="plug">
+   
+      <img src="${images['noresult']}" alt="Nothing was found" width="240px">
+    
+      <h2 class="plug_title">Opps! Nothing was found</h2>
+      <p class="plug_text">Try another search query!</p>
+  </div>`
+  refs.gallery.insertAdjacentHTML('afterend', plugMarkup);
+  }
+
+ 
   const markup = data
     .map(({ id, poster_path, title, genres, release_date = '' }) => {
       if (genres.length > 2) {
@@ -17,6 +31,7 @@ function renderGallery(data) {
             </li>`;
     })
     .join('');
-  refs.gallery.innerHTML = markup;
+    refs.gallery.innerHTML = markup;
+  
 }
 export { renderGallery };
