@@ -10,6 +10,12 @@ import {
   checkIdInLocalStorage,
 } from '../utils/localStorage';
 import { checkStorageStatusOfFilm } from '../render/renderFilmModal';
+import { Notyf } from 'notyf';
+import 'notyf/notyf.min.css';
+import { getBySearchQuery } from '../api/api-service';
+
+const notyf = new Notyf();
+
 
 function homeLinkClick(e) {
   e.preventDefault();
@@ -66,14 +72,41 @@ function checkReloadSite() {
   }
 }
 
+/// Сделать функуцию на отрисовку и удаление btn фильтра в header
+
+// function addChooseGenre(){
+//   switch(readState().pageType){
+//     case PAGE_TYPE.TRENDS:
+      
+//     break;
+//     case PAGE_TYPE.SEARCH:
+
+//     break;
+//     case PAGE_TYPE.LIB_WATCHED:
+
+//     break;
+//     case PAGE_TYPE.LIB_QUEUE:
+
+//     break;
+//   }
+// }
+
+
+
 //обработчик submit на форме поиска
 function onFormSubmit(e) {
   e.preventDefault();
+  const query = e.currentTarget.elements.input.value.trim();
+  if(query === ""){
+    notyf.error("Search result not successful. Enter the correct movie name and ")
+    return
+  }
+
   //e.currentTarger.ClassList.add() - делаем ее активной через css
   writeState({
     pageType: PAGE_TYPE.SEARCH,
     currentPage: 1,
-    search: e.currentTarget.elements.input.value, //записываем в search пользовательский текст
+    search: e.currentTarget.elements.input.value.trim(), //записываем в search пользовательский текст
     isModalOpen: false,
     modalFilmId: null,
   });
