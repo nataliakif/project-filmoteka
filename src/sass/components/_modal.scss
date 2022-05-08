@@ -1,0 +1,68 @@
+.modal {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  overflow-y: auto;
+
+  transform: scale(1) translateX(-50%);
+
+  @media screen and (min-width: 768px) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  background-color: #ffffff;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  opacity: 1;
+  transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-content {
+  padding-top: 30px;
+}
+
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.backdrop.is-hidden .modal {
+  transform: scale(0.8) translate(-50%, -50%);
+}
+
+.close_modal_butt {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translateY(8px);
+  cursor: pointer;
+}
+
+.todos_oper_button {
+  display: flex;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+  width: 20px;
+  height: 20px;
+  border: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  opacity: 0.6;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+  background-size: 85%;
+}
+
+body.modal-open {
+  overflow: hidden;
+  @media screen and (min-width: 1024px) {
+    padding-right: 17px;
+  }
+}

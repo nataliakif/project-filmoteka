@@ -1,7 +1,4 @@
-const refs = {
-  scrolltop: document.querySelector('.scrolltop'),
-  rootElement: document.documentElement,
-};
+import { refs } from '../references/refs';
 
 refs.scrolltop.addEventListener('click', scrollToTop);
 document.addEventListener('scroll', handleScroll);
@@ -25,3 +22,5 @@ function scrollToTop() {
     behavior: 'smooth',
   });
 }
+
+export { handleScroll };
