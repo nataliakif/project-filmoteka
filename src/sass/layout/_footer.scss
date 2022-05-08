@@ -75,7 +75,7 @@
    content: url("/images//svg/heart.svg");
    width: 14px;
    height: 14px;
-   animation: beat 800ms infinite cubic-bezier(0.4, 0, 0.2, 1);
+   animation: beat 800ms alternate infinite cubic-bezier(0.4, 0, 0.2, 1);
    transform-origin: center;
 }
 
