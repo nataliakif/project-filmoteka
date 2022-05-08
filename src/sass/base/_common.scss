@@ -16,6 +16,11 @@ body {
    flex-direction: column;
 }
 
+body[data-theme="dark"] {
+   background-color: #191a19;
+   color: #b5b5b5;
+}
+
 h1,
 h2,
 h3,
