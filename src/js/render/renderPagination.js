@@ -2,6 +2,8 @@ import Pagination from "tui-pagination";
 import { onPaginatorClick } from '../base/handlers';
 import '../../sass/layout/_pagination.scss';
 
+
+
 let pagination = null;
 
 function renderPagination(pageAmount, currentPage) {
@@ -34,7 +36,7 @@ function renderPagination(pageAmount, currentPage) {
   });
 
   pagination.on('afterMove', ({ page }) => onPaginatorClick(page));
-
+  
 }
 
 export { renderPagination };
