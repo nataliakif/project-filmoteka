@@ -10,6 +10,9 @@ function renderHeader(markupType) {
   const containerMarkup = document.querySelector('.js-container-markup');
   switch (markupType) {
     case MARKUP_HEADER_TYPE.FORM:
+      // if(readState().pageType === PAGE_TYPE.TRENDS){
+      //   ///Добавить разметку фильтра
+      // }
       containerMarkup.innerHTML = homeMarkup;
       break;
 
