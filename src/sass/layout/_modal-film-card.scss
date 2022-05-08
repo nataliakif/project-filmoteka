@@ -41,6 +41,7 @@
     margin-left: 32px;
   }
   @media screen and (min-width: 1024px) {
+    position: relative;
     max-width: 396px;
     margin-left: 32px;
   }
@@ -178,4 +179,31 @@ tr {
 .close_modal_butt:hover,
 .close_modal_butt:focus {
   fill: #ff6b01;
+}
+
+.modal__arrow{
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+@media screen and (min-width: 768px) {
+    justify-content: flex-end;
+  }
+    @media screen and (min-width: 1024px){
+      margin-top: 0;
+      position: absolute;
+      right: 25px;
+      bottom: 1px;
+    }
+}
+
+.modal__arrow-image{
+   transform: rotate(135deg);
+  border: solid #ff6b08;
+  border-width: 0 4px 4px 0;
+  display: inline-block;
+  padding: 5px;
+  margin-right: 10px;
+  &:nth-child(2){
+    transform: rotate(-45deg);
+  }
 }
