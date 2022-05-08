@@ -14,7 +14,6 @@ a {
    background-color: black;
    width: 100%;
    height: 230px;
-   margin: auto;
    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url(../images/header/header-bg-mobile.jpg);
    background-position: center;
@@ -169,7 +168,7 @@ a {
    line-height: 1.14px;
    padding: 0 25px 4px 0;
    &:hover,
-   &:focus{
+   &:focus {
       border-color: #ff6b08;
    }
 

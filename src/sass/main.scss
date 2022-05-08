@@ -5,6 +5,7 @@
 
 // Стили для файла с примером HTML-фрагмента
 @import "./utils/scrollToTop";
+@import "./utils/theme-preference";
 @import "./base/modern-normalize";
 @import "./base/variables";
 @import "./base/common";
@@ -15,5 +16,5 @@
 @import "./layout/gallery";
 @import "./layout/header";
 @import "./layout/film-card";
-@import './layout/footer-modal.scss';
-@import './layout/pagination';
+@import "./layout/footer-modal.scss";
+@import "./layout/pagination";
