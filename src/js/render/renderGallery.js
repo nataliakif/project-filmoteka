@@ -1,4 +1,5 @@
 import { refs } from '../references/refs';
+import images from '../../images/plug/*.png'
 
 function renderGallery(data) {
   //функция которая принимает массив объектов, полученный от api (при чем не важно будут это тренды, либо поисковой запрос пользователя, либо бибилиотека)
@@ -6,7 +7,9 @@ function renderGallery(data) {
 
   if(data.length === 0 || data === null){
       const plugMarkup =`<div class="plug">
-      <img src="./images/svg/films-not-found.svg">
+   
+      <img src="${images['noresult']}" alt="Nothing was found" width="240px">
+    
       <h2 class="plug_title">Opps! Nothing was found</h2>
       <p class="plug_text">Try another search query!</p>
   </div>`
