@@ -4,23 +4,22 @@
  */
 
 // Стили для файла с примером HTML-фрагмента
-@import "./utils/scrollToTop";
-@import "./utils/theme-preference";
-@import "./base/modern-normalize";
-@import "./base/variables";
-@import "./base/common";
-@import "./components/container";
-@import "./components/section";
-@import "./utils/visually-hidden";
-@import "./layout/footer";
-@import "./layout/gallery";
-@import "./layout/header";
-@import "./layout/film-card";
-@import "./layout/footer-modal.scss";
-@import "./layout/pagination";
+@import './utils/scrollToTop';
+@import './utils/theme-preference';
+@import './base/modern-normalize';
+@import './base/variables';
+@import './base/common';
+@import './components/container';
+@import './components/section';
+@import './utils/visually-hidden';
+@import './layout/footer';
+@import './layout/gallery';
+@import './layout/header';
+@import './layout/film-card';
+@import './layout/team-modal.scss';
+@import './layout/pagination';
 @import './layout/team-modal.scss';
 @import './layout/pagination';
 @import './components/backdrop';
 @import './components/modal';
 @import './layout/modal-film-card';
-

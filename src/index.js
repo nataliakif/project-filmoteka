@@ -6,13 +6,9 @@ import './js/base/state';
 import './js/base/listeners';
 import { updateInterface } from './js/base/update';
 import './js/base/scrollToTop';
-import './js/templates/footer-modal';
 import './js/base/themePreference';
 import { setDefaultTheme } from './js/base/themePreference';
 
 updateInterface();
 
 setDefaultTheme();
-
-
-
