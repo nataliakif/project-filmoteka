@@ -1,7 +1,7 @@
 export { readState, writeState, PAGE_TYPE };
 
 const SS_KEY = 'state';
-
+const LIB_ELEMENTS_PER_PAGE = 6;
 const PAGE_TYPE = {
   TRENDS: 'TRENDS_PAGE',
   SEARCH: 'SEARCH_PAGE',
@@ -34,3 +34,5 @@ function readState() {
 function writeState(state) {
   sessionStorage.setItem(SS_KEY, JSON.stringify(state));
 }
+
+export { LIB_ELEMENTS_PER_PAGE };

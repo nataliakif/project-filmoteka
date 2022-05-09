@@ -12,7 +12,7 @@ import {
 import { checkStorageStatusOfFilm } from '../render/renderFilmModal';
 import { Notyf } from 'notyf';
 import 'notyf/notyf.min.css';
-import { checkOnLastCardInGallery } from '../utils/checkOnLastCard';
+import { checkOnLastCardInGallery, checkOnFullGallery } from '../utils/checkOnLastCard';
 
 const notyf = new Notyf();
 
@@ -222,6 +222,7 @@ function onModalBtnWatchedClick() {
     checkOnLastCardInGallery();
   } else {
     addIdToLocalStorage(filmId, LS_KEY_TYPE.WATCHED);
+    checkOnFullGallery(LS_KEY_TYPE.WATCHED);
     if (checkIdInLocalStorage(filmId, LS_KEY_TYPE.QUEUE)) {
       removeIdFromLocalStorage(filmId, LS_KEY_TYPE.QUEUE);
       checkOnLastCardInGallery();
@@ -246,6 +247,7 @@ function onModalBtnQueueClick() {
     checkOnLastCardInGallery();
   } else {
     addIdToLocalStorage(filmId, LS_KEY_TYPE.QUEUE);
+    checkOnFullGallery(LS_KEY_TYPE.QUEUE);
     if (checkIdInLocalStorage(filmId, LS_KEY_TYPE.WATCHED)) {
       removeIdFromLocalStorage(filmId, LS_KEY_TYPE.WATCHED);
       checkOnLastCardInGallery();

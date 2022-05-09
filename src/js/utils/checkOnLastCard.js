@@ -1,16 +1,29 @@
-import { readState, writeState } from '../base/state';
+import { LIB_ELEMENTS_PER_PAGE, readState, writeState } from '../base/state';
 import { refs } from '../references/refs';
+import { divideOnPages } from './divideOnPages';
+import { readLocalStorage } from '../utils/localStorage';
 
 function checkOnLastCardInGallery() {
-  console.log(refs.gallery.children.length);
   if (refs.gallery.children.length !== 1) {
     return;
   }
-  const curState = readState();
-  if (curState.currentPage > 1) {
-    curState.currentPage -= 1;
-    writeState(curState);
+  const state = readState();
+  if (state.currentPage > 1) {
+    state.currentPage -= 1;
+    writeState(state);
   }
 }
 
-export { checkOnLastCardInGallery };
+function checkOnFullGallery(localStorageType) {
+  if (refs.gallery.children.length !== 6) {
+    return;
+  }
+  const state = readState();
+  const pagedArrayOfIds = divideOnPages(readLocalStorage(localStorageType), LIB_ELEMENTS_PER_PAGE);
+  if (pagedArrayOfIds.length > state.currentPage) {
+    state.currentPage += 1;
+    writeState(state);
+  }
+}
+
+export { checkOnLastCardInGallery, checkOnFullGallery };
