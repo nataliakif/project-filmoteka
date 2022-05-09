@@ -11,15 +11,27 @@
         height: 398px;
     }
 }
-.film-card__image{
-    margin-top: 10px;
-}
 .film-card__title{
-    margin-bottom: 5px;
+    margin-top: 8px;
     text-transform: uppercase;
-    color: #000000;
-    
+    &[data-theme="light"]{
+        color: $primary-text-color;
+    }
+    &[data-theme="dark"]{
+        color: $white-text-color;
+    }
 }
 .film-card__genre{
-    color: #FF6B08;
+    margin-top: 5px;
+    color: $accent-color;
+}
+.film-card__raiting{
+    display: inline-block;
+    width: 36px;
+    height: 16px;
+    margin-left: 8px;
+    padding: 1px 10px;
+    color: $white-text-color;
+    background: $rating-color;
+    border-radius: 5px;
 }
