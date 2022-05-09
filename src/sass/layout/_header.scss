@@ -89,7 +89,6 @@ a {
 .header-logo__svg {
    stroke: #818181;
    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
    @media screen and (min-width: 768px) {
       margin-right: 10px;
    }
@@ -99,15 +98,13 @@ a {
 }
 .header-logo__text {
 
-font-weight: 500;
-font-size: 30px;
-line-height: 1.16;
-display: flex;
-align-items: center;
-text-align: center;
-
-transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
+   font-size: 30px;
+   line-height: 1.16;
+   display: flex;
+   align-items: center;
+   text-align: center;
+   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+   
 
    @media screen and (max-width: 767px) {
       display: none;
@@ -245,11 +242,9 @@ transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
    line-height: 1.3;
    color: $white-text-color;
 
-   transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1),
-   outline 250ms cubic-bezier(0.4, 0, 0.2, 1),
-   background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-   box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1),
-   text-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+   transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1), outline 250ms cubic-bezier(0.4, 0, 0.2, 1),
+      background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1),
+      text-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
    &:hover,
    &:focus {
@@ -271,3 +266,53 @@ transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
    box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
 }
 //END BTN from MYLIBRARY
+
+// * Styles for toggle switch(themes)
+
+input[type="checkbox"] {
+   /* styling for input element */
+   height: 0;
+   width: 0;
+   visibility: hidden;
+}
+
+label {
+   border: 1px solid #ffffff;
+   /* styling for labels */
+   cursor: pointer;
+   text-indent: -9999px;
+   width: 52px;
+   height: 27px;
+   background: #191a19;
+   float: right;
+   border-radius: 100px;
+   position: relative;
+}
+
+label:after {
+   content: "";
+   position: absolute;
+   top: 1px;
+   left: 3px;
+   width: 23px;
+   height: 23px;
+   background: #ff6b08;
+
+   border-radius: 90px;
+   -webkit-transition: 0.3s;
+   transition: 0.6s;
+}
+
+input:checked + label {
+   background: #ffffff;
+}
+
+input:checked + label:after {
+   left: calc(100% - 1px);
+   -webkit-transform: translateX(-100%);
+   transform: translateX(-100%);
+}
+
+label:active:after {
+   width: 45px;
+}
