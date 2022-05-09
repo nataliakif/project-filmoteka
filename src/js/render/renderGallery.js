@@ -5,19 +5,15 @@ import { isInteger } from 'lodash';
 function renderGallery(data) {
   //функция которая принимает массив объектов, полученный от api (при чем не важно будут это тренды, либо поисковой запрос пользователя, либо бибилиотека)
   //ничего не возвращает
-
   if(data.length === 0 || data === null){
-      const plugMarkup =`<div class="plug">
-   
+      const plugMarkup =`
       <img src="${images['noresult']}" alt="Nothing was found" width="240px">
-    
-      <h2 class="plug_title">Opps! Nothing was found</h2>
-      <p class="plug_text">Try another search query!</p>
-  </div>`
-  refs.gallery.insertAdjacentHTML('afterend', plugMarkup);
+      <h2 class="plug_title">Opps! There is nothing to show you</h2>
+      <p class="plug_text">Maybe you forgot to bring popcorn?</p>`
+      refs.gallery.innerHTML ='';
+      refs.plug.innerHTML =plugMarkup;
   } else{
 
- console.log(data)
   const markup = data
     .map(({ id, poster_path, title, genres, vote_average, release_date = '' }) => {
       if (genres.length > 2) {
@@ -35,6 +31,7 @@ function renderGallery(data) {
             </li>`;
     })
     .join('');
+    refs.plug.innerHTML ='';
     refs.gallery.innerHTML = markup;
   }
 }
