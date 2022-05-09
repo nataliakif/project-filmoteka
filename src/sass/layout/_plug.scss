@@ -1,13 +1,6 @@
-.plug{
-    width: 340px;
-    display: block;
-    margin: 0 auto;
-  }
+
   .plug_image{
-    display: block;
-    
-      margin-left: auto;
-      margin-right: auto
+   margin: 0 auto;
   }
   .plug_title{
     font-size: 20px;
@@ -18,7 +11,6 @@
     @media screen and (min-width: 768px) {
       font-size: 25px;
     }
-  
   }
   .plug_text{
     font-size: 16px;
@@ -26,6 +18,5 @@
     text-align: center;
     @media screen and (min-width: 768px) {
       font-size: 20px;
-    }
-    
+    } 
   }
