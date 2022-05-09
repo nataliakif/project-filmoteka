@@ -12,7 +12,6 @@ import {
 import { checkStorageStatusOfFilm } from '../render/renderFilmModal';
 import { Notyf } from 'notyf';
 import 'notyf/notyf.min.css';
-import { getBySearchQuery } from '../api/api-service';
 
 const notyf = new Notyf();
 
