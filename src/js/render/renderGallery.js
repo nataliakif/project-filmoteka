@@ -1,5 +1,6 @@
 import { refs } from '../references/refs';
 import images from '../../images/plug/*.png'
+import { isInteger } from 'lodash';
 
 function renderGallery(data) {
   //функция которая принимает массив объектов, полученный от api (при чем не важно будут это тренды, либо поисковой запрос пользователя, либо бибилиотека)
@@ -21,6 +22,9 @@ function renderGallery(data) {
     .map(({ id, poster_path, title, genres, vote_average, release_date = '' }) => {
       if (genres.length > 2) {
         genres = genres.slice(0, 2);
+      }
+      if(isInteger(vote_average)){
+        vote_average = vote_average+'.0'
       }
       const genreStr = genres.map(genre => genre.name).join(', ');
       return `
