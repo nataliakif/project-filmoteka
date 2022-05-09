@@ -14,7 +14,7 @@ function renderGallery(data) {
       <p class="plug_text">Try another search query!</p>
   </div>`
   refs.gallery.insertAdjacentHTML('afterend', plugMarkup);
-  }
+  } else{
 
  
   const markup = data
@@ -32,6 +32,6 @@ function renderGallery(data) {
     })
     .join('');
     refs.gallery.innerHTML = markup;
-  
+  }
 }
 export { renderGallery };
