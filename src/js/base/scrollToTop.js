@@ -23,4 +23,4 @@ function scrollToTop() {
   });
 }
 
-export { handleScroll };
+export { handleScroll, scrollToTop };

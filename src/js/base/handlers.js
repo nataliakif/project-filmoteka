@@ -12,6 +12,7 @@ import {
 import { checkStorageStatusOfFilm } from '../render/renderFilmModal';
 import { Notyf } from 'notyf';
 import 'notyf/notyf.min.css';
+import { checkOnLastCardInGallery } from '../utils/checkOnLastCard';
 
 const notyf = new Notyf();
 
@@ -217,10 +218,12 @@ function onModalBtnWatchedClick() {
   let isInWatched = checkIdInLocalStorage(filmId, LS_KEY_TYPE.WATCHED);
   if (isInWatched) {
     removeIdFromLocalStorage(filmId, LS_KEY_TYPE.WATCHED);
+    checkOnLastCardInGallery();
   } else {
     addIdToLocalStorage(filmId, LS_KEY_TYPE.WATCHED);
     if (checkIdInLocalStorage(filmId, LS_KEY_TYPE.QUEUE)) {
       removeIdFromLocalStorage(filmId, LS_KEY_TYPE.QUEUE);
+      checkOnLastCardInGallery();
       refs.modalBtnQueueTextField[0].textContent = 'REMOVING FROM QUEUE';
     }
   }
@@ -239,10 +242,12 @@ function onModalBtnQueueClick() {
   let isInQueue = checkIdInLocalStorage(filmId, LS_KEY_TYPE.QUEUE);
   if (isInQueue) {
     removeIdFromLocalStorage(filmId, LS_KEY_TYPE.QUEUE);
+    checkOnLastCardInGallery();
   } else {
     addIdToLocalStorage(filmId, LS_KEY_TYPE.QUEUE);
     if (checkIdInLocalStorage(filmId, LS_KEY_TYPE.WATCHED)) {
       removeIdFromLocalStorage(filmId, LS_KEY_TYPE.WATCHED);
+      checkOnLastCardInGallery();
       refs.modalBtnWatchedTextField[0].textContent = 'REMOVING FROM WATCHED';
     }
   }
