@@ -19,6 +19,7 @@ const refs = {
   modalBtnQueueTextField: document.getElementsByName('modalBtnQueueTextField'),
   modalBtnWatched: document.getElementsByName('modalBtnWatched'),
   modalBtnQueue: document.getElementsByName('modalBtnQueue'),
+  plug: document.querySelector('.plug')
 };
 
 export { refs };

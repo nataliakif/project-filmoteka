@@ -9,11 +9,11 @@ function renderFilmModal(data) {
   const genreStr = genres.map(genre => genre.name).join(', ');
   const markup = `
   <div class="modal_film_card">
+
         <div class="modal__wrapper">
+       
           <div class="modal__image-wrapper">
-            <a class="js-teaser" href="#">
-              <img class="modal__image" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${original_title}" height="531" />
-            </a>
+              <img class="modal__image" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${original_title}" height="531" />     
           </div>
           <div class="modal__info-wrapper">
             <h2 class="modal__film-titel">${original_title}</h2>
@@ -53,6 +53,10 @@ function renderFilmModal(data) {
               <button name="modalBtnQueue" type="submit" class="modal__button queue checked">
                 <span name="modalBtnQueueTextField" class="add-button-queue-text">ADD TO QUEUE</span>
               </button>
+            </div>
+            <div class="modal__arrow">
+               <span class="modal__arrow-image"></span>
+              <span class="modal__arrow-image"></span>
             </div>
           </div>
         </div>

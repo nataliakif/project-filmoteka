@@ -87,20 +87,30 @@ function updateInterface(needModalUpdate = true) {
       renderHeader(MARKUP_HEADER_TYPE.BUTTONS);
       addBtnHeaderListener();
       pagedArrayOfIds = divideOnPages(readLocalStorage(LS_KEY_TYPE.WATCHED), 6);
-      getFilmsByIdArray(pagedArrayOfIds[state.currentPage - 1]).then(data => {
-        renderGallery(data);
-        renderPagination(pagedArrayOfIds.length, state.currentPage);
-      });
+      if (pagedArrayOfIds.length > 0) {
+        getFilmsByIdArray(pagedArrayOfIds[state.currentPage - 1]).then(data => {
+          renderGallery(data);
+          renderPagination(pagedArrayOfIds.length, state.currentPage);
+        });
+      } else {
+        renderGallery(null);
+        renderPagination(0);
+      }
       break;
 
     case PAGE_TYPE.LIB_QUEUE:
       renderHeader(MARKUP_HEADER_TYPE.BUTTONS);
       addBtnHeaderListener();
       pagedArrayOfIds = divideOnPages(readLocalStorage(LS_KEY_TYPE.QUEUE), 6);
-      getFilmsByIdArray(pagedArrayOfIds[state.currentPage - 1]).then(data => {
-        renderGallery(data);
-        renderPagination(pagedArrayOfIds.length, state.currentPage);
-      });
+      if (pagedArrayOfIds.length > 0) {
+        getFilmsByIdArray(pagedArrayOfIds[state.currentPage - 1]).then(data => {
+          renderGallery(data);
+          renderPagination(pagedArrayOfIds.length, state.currentPage);
+        });
+      } else {
+        renderGallery(null);
+        renderPagination(0);
+      }
       break;
   }
   firstRender = false;
