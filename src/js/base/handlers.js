@@ -148,7 +148,7 @@ function onGalleryClick(e) {
   if (e.target.nodeName === 'IMG' || e.target.nodeName === 'H2' || e.target.nodeName === 'P') {
     nodeWithId = e.target.parentNode;
   }
-  if (e.target.nodeName === 'LI') {
+  if (e.target.nodeName === 'A') {
     nodeWithId = e.target;
   }
   if (!nodeWithId) {
