@@ -16,9 +16,9 @@ function renderGallery(data) {
   refs.gallery.insertAdjacentHTML('afterend', plugMarkup);
   } else{
 
- 
+ console.log(data)
   const markup = data
-    .map(({ id, poster_path, title, genres, release_date = '' }) => {
+    .map(({ id, poster_path, title, genres, vote_average, release_date = '' }) => {
       if (genres.length > 2) {
         genres = genres.slice(0, 2);
       }
@@ -27,7 +27,7 @@ function renderGallery(data) {
             <li class="film-card" data-id=${id}>
               <img class="film-card__image" src='https://image.tmdb.org/t/p/w500/${poster_path}' alt="${title}"/>
               <h2 class="film-card__title">${title}</h2>
-              <p class="film-card__genre">${genreStr} | ${release_date.substr(0, 4)}</p>            
+              <p class="film-card__genre">${genreStr} | ${release_date.substr(0, 4)} <span class="film-card__raiting">${vote_average}</span> </p>       
             </li>`;
     })
     .join('');
