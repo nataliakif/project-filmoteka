@@ -8,7 +8,7 @@ function renderGallery(data) {
   //ничего не возвращает
   if (data === null || data.length === 0) {
     const plugMarkup = `
-      <img src="${images['noresult']}" alt="Nothing was found" width="240px">
+      <img src="${images['noresult']}" alt="Nothing was found" width="240px" class="plug_image">
       <h2 class="plug_title">Opps! There is nothing to show you</h2>
       <p class="plug_text">Maybe you forgot to bring popcorn?</p>`;
     refs.gallery.innerHTML = '';
