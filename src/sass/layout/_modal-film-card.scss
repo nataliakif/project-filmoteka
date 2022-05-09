@@ -103,8 +103,8 @@ tr {
     align-items: center;
     justify-content: center;
     text-transform: uppercase;
-    background: #ff6b01;
-    color: #ffffff;
+    background: $rating-color;
+    color: $white-text-color;
   }
   &__value-votes {
     margin-left: 3px;
@@ -116,8 +116,8 @@ tr {
     align-items: center;
     justify-content: center;
     text-transform: uppercase;
-    background: #f7f7f7;
-    color: black;
+    background: $footer-background-color;
+    color: $primary-text-color;
   }
 }
 
@@ -145,25 +145,29 @@ tr {
     width: 136px;
   }
 
-  &:hover,
-  &:focus {
+  &:hover {
     border: 0px;
     outline: 0;
-    background-color: white;
+    background-color: $white-text-color;
     box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.3);
   }
 
   &.watched,
   &.queue {
-    color: white;
-    background-color: #ff6b01;
-    border: 1px solid #ff6b01;
+    color: $white-text-color;
+    background-color: $rating-color;
+    border: 1px solid $rating-color;
   }
 
   &.checked {
-    color: #000000;
-    background-color: #f7f7f7;
-    border: 1px solid #000000;
+    color: $primary-text-color;
+    background-color: $footer-background-color;
+    border: 1px solid $primary-text-color;
+  }
+
+  &.watched:focus,
+  &.queue:focus {
+    border: 2px solid $rating-color;
   }
 
   &:not(:last-child) {
@@ -171,39 +175,36 @@ tr {
   }
 }
 
-.modal_btn-siActive {
-  background-color: #f7f7f7;
-  color: #000000;
-}
-
 .close_modal_butt:hover,
 .close_modal_butt:focus {
-  fill: #ff6b01;
+  fill: $rating-color;
+  border-radius: 50%;
+  outline: 1px solid $primary-text-color;
 }
 
-.modal__arrow{
+.modal__arrow {
   display: flex;
   justify-content: center;
   margin-top: 20px;
-@media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     justify-content: flex-end;
   }
-    @media screen and (min-width: 1024px){
-      margin-top: 0;
-      position: absolute;
-      right: 25px;
-      bottom: 1px;
-    }
+  @media screen and (min-width: 1024px) {
+    margin-top: 0;
+    position: absolute;
+    right: 25px;
+    bottom: 1px;
+  }
 }
 
-.modal__arrow-image{
-   transform: rotate(135deg);
-  border: solid #ff6b08;
+.modal__arrow-image {
+  transform: rotate(135deg);
+  border: solid $accent-color;
   border-width: 0 4px 4px 0;
   display: inline-block;
   padding: 5px;
   margin-right: 10px;
-  &:nth-child(2){
+  &:nth-child(2) {
     transform: rotate(-45deg);
   }
 }
