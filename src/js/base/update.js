@@ -87,7 +87,7 @@ function updateInterface(needModalUpdate = true) {
       renderHeader(MARKUP_HEADER_TYPE.BUTTONS);
       addBtnHeaderListener();
       pagedArrayOfIds = divideOnPages(readLocalStorage(LS_KEY_TYPE.WATCHED), 6);
-      if (pagedArrayOfIds.length > 0) {
+      if (pagedArrayOfIds.length > 0 && pagedArrayOfIds[state.currentPage - 1]) {
         getFilmsByIdArray(pagedArrayOfIds[state.currentPage - 1]).then(data => {
           renderGallery(data);
           renderPagination(pagedArrayOfIds.length, state.currentPage);
@@ -102,7 +102,7 @@ function updateInterface(needModalUpdate = true) {
       renderHeader(MARKUP_HEADER_TYPE.BUTTONS);
       addBtnHeaderListener();
       pagedArrayOfIds = divideOnPages(readLocalStorage(LS_KEY_TYPE.QUEUE), 6);
-      if (pagedArrayOfIds.length > 0) {
+      if (pagedArrayOfIds.length > 0 && pagedArrayOfIds[state.currentPage - 1]) {
         getFilmsByIdArray(pagedArrayOfIds[state.currentPage - 1]).then(data => {
           renderGallery(data);
           renderPagination(pagedArrayOfIds.length, state.currentPage);
