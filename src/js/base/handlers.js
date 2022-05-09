@@ -12,10 +12,8 @@ import {
 import { checkStorageStatusOfFilm } from '../render/renderFilmModal';
 import { Notyf } from 'notyf';
 import 'notyf/notyf.min.css';
-import { getBySearchQuery } from '../api/api-service';
 
 const notyf = new Notyf();
-
 
 function homeLinkClick(e) {
   e.preventDefault();
@@ -43,7 +41,7 @@ function myLibLinkClick(e) {
   updateInterface();
 }
 
-//Проверка стейта для добавления и удаления классов при перезагрузке 
+//Проверка стейта для добавления и удаления классов при перезагрузке
 function checkReloadSite() {
   switch (readState().pageType) {
     case PAGE_TYPE.TRENDS:
@@ -77,7 +75,7 @@ function checkReloadSite() {
 // function addChooseGenre(){
 //   switch(readState().pageType){
 //     case PAGE_TYPE.TRENDS:
-      
+
 //     break;
 //     case PAGE_TYPE.SEARCH:
 
@@ -91,15 +89,13 @@ function checkReloadSite() {
 //   }
 // }
 
-
-
 //обработчик submit на форме поиска
 function onFormSubmit(e) {
   e.preventDefault();
   const query = e.currentTarget.elements.input.value.trim();
-  if(query === ""){
-    notyf.error("Search result not successful. Enter the correct movie name and ")
-    return
+  if (query === '') {
+    notyf.error('Search result not successful. Enter the correct movie name and ');
+    return;
   }
 
   //e.currentTarger.ClassList.add() - делаем ее активной через css
@@ -219,9 +215,15 @@ function onModalBtnWatchedClick() {
   const state = readState();
   const filmId = state.modalFilmId;
   let isInWatched = checkIdInLocalStorage(filmId, LS_KEY_TYPE.WATCHED);
-  isInWatched
-    ? removeIdFromLocalStorage(filmId, LS_KEY_TYPE.WATCHED)
-    : addIdToLocalStorage(filmId, LS_KEY_TYPE.WATCHED);
+  if (isInWatched) {
+    removeIdFromLocalStorage(filmId, LS_KEY_TYPE.WATCHED);
+  } else {
+    addIdToLocalStorage(filmId, LS_KEY_TYPE.WATCHED);
+    if (checkIdInLocalStorage(filmId, LS_KEY_TYPE.QUEUE)) {
+      removeIdFromLocalStorage(filmId, LS_KEY_TYPE.QUEUE);
+      refs.modalBtnQueueTextField[0].textContent = 'REMOVING FROM QUEUE';
+    }
+  }
   const watchedBtnText = isInWatched ? 'REMOVING FROM WATCHED' : 'ADDING TO WATCHED';
   refs.modalBtnWatchedTextField[0].textContent = watchedBtnText;
   setTimeout(() => {
@@ -234,12 +236,18 @@ function onModalBtnWatchedClick() {
 function onModalBtnQueueClick() {
   const state = readState();
   const filmId = state.modalFilmId;
-  let isInWatched = checkIdInLocalStorage(filmId, LS_KEY_TYPE.QUEUE);
-  isInWatched
-    ? removeIdFromLocalStorage(filmId, LS_KEY_TYPE.QUEUE)
-    : addIdToLocalStorage(filmId, LS_KEY_TYPE.QUEUE);
-  const watchedBtnText = isInWatched ? 'REMOVING FROM WATCHED' : 'ADDING TO WATCHED';
-  refs.modalBtnQueueTextField[0].textContent = watchedBtnText;
+  let isInQueue = checkIdInLocalStorage(filmId, LS_KEY_TYPE.QUEUE);
+  if (isInQueue) {
+    removeIdFromLocalStorage(filmId, LS_KEY_TYPE.QUEUE);
+  } else {
+    addIdToLocalStorage(filmId, LS_KEY_TYPE.QUEUE);
+    if (checkIdInLocalStorage(filmId, LS_KEY_TYPE.WATCHED)) {
+      removeIdFromLocalStorage(filmId, LS_KEY_TYPE.WATCHED);
+      refs.modalBtnWatchedTextField[0].textContent = 'REMOVING FROM WATCHED';
+    }
+  }
+  const queueBtnText = isInQueue ? 'REMOVING FROM QUEUE' : 'ADDING TO QUEUE';
+  refs.modalBtnQueueTextField[0].textContent = queueBtnText;
   setTimeout(() => {
     checkStorageStatusOfFilm();
     if (state.pageType === PAGE_TYPE.LIB_WATCHED || state.pageType === PAGE_TYPE.LIB_QUEUE)
