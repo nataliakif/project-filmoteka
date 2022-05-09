@@ -6,9 +6,16 @@ import { isInteger } from 'lodash';
 function renderGallery(data) {
   //функция которая принимает массив объектов, полученный от api (при чем не важно будут это тренды, либо поисковой запрос пользователя, либо бибилиотека)
   //ничего не возвращает
+<<<<<<< Updated upstream
   if(data === null || data.length === 0 ){
       const plugMarkup =`
       <img src="${images['noresult']}" alt="Nothing was found" width="240px">
+=======
+ 
+  if (data === null || data.length === 0) {
+    const plugMarkup = `
+      <img src="${images['noresult']}" alt="Nothing was found" width="240px" class="plug_image">
+>>>>>>> Stashed changes
       <h2 class="plug_title">Opps! There is nothing to show you</h2>
       <p class="plug_text">Maybe you forgot to bring popcorn?</p>`
       refs.gallery.innerHTML ='';
@@ -24,6 +31,7 @@ function renderGallery(data) {
       }
       
       const genreStr = genres.map(genre => genre.name).join(', ');
+<<<<<<< Updated upstream
       if(readState().pageType === PAGE_TYPE.TRENDS){
        
       return `
@@ -41,6 +49,27 @@ function renderGallery(data) {
         <p class="film-card__genre">${genreStr} | ${release_date.substr(0, 4)} <span class="film-card__raiting">${vote_average}</span> </p>       
       </li>`;}
    )
+=======
+      if (readState().pageType === PAGE_TYPE.TRENDS) {
+        return `
+        <a href="" class="film-card" data-id=${id}>
+        <img class="film-card__image" src='https://image.tmdb.org/t/p/w500/${poster_path}' alt="${title}"/>
+        <h2 class="film-card__title">${title}</h2>
+        <p class="film-card__genre">${genreStr} | ${release_date.substr(0, 4)}</p>  
+        </a>`;
+      }
+
+      return `
+      <a href="" class="film-card" data-id=${id}>
+        <img class="film-card__image" src='https://image.tmdb.org/t/p/w500/${poster_path}' alt="${title}"/>
+        <h2 class="film-card__title">${title}</h2>
+        <p class="film-card__genre">${genreStr} | ${release_date.substr(
+        0,
+        4,
+      )} <span class="film-card__raiting">${vote_average}</span> </p>       
+      </a>`;
+    })
+>>>>>>> Stashed changes
     .join('');
     refs.plug.innerHTML ='';
     refs.gallery.innerHTML = markup;

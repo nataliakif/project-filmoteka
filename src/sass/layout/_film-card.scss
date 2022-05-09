@@ -11,6 +11,7 @@
     border-radius: 5px;
     width: 280px;
     height: 398px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     @media screen and (min-width: 768px) {
         width: 294px;
         height: 398px;
@@ -19,8 +20,13 @@
         width: 274px;
         height: 398px;
     }
+    &[data-theme="dark"]{
+        border: 1px solid $white-text-color;
+    }
 }
+
 .film-card__title{
+    color: $primary-text-color;
     margin-top: 8px;
     text-transform: uppercase;
     &[data-theme="light"]{
