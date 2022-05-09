@@ -24,11 +24,11 @@ function renderPagination(pageAmount, currentPage = 1) {
       currentPage: '<button class="tui-page-btn tui-is-selected">{{page}}</button>',
       moveButton:
         '<a href="#" class="tui-page-btn tui-{{type}}">' +
-        // '<span class="tui-ico-{{type}}">{{type}}</span>' +
+        '<span class="tui-ico-{{type}}">{{type}}</span>' +
         '</a>',
       disabledMoveButton:
         '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
-        // '<span class="tui-ico-{{type}}">{{type}}</span>' +
+        '<span class="tui-ico-{{type}}">{{type}}</span>' +
         '</span>',
       moreButton:
         '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
