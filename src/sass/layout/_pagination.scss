@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
     padding: 50px 0 60px;
 }
 .tui-page-btn{
@@ -15,14 +16,58 @@
     font-weight: 500;
     font-size: 12px;
     line-height: 1.333;
+
 }
 .tui-is-selected{
     width: 40px;
     height: 40px;
     border-radius: 5px;
-    background-color: #FF6B08;
+    background-color: #ff6b08;
     color: #fff;
 }
-.tui-ico-prev{
-    background-image: url();
+.tui-prev{
+    width: 15px;
+      height: 15px;
+      border-top: 5px solid #ff6b08;
+      border-right: 5px solid #ff6b08;
+      margin-right: 10px;
+      margin-left: 20px;
+
+      transform: rotate(-135deg)
 }
+
+.tui-first {
+    top: 6px;
+    position: relative;
+    height: 6px; 
+    width: 6px;
+    border: 3px solid #ff6b08; 
+    border-bottom: none;
+  }
+  .tui-first:before {
+    content: "";
+    position: absolute; 
+    top: -13px;
+    right: -8px; /* 30px - 8px/2 */ 
+    border-style: solid; 
+    border-width: 0 16px 14px; 
+    border-color: rgba(0,0,0,0) rgba(0,0,0,0) #ff6b08;
+  }
+  .tui-first:after {
+    content: "";
+    position: absolute; 
+    top: -13px; 
+    left: 13px;
+    height: 10px;
+    border: 3px solid #ff6b08;
+  }
+  .tui-next{
+    width: 15px;
+    height: 15px;
+    border-top: 5px solid #ff6b08;
+    border-right: 5px solid #ff6b08;
+    margin-right: 10px;
+    margin-left: 15px;
+
+    transform: rotate(45deg)
+  }

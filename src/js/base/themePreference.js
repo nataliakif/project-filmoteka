@@ -22,6 +22,7 @@ function setDefaultTheme() {
     theme = 'light';
   }
   if (theme === 'dark') {
+    checkbox.checked = true;
     changeThemeToDark();
   } else {
     changeThemeToLight();

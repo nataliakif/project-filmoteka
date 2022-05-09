@@ -34,7 +34,7 @@
 .footer-box__text[data-theme="dark"] {
    font-size: 14px;
    line-height: 1.17;
-   color: #dddddd;
+   color: #b5b5b5;
 
    @media screen and (min-width: 768px) {
       font-size: 16px;
@@ -65,7 +65,7 @@
 .footer-box__text--after[data-theme="dark"] {
    position: relative;
    margin-right: 25px;
-   color: #dddddd;
+   color: #b5b5b5;
 }
 
 .footer-box__text--after::after {
@@ -75,7 +75,7 @@
    content: url("/images//svg/heart.svg");
    width: 14px;
    height: 14px;
-   animation: beat 800ms infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+   animation: beat 800ms alternate infinite cubic-bezier(0.4, 0, 0.2, 1);
    transform-origin: center;
 }
 
@@ -94,5 +94,5 @@
 .footer__link[data-theme="dark"] {
    cursor: pointer;
    text-decoration: underline;
-   color: #dddddd;
+   color: #b5b5b5;
 }
