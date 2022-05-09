@@ -27,22 +27,22 @@ function renderGallery(data) {
       const genreStr = genres.map(genre => genre.name).join(', ');
       if (readState().pageType === PAGE_TYPE.TRENDS) {
         return `
-            <li class="film-card" data-id=${id}>
+            <a href="" class="film-card" data-id=${id}>
               <img class="film-card__image" src='https://image.tmdb.org/t/p/w500/${poster_path}' alt="${title}"/>
               <h2 class="film-card__title">${title}</h2>
               <p class="film-card__genre">${genreStr} | ${release_date.substr(0, 4)}</p>       
-            </li>`;
+            </a>`;
       }
 
       return `
-      <li class="film-card" data-id=${id}>
+      <a href="" class="film-card" data-id=${id}>
         <img class="film-card__image" src='https://image.tmdb.org/t/p/w500/${poster_path}' alt="${title}"/>
         <h2 class="film-card__title">${title}</h2>
         <p class="film-card__genre">${genreStr} | ${release_date.substr(
         0,
         4,
       )} <span class="film-card__raiting">${vote_average}</span> </p>       
-      </li>`;
+      </a>`;
     })
     .join('');
   refs.plug.innerHTML = '';

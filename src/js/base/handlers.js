@@ -143,6 +143,7 @@ function onPaginatorClick(page) {
 
 //обработчик клика по галерее
 function onGalleryClick(e) {
+  e.preventDefault();
   let nodeWithId = null;
   if (e.target.nodeName === 'IMG' || e.target.nodeName === 'H2' || e.target.nodeName === 'P') {
     nodeWithId = e.target.parentNode;
