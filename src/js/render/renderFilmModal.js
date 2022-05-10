@@ -2,12 +2,8 @@ import { checkIdInLocalStorage, LS_KEY_TYPE } from '../utils/localStorage';
 import { refs } from '../references/refs';
 import { readState } from '../base/state';
 import { onModalBtnWatchedClick, onModalBtnQueueClick } from '../base/handlers';
-import {
-  checkSwitchToPrevFilmAvailable,
-  switchToNextFilmInGallery,
-  switchToPrevFilmInGallery,
-  checkSwitchToNextFilmAvailable,
-} from '../utils/modalFilmSwitcher';
+import { switchToNextFilmInGallery, switchToPrevFilmInGallery } from '../utils/modalFilmSwitcher';
+import { setModalSwitchBtnAvailability } from '../utils/modalFilmSwitcher';
 
 function renderFilmModal(data) {
   const { original_title, genres, poster_path, overview, popularity, vote_average, vote_count } =
@@ -70,7 +66,7 @@ function renderFilmModal(data) {
     `;
   refs.modalContent.innerHTML = markup;
   checkStorageStatusOfFilm();
-  addModalBtnListeners();
+  setModalSwitchBtnAvailability();
 }
 
 function checkStorageStatusOfFilm() {
@@ -87,9 +83,6 @@ function checkStorageStatusOfFilm() {
   isInQueue
     ? refs.modalBtnQueue[0].classList.remove('checked')
     : refs.modalBtnQueue[0].classList.add('checked');
-
-  refs.modalBtnPrev[0].disabled = checkSwitchToPrevFilmAvailable();
-  refs.modalBtnNext[0].disabled = checkSwitchToNextFilmAvailable();
 }
 
 function addModalBtnListeners() {
@@ -106,4 +99,4 @@ function removeModalBtnListeners() {
   refs.modalBtnPrev[0].removeEventListener('click', switchToPrevFilmInGallery);
 }
 
-export { renderFilmModal, checkStorageStatusOfFilm, removeModalBtnListeners };
+export { renderFilmModal, checkStorageStatusOfFilm, removeModalBtnListeners, addModalBtnListeners };

@@ -13,6 +13,12 @@ import { checkStorageStatusOfFilm, removeModalBtnListeners } from '../render/ren
 import { Notyf } from 'notyf';
 import 'notyf/notyf.min.css';
 import { checkOnLastCardInGallery, checkOnFullGallery } from '../utils/checkOnLastCard';
+import {
+  switchToNextFilmInGallery,
+  switchToPrevFilmInGallery,
+  checkSwitchToPrevFilmAvailable,
+  checkSwitchToNextFilmAvailable,
+} from '../utils/modalFilmSwitcher';
 
 const notyf = new Notyf();
 
@@ -70,25 +76,6 @@ function checkReloadSite() {
       break;
   }
 }
-
-/// Сделать функуцию на отрисовку и удаление btn фильтра в header
-
-// function addChooseGenre(){
-//   switch(readState().pageType){
-//     case PAGE_TYPE.TRENDS:
-
-//     break;
-//     case PAGE_TYPE.SEARCH:
-
-//     break;
-//     case PAGE_TYPE.LIB_WATCHED:
-
-//     break;
-//     case PAGE_TYPE.LIB_QUEUE:
-
-//     break;
-//   }
-// }
 
 //обработчик submit на форме поиска
 function onFormSubmit(e) {
@@ -178,10 +165,28 @@ function onCloseModalWindow() {
   updateInterface();
 }
 //обработчик на ESC на закрытие модалки
-function onEscKeyCloseModal(e) {
+function onKeyBoardClick(e) {
   const ESC_KEY_CODE = 'Escape';
+  const arrowRight = 'ArrowRight';
+  const arrowLeft = 'ArrowLeft';
   if (e.code === ESC_KEY_CODE) {
     onCloseModalWindow();
+  }
+  if (e.code === arrowRight) {
+    if (!readState().modalFilmId) {
+      return;
+    }
+    if (!checkSwitchToNextFilmAvailable()) {
+      switchToNextFilmInGallery();
+    }
+  }
+  if (e.code === arrowLeft) {
+    if (!readState().modalFilmId) {
+      return;
+    }
+    if (!checkSwitchToPrevFilmAvailable()) {
+      switchToPrevFilmInGallery();
+    }
   }
 }
 
@@ -190,21 +195,23 @@ function onModalBackdropClick(e) {
     onCloseModalWindow();
   }
 }
+
 //собрал в 1 функцию все действия для того чтобы модалка открылась из функции updateInterface
 function openModal() {
   refs.modal.classList.remove('is-hidden');
   refs.scrollLock.classList.add('modal-open');
   refs.scrolltop.classList.remove('showBtn');
   refs.backdrop.addEventListener('click', onModalBackdropClick);
-  window.addEventListener('keydown', onEscKeyCloseModal);
+  window.addEventListener('keydown', onKeyBoardClick);
 }
+
 //собрал в 1 функцию все действия для того чтобы модалка закрылась из функции updateInterface
 function closeModal() {
   refs.modal.classList.add('is-hidden');
   refs.scrollLock.classList.remove('modal-open');
   handleScroll();
   refs.backdrop.removeEventListener('click', onModalBackdropClick);
-  window.removeEventListener('keydown', onEscKeyCloseModal);
+  window.removeEventListener('keydown', onKeyBoardClick);
   refs.modalContent.innerHTML = '';
   if (!readState().modalFilmId) {
     return;

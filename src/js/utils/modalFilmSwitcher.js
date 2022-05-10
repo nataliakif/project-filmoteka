@@ -34,16 +34,18 @@ async function switchToNextFilmInGallery() {
           ).data.results[0].id;
           break;
         case PAGE_TYPE.LIB_WATCHED:
-          state.modalFilmId = (state.modalFilmId = divideOnPages(
-            readLocalStorage(LS_KEY_TYPE.WATCHED),
-            LIB_ELEMENTS_PER_PAGE,
-          )[state.currentPage - 1])[0];
+          state.modalFilmId =
+            (state.modalFilmId = divideOnPages(
+              readLocalStorage(LS_KEY_TYPE.WATCHED),
+              LIB_ELEMENTS_PER_PAGE,
+            )[state.currentPage - 1])[0] ?? state.modalFilmId;
           break;
         case PAGE_TYPE.LIB_QUEUE:
-          state.modalFilmId = (state.modalFilmId = divideOnPages(
-            readLocalStorage(LS_KEY_TYPE.QUEUE),
-            LIB_ELEMENTS_PER_PAGE,
-          )[state.currentPage - 1])[0];
+          state.modalFilmId =
+            (state.modalFilmId = divideOnPages(
+              readLocalStorage(LS_KEY_TYPE.QUEUE),
+              LIB_ELEMENTS_PER_PAGE,
+            )[state.currentPage - 1])[0] ?? state.modalFilmId;
           break;
       }
     }
@@ -91,7 +93,10 @@ async function switchToPrevFilmInGallery() {
       }
     }
   } else {
-    state.modalFilmId = arrayFilmIdsShown[currentFilmIndex - 1];
+    state.modalFilmId =
+      currentFilmIndex === -1
+        ? arrayFilmIdsShown[arrayFilmIdsShown.length - 1]
+        : arrayFilmIdsShown[currentFilmIndex - 1];
   }
   writeState(state);
   updateInterface(true, needToUpdateGallery);
@@ -109,6 +114,11 @@ function checkSwitchToPrevFilmAvailable() {
     }
   }
   return canSwitchToPrevDisabled;
+}
+
+function setModalSwitchBtnAvailability() {
+  refs.modalBtnPrev[0].disabled = checkSwitchToPrevFilmAvailable();
+  refs.modalBtnNext[0].disabled = checkSwitchToNextFilmAvailable();
 }
 
 function checkSwitchToNextFilmAvailable() {
@@ -130,4 +140,5 @@ export {
   switchToPrevFilmInGallery,
   checkSwitchToPrevFilmAvailable,
   checkSwitchToNextFilmAvailable,
+  setModalSwitchBtnAvailability,
 };
