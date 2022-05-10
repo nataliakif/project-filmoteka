@@ -24,6 +24,7 @@ async function switchToNextFilmInGallery() {
       state.currentPage = pagination._currentPage + 1;
       needToUpdateGallery = true;
       scrollToTop();
+      let newModalId = null;
       switch (state.pageType) {
         case PAGE_TYPE.TRENDS:
           state.modalFilmId = (await getPopularFilms(state.currentPage)).data.results[0].id;
@@ -34,18 +35,18 @@ async function switchToNextFilmInGallery() {
           ).data.results[0].id;
           break;
         case PAGE_TYPE.LIB_WATCHED:
-          state.modalFilmId =
-            (state.modalFilmId = divideOnPages(
-              readLocalStorage(LS_KEY_TYPE.WATCHED),
-              LIB_ELEMENTS_PER_PAGE,
-            )[state.currentPage - 1])[0] ?? state.modalFilmId;
+          newModalId = (state.modalFilmId = divideOnPages(
+            readLocalStorage(LS_KEY_TYPE.WATCHED),
+            LIB_ELEMENTS_PER_PAGE,
+          )[state.currentPage - 1])[0];
+          state.modalFilmId = newModalId ? newModalId : state.modalFilmId;
           break;
         case PAGE_TYPE.LIB_QUEUE:
-          state.modalFilmId =
-            (state.modalFilmId = divideOnPages(
-              readLocalStorage(LS_KEY_TYPE.QUEUE),
-              LIB_ELEMENTS_PER_PAGE,
-            )[state.currentPage - 1])[0] ?? state.modalFilmId;
+          newModalId = (state.modalFilmId = divideOnPages(
+            readLocalStorage(LS_KEY_TYPE.QUEUE),
+            LIB_ELEMENTS_PER_PAGE,
+          )[state.currentPage - 1])[0];
+          state.modalFilmId = newModalId ? newModalId : state.modalFilmId;
           break;
       }
     }
