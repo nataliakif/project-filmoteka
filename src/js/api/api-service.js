@@ -50,5 +50,14 @@ async function getFilmsByIdArray(arrayOfIds) {
   const data = await Promise.all(promises);
   return data;
 }
-
-export { getBySearchQuery, getPopularFilms, getFilmById, getGenres, getFilmsByIdArray };
+async function getFilmByGenreId(id,page){
+  const response =await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=${id}&page=${page}`);
+  return response;
+}
+export {
+   getBySearchQuery, 
+   getPopularFilms, 
+   getFilmById,
+   getGenres, 
+   getFilmsByIdArray, 
+   getFilmByGenreId};
