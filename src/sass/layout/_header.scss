@@ -258,14 +258,15 @@ label {
    background-color: rgb(25, 26, 25);
    border-radius: 50px;
    cursor: pointer;
-   border: 1px solid #ffffff;
+   border: 1px solid $white-text-color;
 
    @media screen and (min-width: 768px) {
       right: 32px;
    }
 
-   &:hover {
-      border: 1px solid #ff6b08;
+   &:hover,
+   &:focus {
+      border: 1px solid $accent-color;
       animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
       transform: translate3d(0, 0, 0);
       backface-visibility: hidden;
@@ -310,7 +311,7 @@ label {
 }
 
 input:checked ~ .slider {
-   background-color: rgb(255, 255, 255);
+   background-color: $white-text-color;
 }
 
 .slider::before {
@@ -328,6 +329,6 @@ input:checked ~ .slider {
 
 input:checked ~ .slider::before {
    transform: translateX(23px);
-   background-color: #ff6b08;
+   background-color: $accent-color;
    box-shadow: none;
 }
