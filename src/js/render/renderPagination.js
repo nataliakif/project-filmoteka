@@ -40,4 +40,4 @@ function renderPagination(pageAmount, currentPage = 1) {
   pagination.on('afterMove', ({ page }) => onPaginatorClick(page));
 }
 
-export { renderPagination };
+export { renderPagination, pagination };

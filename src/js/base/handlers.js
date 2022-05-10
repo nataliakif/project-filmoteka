@@ -9,7 +9,7 @@ import {
   removeIdFromLocalStorage,
   checkIdInLocalStorage,
 } from '../utils/localStorage';
-import { checkStorageStatusOfFilm } from '../render/renderFilmModal';
+import { checkStorageStatusOfFilm, removeModalBtnListeners } from '../render/renderFilmModal';
 import { Notyf } from 'notyf';
 import 'notyf/notyf.min.css';
 import { checkOnLastCardInGallery, checkOnFullGallery } from '../utils/checkOnLastCard';
@@ -209,7 +209,7 @@ function closeModal() {
   if (!readState().modalFilmId) {
     return;
   }
-  refs.modalBtnWatched[0].removeEventListener('click', onModalBtnWatchedClick);
+  removeModalBtnListeners();
 }
 
 //обработчик на клик по кнопке Watched в модалке

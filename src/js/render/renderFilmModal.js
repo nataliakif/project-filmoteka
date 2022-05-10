@@ -2,6 +2,12 @@ import { checkIdInLocalStorage, LS_KEY_TYPE } from '../utils/localStorage';
 import { refs } from '../references/refs';
 import { readState } from '../base/state';
 import { onModalBtnWatchedClick, onModalBtnQueueClick } from '../base/handlers';
+import {
+  checkSwitchToPrevFilmAvailable,
+  switchToNextFilmInGallery,
+  switchToPrevFilmInGallery,
+  checkSwitchToNextFilmAvailable,
+} from '../utils/modalFilmSwitcher';
 
 function renderFilmModal(data) {
   const { original_title, genres, poster_path, overview, popularity, vote_average, vote_count } =
@@ -55,8 +61,8 @@ function renderFilmModal(data) {
               </button>
             </div>
             <div class="modal__arrow">
-               <button class="modal__arrow-btn" type="button"><span class="modal__arrow-image-left"></span></button>
-               <button class="modal__arrow-btn" type="button"><span class="modal__arrow-image-right"></span></button>
+               <button name="modalBtnPrev" class="modal__arrow-btn" type="button"><span class="modal__arrow-image-left"></span></button>
+               <button name="modalBtnNext" class="modal__arrow-btn" type="button"><span class="modal__arrow-image-right"></span></button>
             </div>
           </div>
         </div>
@@ -64,8 +70,7 @@ function renderFilmModal(data) {
     `;
   refs.modalContent.innerHTML = markup;
   checkStorageStatusOfFilm();
-  refs.modalBtnWatched[0].addEventListener('click', onModalBtnWatchedClick);
-  refs.modalBtnQueue[0].addEventListener('click', onModalBtnQueueClick);
+  addModalBtnListeners();
 }
 
 function checkStorageStatusOfFilm() {
@@ -82,6 +87,23 @@ function checkStorageStatusOfFilm() {
   isInQueue
     ? refs.modalBtnQueue[0].classList.remove('checked')
     : refs.modalBtnQueue[0].classList.add('checked');
+
+  refs.modalBtnPrev[0].disabled = checkSwitchToPrevFilmAvailable();
+  refs.modalBtnNext[0].disabled = checkSwitchToNextFilmAvailable();
 }
 
-export { renderFilmModal, checkStorageStatusOfFilm };
+function addModalBtnListeners() {
+  refs.modalBtnWatched[0].addEventListener('click', onModalBtnWatchedClick);
+  refs.modalBtnQueue[0].addEventListener('click', onModalBtnQueueClick);
+  refs.modalBtnNext[0].addEventListener('click', switchToNextFilmInGallery);
+  refs.modalBtnPrev[0].addEventListener('click', switchToPrevFilmInGallery);
+}
+
+function removeModalBtnListeners() {
+  refs.modalBtnWatched[0].removeEventListener('click', onModalBtnWatchedClick);
+  refs.modalBtnQueue[0].removeEventListener('click', onModalBtnQueueClick);
+  refs.modalBtnNext[0].removeEventListener('click', switchToNextFilmInGallery);
+  refs.modalBtnPrev[0].removeEventListener('click', switchToPrevFilmInGallery);
+}
+
+export { renderFilmModal, checkStorageStatusOfFilm, removeModalBtnListeners };

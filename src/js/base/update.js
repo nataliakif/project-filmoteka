@@ -28,7 +28,7 @@ import { scrollToTop } from './scrollToTop';
 import { LIB_ELEMENTS_PER_PAGE } from './state';
 let firstRender = true;
 
-function updateInterface(needModalUpdate = true) {
+function updateInterface(needModalUpdate = true, needGalleryUpdate = true) {
   let pagedArrayOfIds = [];
   const state = readState();
 
@@ -41,6 +41,7 @@ function updateInterface(needModalUpdate = true) {
     openModal();
     if (
       !firstRender &&
+      !needGalleryUpdate &&
       (state.pageType === PAGE_TYPE.TRENDS || state.pageType === PAGE_TYPE.SEARCH)
     ) {
       return;
@@ -51,6 +52,11 @@ function updateInterface(needModalUpdate = true) {
       return;
     }
   }
+  if (!needGalleryUpdate) {
+    firstRender = false;
+    return;
+  }
+
   checkReloadSite();
   removeBtnHeaderListener();
   removeFormListenerHome();
