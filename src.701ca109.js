@@ -168,4 +168,4 @@ module.exports={Chuzhdiuk:require("./Chuzhdiuk.png"),Gashutin:require("./Gashuti
 },{}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/api/api-service"),require("./js/base/spiner"),require("./js/base/handlers.js"),require("./js/base/state"),require("./js/base/listeners");var e=require("./js/base/update");require("./js/base/scrollToTop");var s=require("./js/base/themePreference");(0,e.updateInterface)(),(0,s.setDefaultTheme)();
 },{"./sass/main.scss":"clu1","./js/api/api-service":"aE0C","./js/base/spiner":"H5Kt","./js/base/handlers.js":"fkEw","./js/base/state":"aDog","./js/base/listeners":"VeTH","./js/base/update":"OQtY","./js/base/scrollToTop":"CDPP","./js/base/themePreference":"DZXG"}]},{},["Focm"], null)
-//# sourceMappingURL=/project-filmoteka/src.56716e7a.js.map
+//# sourceMappingURL=/project-filmoteka/src.701ca109.js.map
