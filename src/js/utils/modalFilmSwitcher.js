@@ -93,10 +93,11 @@ async function switchToPrevFilmInGallery() {
       }
     }
   } else {
-    state.modalFilmId =
-      currentFilmIndex === -1
-        ? arrayFilmIdsShown[arrayFilmIdsShown.length - 1]
-        : arrayFilmIdsShown[currentFilmIndex - 1];
+    if (currentFilmIndex === -1) {
+      state.modalFilmId = arrayFilmIdsShown[arrayFilmIdsShown.length - 1];
+    } else {
+      state.modalFilmId = arrayFilmIdsShown[currentFilmIndex - 1];
+    }
   }
   writeState(state);
   updateInterface(true, needToUpdateGallery);
