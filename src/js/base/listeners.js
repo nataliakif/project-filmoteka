@@ -9,6 +9,7 @@ import {
   onCloseModalWindow,
   onOpenTeamModal,
 } from './handlers';
+import { onDropBtnClick } from '../render/renderGenres';
 
 refs.homePageLink.addEventListener('click', homeLinkClick);
 refs.myLibPageLink.addEventListener('click', myLibLinkClick);
@@ -26,6 +27,7 @@ function removeFormListenerHome() {
     return;
   }
   refs.searchForm[0].removeEventListener('submit', onFormSubmit);
+  refs.genresDropdownBtn[0].removeEventListener('click', onDropBtnClick);
 }
 
 function addBtnHeaderListener() {

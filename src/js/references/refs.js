@@ -19,7 +19,13 @@ const refs = {
   modalBtnQueueTextField: document.getElementsByName('modalBtnQueueTextField'),
   modalBtnWatched: document.getElementsByName('modalBtnWatched'),
   modalBtnQueue: document.getElementsByName('modalBtnQueue'),
-  plug: document.querySelector('.plug')
+  plug: document.querySelector('.plug'),
+  genresDropdownBtn: document.getElementsByName('chooseGenre'),
+  dropdownGenres: document.querySelector('.dropdown_genres')
 };
-
 export { refs };
+
+obj={
+  "0": 1,
+  0: 2
+}
