@@ -20,6 +20,7 @@ refs.footerModalLink.addEventListener('click', onOpenTeamModal);
 
 function addFormListenerHome() {
   refs.searchForm[0].addEventListener('submit', onFormSubmit);
+  refs.genresDropdownBtn[0].addEventListener('click', onDropBtnClick);
 }
 
 function removeFormListenerHome() {

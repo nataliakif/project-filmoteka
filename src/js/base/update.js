@@ -16,7 +16,7 @@ import {
   getBySearchQuery,
   getFilmById,
   getFilmsByIdArray,
-  getFilmByGenreId
+  getFilmByGenreId,
 } from '../api/api-service';
 import {
   addBtnHeaderListener,
@@ -59,24 +59,24 @@ function updateInterface(needModalUpdate = true) {
 
   switch (state.pageType) {
     case PAGE_TYPE.TRENDS:
-      if(activeGenreId){
-        getFilmByGenreId(activeGenreId,state.currentPage)
-        .then(data => {
-          return getGenres().then(genres => setGenres(data.data, genres));
-        })
-        .then(data => {
-          renderGallery(data.results);
-          renderPagination(data.total_pages, state.currentPage);
-        });
-      }else{
-      getPopularFilms(state.currentPage)
-        .then(data => {
-          return getGenres().then(genres => setGenres(data.data, genres));
-        })
-        .then(data => {
-          renderGallery(data.results);
-          renderPagination(data.total_pages, state.currentPage);
-        });
+      if (activeGenreId) {
+        getFilmByGenreId(activeGenreId, state.currentPage)
+          .then(data => {
+            return getGenres().then(genres => setGenres(data.data, genres));
+          })
+          .then(data => {
+            renderGallery(data.results);
+            renderPagination(data.total_pages, state.currentPage);
+          });
+      } else {
+        getPopularFilms(state.currentPage)
+          .then(data => {
+            return getGenres().then(genres => setGenres(data.data, genres));
+          })
+          .then(data => {
+            renderGallery(data.results);
+            renderPagination(data.total_pages, state.currentPage);
+          });
       }
       renderHeader(MARKUP_HEADER_TYPE.FORM);
       addFormListenerHome();

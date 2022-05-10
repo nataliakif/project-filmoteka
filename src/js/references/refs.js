@@ -21,11 +21,7 @@ const refs = {
   modalBtnQueue: document.getElementsByName('modalBtnQueue'),
   plug: document.querySelector('.plug'),
   genresDropdownBtn: document.getElementsByName('chooseGenre'),
-  dropdownGenres: document.querySelector('.dropdown_genres')
+  genresDropdown: document.querySelector('.dropdown_genres'),
+  genresList: document.querySelector('.genres_list')
 };
 export { refs };
-
-obj={
-  "0": 1,
-  0: 2
-}
