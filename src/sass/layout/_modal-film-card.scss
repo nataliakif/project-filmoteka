@@ -199,7 +199,7 @@ tr {
 .modal__arrow-btn{
 align-items: center;
   background-clip: padding-box;
-  background-color: #fff;
+  background-color: #fa6400   ;
   border: 1px solid transparent;
   border-radius: .25rem;
   box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
@@ -241,15 +241,18 @@ align-items: center;
 
 .modal__arrow-image-left{
    transform: rotate(135deg);
-      border: solid #ff6b08;
+      border: solid #fff;
         border-width: 0 4px 4px 0;
         display: inline-block;
         padding: 5px;
 }
 .modal__arrow-image-right{
   transform: rotate(-45deg);
-    border: solid #ff6b08;
+    border: solid #fff;
     border-width: 0 4px 4px 0;
     display: inline-block;
     padding: 5px; 
 }
+
+
+
