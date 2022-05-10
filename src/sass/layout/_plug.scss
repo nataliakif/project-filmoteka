@@ -1,0 +1,22 @@
+
+  .plug_image{
+   margin: 0 auto;
+  }
+  .plug_title{
+    font-size: 20px;
+    text-transform: uppercase;
+    margin: 20px auto;
+    color: $accent-color;
+    text-align: center;
+    @media screen and (min-width: 768px) {
+      font-size: 25px;
+    }
+  }
+  .plug_text{
+    font-size: 16px;
+    color: $primary-text-color;
+    text-align: center;
+    @media screen and (min-width: 768px) {
+      font-size: 20px;
+    } 
+  }

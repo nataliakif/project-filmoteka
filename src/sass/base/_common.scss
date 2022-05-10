@@ -4,7 +4,6 @@ html {
 }
 
 body {
-   position: relative;
    font-family: "Roboto";
    background-color: #ffffff;
    font-size: 12px;
@@ -14,6 +13,11 @@ body {
    height: 100%;
    display: flex;
    flex-direction: column;
+}
+
+body[data-theme="dark"] {
+   background-color: #191a19;
+   color: #b5b5b5;
 }
 
 h1,

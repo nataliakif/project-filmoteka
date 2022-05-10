@@ -19,6 +19,11 @@ const refs = {
   modalBtnQueueTextField: document.getElementsByName('modalBtnQueueTextField'),
   modalBtnWatched: document.getElementsByName('modalBtnWatched'),
   modalBtnQueue: document.getElementsByName('modalBtnQueue'),
+  plug: document.querySelector('.plug'),
+  genresDropdownBtn: document.getElementsByName('chooseGenre'),
+  genresDropdown: document.querySelector('.dropdown_genres'),
+  genresList: document.querySelector('.genres_list')
+  modalBtnNext: document.getElementsByName('modalBtnNext'),
+  modalBtnPrev: document.getElementsByName('modalBtnPrev'),
 };
-
 export { refs };
