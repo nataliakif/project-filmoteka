@@ -1,7 +1,7 @@
 .footer[data-theme="light"] {
    flex: 0 0 auto;
    padding: 30px 0;
-   background-color: #f7f7f7;
+   background-color: $footer-background-color;
 }
 
 .footer[data-theme="dark"] {
@@ -24,7 +24,7 @@
 .footer-box__text[data-theme="light"] {
    font-size: 14px;
    line-height: 1.17;
-   color: #545454;
+   color: $footer-text-color;
 
    @media screen and (min-width: 768px) {
       font-size: 16px;
@@ -88,7 +88,7 @@
 .footer__link[data-theme="light"] {
    cursor: pointer;
    text-decoration: underline;
-   color: #545454;
+   color: $footer-text-color;
 }
 
 .footer__link[data-theme="dark"] {

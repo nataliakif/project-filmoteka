@@ -32,8 +32,8 @@
       background-color: rgb(0, 0, 0, 0.5);
    }
    &:hover .scroll-top__icon,
-   &:focus .scroll-top__icon{
-      border-color: #ff6b08;
+   &:focus .scroll-top__icon {
+      border-color: $accent-color;
    }
 }
 
