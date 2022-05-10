@@ -4,7 +4,7 @@ import { PAGE_TYPE } from './state';
 import { renderGallery } from '../render/renderGallery';
 import { MARKUP_HEADER_TYPE, renderHeader } from '../render/renderHeader';
 import { renderPagination } from '../render/renderPagination';
-import { renderFilmModal } from '../render/renderFilmModal';
+import { addModalBtnListeners, renderFilmModal } from '../render/renderFilmModal';
 import { LS_KEY_TYPE, readLocalStorage } from '../utils/localStorage';
 import { divideOnPages } from '../utils/divideOnPages';
 import { renderTeamModal } from '../render/renderTeamModal';
@@ -26,21 +26,23 @@ import { refs } from '../references/refs';
 import { openModal, closeModal } from './handlers';
 import { scrollToTop } from './scrollToTop';
 import { LIB_ELEMENTS_PER_PAGE } from './state';
+
 let firstRender = true;
 
-function updateInterface(needModalUpdate = true) {
+function updateInterface(needModalUpdate = true, needGalleryUpdate = true) {
   let pagedArrayOfIds = [];
   const state = readState();
 
-  if (state.isModalOpen && needModalUpdate) {
+  if (state.isModalOpen && needModalUpdate && !firstRender) {
     if (state.modalFilmId === null) {
       renderTeamModal();
     } else {
-      getFilmById(state.modalFilmId).then(renderFilmModal);
+      getFilmById(state.modalFilmId).then(renderFilmModal).then(addModalBtnListeners);
     }
     openModal();
     if (
       !firstRender &&
+      !needGalleryUpdate &&
       (state.pageType === PAGE_TYPE.TRENDS || state.pageType === PAGE_TYPE.SEARCH)
     ) {
       return;
@@ -51,6 +53,12 @@ function updateInterface(needModalUpdate = true) {
       return;
     }
   }
+
+  if (!needGalleryUpdate) {
+    firstRender = false;
+    return;
+  }
+
   checkReloadSite();
   removeBtnHeaderListener();
   removeFormListenerHome();
