@@ -55,8 +55,8 @@ function renderFilmModal(data) {
               </button>
             </div>
             <div class="modal__arrow">
-               <span class="modal__arrow-image"></span>
-              <span class="modal__arrow-image"></span>
+               <button class="modal__arrow-btn" type="button"><span class="modal__arrow-image-left"></span></button>
+               <button class="modal__arrow-btn" type="button"><span class="modal__arrow-image-right"></span></button>
             </div>
           </div>
         </div>
