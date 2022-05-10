@@ -10,7 +10,7 @@
    height: 30px;
    opacity: 0;
    z-index: 99;
-   padding-top: 5px;
+   padding: 3px 0;
    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
    background-color: rgba(0, 0, 0, 0.2);
 
@@ -37,6 +37,15 @@
    }
 }
 
+@keyframes rotate {
+   from {
+      margin-top: 15px;
+   }
+   to {
+      margin-top: 1px;
+   }
+}
+
 .showBtn {
    opacity: 1;
 }
@@ -53,5 +62,18 @@
 
    &--up {
       transform: rotate(-135deg);
+      animation-name: rotate;
+      animation-duration: 300ms;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+   }
+}
+
+@keyframes rotate {
+   from {
+      margin-top: 15px;
+   }
+   to {
+      margin-top: 1px;
    }
 }
