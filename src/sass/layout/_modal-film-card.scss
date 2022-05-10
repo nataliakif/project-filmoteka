@@ -196,14 +196,25 @@ tr {
     }
 }
 
-.modal__arrow-image{
+.modal__arrow-btn{
+  background-color: transparent;
+  padding: 10px;
+}
+
+.modal__arrow-image-left{
    transform: rotate(135deg);
   border: solid #ff6b08;
   border-width: 0 4px 4px 0;
   display: inline-block;
   padding: 5px;
   margin-right: 10px;
-  &:nth-child(2){
-    transform: rotate(-45deg);
-  }
+}
+.modal__arrow-image-right{
+  transform: rotate(-45deg);
+    border: solid #ff6b08;
+    border-width: 0 4px 4px 0;
+    display: inline-block;
+    padding: 5px;
+    margin-right: 10px;
+
 }
