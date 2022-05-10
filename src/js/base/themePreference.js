@@ -36,6 +36,12 @@ const changeThemeToDark = () => {
     .forEach(el => el.setAttribute('data-theme', 'dark'));
   document.querySelector('.footer-box__text--after').setAttribute('data-theme', 'dark');
   document.querySelector('.footer__link').setAttribute('data-theme', 'dark');
+  document
+    .querySelectorAll('.film-card__image')
+    .forEach(el => el.setAttribute('data-theme', 'dark'));
+  document
+    .querySelectorAll('.film-card__title')
+    .forEach(el => el.setAttribute('data-theme', 'dark'));
   localStorage.setItem('data-theme', 'dark'); // save theme to local storage
 };
 
@@ -49,6 +55,12 @@ const changeThemeToLight = () => {
   document.querySelector('.footer-box__text--after').setAttribute('data-theme', 'light');
   document.querySelector('.footer__link').setAttribute('data-theme', 'light');
   localStorage.setItem('data-theme', 'light'); // save theme to local storage
+  document
+    .querySelectorAll('.film-card__image')
+    .forEach(el => el.setAttribute('data-theme', 'light'));
+  document
+    .querySelectorAll('.film-card__title')
+    .forEach(el => el.setAttribute('data-theme', 'light'));
 };
 
 export { setDefaultTheme };
