@@ -94,7 +94,7 @@ async function switchToPrevFilmInGallery() {
     }
   } else {
     state.modalFilmId =
-      currentFilmIndex === -1
+      (currentFilmIndex === -1)
         ? arrayFilmIdsShown[arrayFilmIdsShown.length - 1]
         : arrayFilmIdsShown[currentFilmIndex - 1];
   }
