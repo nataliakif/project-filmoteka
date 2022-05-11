@@ -103,8 +103,8 @@ tr {
     align-items: center;
     justify-content: center;
     text-transform: uppercase;
-    background: #ff6b01;
-    color: #ffffff;
+    background: $rating-color;
+    color: $white-text-color;
   }
   &__value-votes {
     margin-left: 3px;
@@ -116,8 +116,8 @@ tr {
     align-items: center;
     justify-content: center;
     text-transform: uppercase;
-    background: #f7f7f7;
-    color: black;
+    background: $footer-background-color;
+    color: $primary-text-color;
   }
 }
 
@@ -145,25 +145,29 @@ tr {
     width: 136px;
   }
 
-  &:hover,
-  &:focus {
+  &:hover {
     border: 0px;
     outline: 0;
-    background-color: white;
+    background-color: $white-text-color;
     box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.3);
   }
 
   &.watched,
   &.queue {
-    color: white;
-    background-color: #ff6b01;
-    border: 1px solid #ff6b01;
+    color: $white-text-color;
+    background-color: $rating-color;
+    border: 1px solid $rating-color;
   }
 
   &.checked {
-    color: #000000;
-    background-color: #f7f7f7;
-    border: 1px solid #000000;
+    color: $primary-text-color;
+    background-color: $footer-background-color;
+    border: 1px solid $primary-text-color;
+  }
+
+  &.watched:focus,
+  &.queue:focus {
+    border: 2px solid $rating-color;
   }
 
   &:not(:last-child) {
@@ -171,50 +175,47 @@ tr {
   }
 }
 
-.modal_btn-siActive {
-  background-color: #f7f7f7;
-  color: #000000;
-}
-
 .close_modal_butt:hover,
 .close_modal_butt:focus {
-  fill: #ff6b01;
+  fill: $rating-color;
+  border-radius: 50%;
+  outline: 1px solid $primary-text-color;
 }
 
-.modal__arrow{
+.modal__arrow {
   display: flex;
   justify-content: center;
   margin-top: 20px;
-@media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     justify-content: flex-end;
   }
-    @media screen and (min-width: 1024px){
-      margin-top: 0;
-      position: absolute;
-      right: 25px;
-      bottom: 1px;
-    }
+  @media screen and (min-width: 1024px) {
+    margin-top: 0;
+    position: absolute;
+    right: 25px;
+    bottom: 1px;
+  }
 }
 
-.modal__arrow-btn{
-align-items: center;
+.modal__arrow-btn {
+  align-items: center;
   background-clip: padding-box;
   background-color: #fa6400   ;
   border: 1px solid transparent;
-  border-radius: .25rem;
+  border-radius: 0.25rem;
   box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
   box-sizing: border-box;
   color: #fff;
   cursor: pointer;
   display: inline-flex;
-  font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: system-ui, -apple-system, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 16px;
   font-weight: 600;
   justify-content: center;
   line-height: 1.25;
   margin: 0;
   min-height: 3rem;
-  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+  padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
   position: relative;
   text-decoration: none;
   transition: all 250ms;
@@ -224,34 +225,37 @@ align-items: center;
   vertical-align: baseline;
   width: auto;
 
-  &:hover,&:active{
-      background-color: #fb8332;
-        box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  &:hover,
+  &:active {
+    background-color: #fb8332;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
   }
-  &:hover{
+  &:hover {
     transform: translateY(-1px);
   }
 
-  &:active{
-      background-color: #c85000;
-        box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
-        transform: translateY(0);
+  &:active {
+    background-color: #c85000;
+    box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+    transform: translateY(0);
   }
 }
 
-.modal__arrow-image-left{
-   transform: rotate(135deg);
-      border: solid #fff;
-        border-width: 0 4px 4px 0;
-        display: inline-block;
-        padding: 5px;
+
+.modal__arrow-image-left {
+  transform: rotate(135deg);
+  border: solid $white-text-color;
+  border-width: 0 4px 4px 0;
+  display: inline-block;
+  padding: 5px;
 }
-.modal__arrow-image-right{
+
+.modal__arrow-image-right {
   transform: rotate(-45deg);
-    border: solid #fff;
-    border-width: 0 4px 4px 0;
-    display: inline-block;
-    padding: 5px; 
+  border: solid $white-text-color;
+  border-width: 0 4px 4px 0;
+  display: inline-block;
+  padding: 5px;
 }
 
 

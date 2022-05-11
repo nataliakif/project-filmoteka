@@ -7,6 +7,7 @@ function divideOnPages(arrayOfId, perPageAmount) {
     start += perPageAmount;
   }
   return result;
+  ``;
 }
-
+``;
 export { divideOnPages };

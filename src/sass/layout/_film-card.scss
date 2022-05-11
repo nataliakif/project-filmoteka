@@ -1,46 +1,52 @@
 .film-card {
-    // transform: scale(1.1);
-    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    &:hover,
-    &:focus{
-        transform: scale(1.03);
-    }
+  // transform: scale(1.1);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover,
+  &:focus {
+    transform: scale(1.03);
+  }
 }
 
-.film-card__image{
-    border-radius: 5px;
-    width: 280px;
+.film-card__image {
+  border-radius: 5px;
+  width: 280px;
+  height: 398px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  @media screen and (min-width: 768px) {
+    width: 294px;
     height: 398px;
-    @media screen and (min-width: 768px) {
-        width: 294px;
-        height: 398px;
-    }
-    @media screen and (min-width: 1024px){
-        width: 274px;
-        height: 398px;
-    }
+  }
+  @media screen and (min-width: 1024px) {
+    width: 274px;
+    height: 398px;
+  }
+  &[data-theme='dark'] {
+    border: 1px solid $white-text-color;
+  }
 }
-.film-card__title{
-    margin-top: 8px;
-    text-transform: uppercase;
-    &[data-theme="light"]{
-        color: $primary-text-color;
-    }
-    &[data-theme="dark"]{
-        color: $white-text-color;
-    }
-}
-.film-card__genre{
-    margin-top: 5px;
-    color: $accent-color;
-}
-.film-card__raiting{
-    display: inline-block;
-    width: 36px;
-    height: 16px;
-    margin-left: 8px;
-    padding: 1px 10px;
+
+.film-card__title {
+  color: $primary-text-color;
+  margin-top: 8px;
+  text-transform: uppercase;
+  [data-theme='light'] {
+    color: $primary-text-color;
+  }
+  &[data-theme='dark'] {
     color: $white-text-color;
-    background: $rating-color;
-    border-radius: 5px;
+  }
+}
+.film-card__genre {
+  margin-top: 5px;
+  color: $accent-color;
+}
+.film-card__raiting {
+  display: inline-block;
+  width: 36px;
+  height: 16px;
+  margin-left: 8px;
+  padding: 1px 10px;
+  color: $white-text-color;
+  background: $rating-color;
+  border-radius: 5px;
 }
