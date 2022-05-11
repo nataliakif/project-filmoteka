@@ -9,7 +9,7 @@ import { LS_KEY_TYPE, readLocalStorage } from '../utils/localStorage';
 import { divideOnPages } from '../utils/divideOnPages';
 import { renderTeamModal } from '../render/renderTeamModal';
 import { setGenres } from './setGenres';
-import { activeGenreId } from '../render/renderGenres';
+import { activeGenreId, hideGenres } from '../render/renderGenres';
 import {
   getPopularFilms,
   getGenres,
@@ -61,7 +61,9 @@ function updateInterface(needModalUpdate = true, needGalleryUpdate = true) {
     firstRender = false;
     return;
   }
-
+  if (state.pageType !== PAGE_TYPE.TRENDS) {
+    hideGenres();
+  }
   checkReloadSite();
   removeBtnHeaderListener();
   removeFormListenerHome();
