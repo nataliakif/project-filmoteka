@@ -27,22 +27,35 @@ function renderGallery(data) {
       const genreStr = genres.map(genre => genre.name).join(', ');
       if (readState().pageType === PAGE_TYPE.TRENDS) {
         return `
-            <a href="" class="film-card" data-id=${id}>
-              <img class="film-card__image" src='${posterPath}' alt="${title}"/>
-              <h2 class="film-card__title">${title}</h2>
-              <p class="film-card__genre">${genreStr} | ${release_date.substr(0, 4)}</p>       
-            </a>`;
+        <li class="gallery__item" data-id="${id}">
+        <a>
+          <div class="wrapper">
+            <img class="gallery__image" src="${posterPath}" alt="${title}" />
+          </div>
+          <div class="description">
+            <h2 class="gallery__title">${title}</h2>
+            <p class="gallery__genre">${genreStr} | ${release_date.substr(0, 4)}</p>
+          </div>
+        </a>
+      </li>`;
       }
 
       return `
-      <a href="" class="film-card" data-id=${id}>
-        <img class="film-card__image" src='${posterPath}' alt="${title}"/>
-        <h2 class="film-card__title">${title}</h2>
-        <p class="film-card__genre">${genreStr} | ${release_date.substr(
+      <li class="gallery__item" data-id="${id}">
+  <a>
+    <div class="wrapper">
+      <img class="gallery__image" src="${posterPath}" alt="${title}" />
+    </div>
+    <div class="description">
+      <h2 class="gallery__title">${title}</h2>
+      <p class="gallery__genre">${genreStr} | ${release_date.substr(
         0,
         4,
-      )} <span class="film-card__raiting">${vote_average}</span> </p>       
-      </a>`;
+      )}<span class="film-card__raiting">${vote_average}</span>
+      </p>
+    </div>
+  </a>
+</li>`;
     })
     .join('');
   refs.plug.innerHTML = '';

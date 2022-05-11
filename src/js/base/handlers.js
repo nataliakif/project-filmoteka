@@ -20,7 +20,6 @@ import {
   checkSwitchToNextFilmAvailable,
 } from '../utils/modalFilmSwitcher';
 
-
 const notyf = new Notyf();
 
 function homeLinkClick(e) {
@@ -132,18 +131,20 @@ function onPaginatorClick(page) {
 //обработчик клика по галерее
 function onGalleryClick(e) {
   e.preventDefault();
-  let nodeWithId = null;
+  const itemLink = e.target.parentNode.parentNode;
+  let filmId = null;
   if (e.target.nodeName === 'IMG' || e.target.nodeName === 'H2' || e.target.nodeName === 'P') {
-    nodeWithId = e.target.parentNode;
+    filmId = itemLink.parentNode.dataset.id;
   }
-  if (e.target.nodeName === 'LI') {
-    nodeWithId = e.target;
+  if (e.target.nodeName === 'DIV') {
+    filmId = itemLink.dataset.id;
   }
-  if (!nodeWithId) {
+  if (!filmId) {
     return;
   }
+
   const state = readState();
-  state.modalFilmId = nodeWithId.dataset.id;
+  state.modalFilmId = filmId;
   state.isModalOpen = true;
   writeState(state);
   updateInterface();
