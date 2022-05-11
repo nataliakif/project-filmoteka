@@ -29,6 +29,7 @@ import { refs } from '../references/refs';
 import { openModal, closeModal } from './handlers';
 import { scrollToTop } from './scrollToTop';
 import { LIB_ELEMENTS_PER_PAGE } from './state';
+import { setDefaultTheme } from './themePreference';
 
 let firstRender = true;
 
@@ -78,6 +79,7 @@ function updateInterface(needModalUpdate = true, needGalleryUpdate = true) {
           .then(data => {
             renderGallery(data.results);
             renderPagination(data.total_pages, state.currentPage);
+            setDefaultTheme();
           });
       } else {
         getPopularFilms(state.currentPage)
@@ -87,6 +89,7 @@ function updateInterface(needModalUpdate = true, needGalleryUpdate = true) {
           .then(data => {
             renderGallery(data.results);
             renderPagination(data.total_pages, state.currentPage);
+            setDefaultTheme();
           });
       }
       renderHeader(MARKUP_HEADER_TYPE.FORM);
@@ -101,6 +104,7 @@ function updateInterface(needModalUpdate = true, needGalleryUpdate = true) {
         .then(data => {
           renderGallery(data.results);
           renderPagination(data.total_pages, state.currentPage);
+          setDefaultTheme();
         });
       renderHeader(MARKUP_HEADER_TYPE.FORM);
       refs.searchForm[0].elements[0].value = state.search;
@@ -115,10 +119,12 @@ function updateInterface(needModalUpdate = true, needGalleryUpdate = true) {
         getFilmsByIdArray(pagedArrayOfIds[state.currentPage - 1]).then(data => {
           renderGallery(data);
           renderPagination(pagedArrayOfIds.length, state.currentPage);
+          setDefaultTheme();
         });
       } else {
         renderGallery(null);
         renderPagination(0);
+        setDefaultTheme();
       }
       break;
 
@@ -130,10 +136,12 @@ function updateInterface(needModalUpdate = true, needGalleryUpdate = true) {
         getFilmsByIdArray(pagedArrayOfIds[state.currentPage - 1]).then(data => {
           renderGallery(data);
           renderPagination(pagedArrayOfIds.length, state.currentPage);
+          setDefaultTheme();
         });
       } else {
         renderGallery(null);
         renderPagination(0);
+        setDefaultTheme();
       }
       break;
   }
