@@ -27,6 +27,18 @@ function renderGenres(data) {
 
 refs.genresList.addEventListener('click', onGenresClick);
 function onGenresClick(e) {
+  if (e.target.nodeName !== 'LI') {
+    refs.genresDropdown.classList.remove('show');
+  }
+
+  if (e.target.classList.contains('active')) {
+    return e.target.classList.remove('active');
+  }
+  for (let i = 0; i < refs.genresList.children.length; i++) {
+    if (refs.genresList.children[i] !== e.target)
+      refs.genresList.children[i].classList.remove('active');
+  }
+  e.target.classList.add('active');
   const genreId = e.target.dataset.id;
   activeGenreId = genreId;
   updateInterface();
