@@ -14,20 +14,30 @@
       crossorigin="anonymous" />
 </head>
 
+<body data-modal-scroll-lock>
+   <!-- Так добавляются фрагменты в главные HTML-файлы страниц. -->
 
-  <body data-modal-scroll-lock>
-    <!-- Так добавляются фрагменты в главные HTML-файлы страниц. -->
-    <include src="./partials/scrollToTop.html"></include>
-    <include src="./partials/header.html"></include>
-    <include src="./partials/genres.html"></include>
-    <include src="./partials/gallery.html"></include>
-    <include src="./partials/pagination.html"></include>
-    <include src="./partials/footer.html"></include>
-    <include src="./partials/modal.html"></include>
+   <div class="main-wrapper">
+      <header class="header">
+         <include src="./partials/header.html"></include>
+         <include src="./partials/genres.html"></include>
+      </header>
+
+      <main>
+         <include src="./partials/gallery.html"></include>
+         <include src="./partials/pagination.html"></include>
+      </main>
+
+      <footer class="footer">
+         <include src="./partials/footer.html"></include>
+      </footer>
+
+      <include src="./partials/modal.html"></include>
+      <include src="./partials/scrollToTop.html"></include>
+   </div>
 
    <!-- Скрипт идёт последним в разметке. В нём уже подключен главный SASS-файл. -->
    <script src="./index.js"></script>
 </body>
-
 
 </html>
