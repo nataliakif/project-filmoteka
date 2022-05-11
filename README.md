@@ -2,7 +2,7 @@
 
 Hi! we are students of educational academy GOIT and our team is called WebClimber. We finished
 studying JS course, and this is our graduation team project.
-
+![Team Logo mini](https://user-images.githubusercontent.com/34851087/167909070-aa6e4e73-c97f-4768-8d86-74bf7fce4f35.jpg)
 ## Project was made by:
 
 - :man_student:[**Team Lead && FrontEnd Developer:** Natalia Kyforenko](https://github.com/nataliakif)
@@ -30,6 +30,8 @@ studying JS course, and this is our graduation team project.
 
 As a result :handshake: we made our project: ⬇
 [_View a project link_](https://github.com/nataliakif/project-filmoteka) ⬇
+![image](https://user-images.githubusercontent.com/34851087/167914982-7ab355f6-d4e2-488c-9119-5e063b075367.png)
 
 Thanks to this project, each team member has become one step closer to his goal of becoming a
 FullStack Developer!
+![photo_2022-05-11_20-55-38](https://user-images.githubusercontent.com/34851087/167915209-bb468f60-cfb5-40f3-9f79-274b95ea51c9.jpg)
