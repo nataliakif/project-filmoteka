@@ -1,6 +1,7 @@
 import { getGenres } from '../api/api-service';
 import { refs } from '../references/refs';
 import { updateInterface } from '../base/update';
+import { readState, writeState } from '../base/state';
 
 let activeGenreId = null;
 
@@ -26,17 +27,26 @@ function renderGenres(data) {
 }
 
 refs.genresList.addEventListener('click', onGenresClick);
+
 function onGenresClick(e) {
   if (e.target.nodeName !== 'LI') {
     refs.genresDropdown.classList.remove('show');
   }
+  const state = readState();
+  state.currentPage = 1;
+  writeState(state);
 
   if (e.target.classList.contains('active')) {
-    return e.target.classList.remove('active');
+    activeGenreId = null;
+    e.target.classList.remove('active');
+    updateInterface();
+    return;
   }
   for (let i = 0; i < refs.genresList.children.length; i++) {
-    if (refs.genresList.children[i] !== e.target)
+    if (refs.genresList.children[i] !== e.target) {
       refs.genresList.children[i].classList.remove('active');
+      activeGenreId = null;
+    }
   }
   e.target.classList.add('active');
   const genreId = e.target.dataset.id;
