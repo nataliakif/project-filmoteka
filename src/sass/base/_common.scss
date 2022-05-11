@@ -4,20 +4,28 @@ html {
 }
 
 body {
+   height: 100%;
    font-family: "Roboto";
    background-color: #ffffff;
    font-size: 12px;
    line-height: 1.17;
    font-weight: 500;
    cursor: default;
-   height: 100%;
-   display: flex;
-   flex-direction: column;
 }
 
 body[data-theme="dark"] {
    background-color: #191a19;
    color: #b5b5b5;
+}
+
+.main-wrapper {
+   min-height: 100%;
+   display: flex;
+   flex-direction: column;
+}
+
+main {
+   flex: 1 1 auto;
 }
 
 h1,
