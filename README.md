@@ -1,58 +1,35 @@
-# Parcel boilerplate
+# Team Project "Filmoteka". Group-04 FS43
 
-## Скрытые файлы
+Hi! we are students of educational academy GOIT and our team is called WebClimber. We finished
+studying JS course, and this is our graduation team project.
 
-Включите отображение скрытых файлов и папок в проводнике своей операционной системы, иначе вы не
-сможете выбрать и скопировать себе файлы настроек проекта, имена которых начинаются с точки.
+## Project was made by:
 
-## Зависимости
+- :man_student:[**Team Lead && FrontEnd Developer:** Natalia Kyforenko](https://github.com/nataliakif)
+- :man_student:[**FrontEnd Developer && Scrum Master:** Serhii Zhosan](https://github.com/szhosan)
+- :man_student:[**FrontEnd Developer:** Serhii Rybin](https://github.com/SergiyRybin)
+- :man_student:[**FrontEnd Developer:** Serhii Filchenko](https://github.com/SergeyFilchenko)
+- :man_student:[**FrontEnd Developer:** Oleksandr Soloviov](https://github.com/shakal194)
+- :man_student:[**FrontEnd Developer:** Denys Saveliev](https://github.com/Denys-Saveliev)
+- :man_student:[**FrontEnd Developer:** Olha Chuzhdiuk](https://github.com/OliaChuzhdiuk)
+- :man_student:[**FrontEnd Developer:** Mykhailo Mishyn](https://github.com/MishynMykhailo)
+- :man_student:[**FrontEnd Developer:** Haik Ivanyan](https://github.com/salampego)
+- :man_student:[**FrontEnd Developer:** Dmytro Gashutin](https://github.com/DmytroGashutin)
 
-На компьютере должена быть установлена LTS-версия [Node.js](https://nodejs.org/en/) со всеми
-дополнительными инструментами кроме **Chocolatey** - его ставить не нужно.
+:hammer: During project development we:
 
-## Перед началом работы
+- :white_check_mark: consolidated earned knowledge of HTML and CSS/SASS;
+- :white_check_mark: consolidated earned knowledge of JavaScript;
+- :white_check_mark: worked with Parcel;
+- :white_check_mark: teamwork practice with Git;
+- :white_check_mark: used Scrum methodology;
+- :white_check_mark: worked with animation;
+- :white_check_mark: used REST API;
+- :white_check_mark: worked with promises and asynchronous programming;
+- :white_check_mark: implemented dynamic update of data on the page;
 
-Один раз на проект установить все зависимости.
+As a result :handshake: we made our project: ⬇
+[_View a project link_](https://github.com/nataliakif/project-filmoteka) ⬇
 
-```shell
-npm ci
-```
-
-### Разработка
-
-Запустить режим разработки.
-
-```shell
-npm run dev
-```
-
-Во вкладке браузера перейти по адресу [http://localhost:1234](http://localhost:1234).
-
-### Деплой
-
-Сборка будет автоматически собирать и деплоить продакшен версию проекта на GitHub Pages, в ветку
-`gh-pages`, каждый раз когда обновляется ветка `main`. Например, после прямого пуша или принятого
-пул-реквеста. Для этого необходимо в файле `package.json` отредактировать поле `homepage` и скрипт
-`build`, заменив `имя_пользователя` и `имя_репозитория` на свои.
-
-```json
-"homepage": "https://имя_пользователя.github.io/имя_репозитория",
-"scripts": {
-  "build": "parcel build src/*.html --public-url /имя_репозитория/"
-},
-```
-
-На всякий случай стоит зайти в настройки репозитория `Settings` > `Pages` и убедиться что продакшен
-версии файлов раздаются из папки `/root` ветки `gh-pages`.
-
-Через какое-то время живую страницу можно будет посмотреть по адресу указанному в отредактированном
-свойстве `homepage`, например
-[https://goitacademy.github.io/parcel-project-template](https://goitacademy.github.io/parcel-project-template).
-
-## Файлы и папки
-
-- Все паршалы файлов стилей должны лежать в папке `src/sass` и импортироваться в
-  `src/sass/main.scss`
-- Изображения добавляйте в папку `src/images`, заранее оптимизировав их. Сборщик просто копирует
-  используемые изображения чтобы не нагружать систему оптимизацией картинок, так как на слабых
-  компьютерах это может занять много времени.
+Thanks to this project, each team member has become one step closer to his goal of becoming a
+FullStack Developer!
