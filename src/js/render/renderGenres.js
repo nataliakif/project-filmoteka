@@ -10,6 +10,11 @@ function onDropBtnClick(e) {
   getGenres().then(data => renderGenres(data.genres));
 }
 
+function hideGenres() {
+  refs.genresList.classList.remove('show');
+  refs.genresDropdown.classList.remove('show');
+}
+
 function renderGenres(data) {
   const markup = data
     .map(genre => {
@@ -27,4 +32,4 @@ function onGenresClick(e) {
   updateInterface();
 }
 
-export { activeGenreId, onDropBtnClick };
+export { activeGenreId, onDropBtnClick, hideGenres };

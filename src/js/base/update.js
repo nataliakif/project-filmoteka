@@ -9,7 +9,7 @@ import { LS_KEY_TYPE, readLocalStorage } from '../utils/localStorage';
 import { divideOnPages } from '../utils/divideOnPages';
 import { renderTeamModal } from '../render/renderTeamModal';
 import { setGenres } from './setGenres';
-import { activeGenreId } from '../render/renderGenres';
+import { activeGenreId, hideGenres } from '../render/renderGenres';
 import {
   getPopularFilms,
   getGenres,
@@ -23,6 +23,7 @@ import {
   addFormListenerHome,
   removeBtnHeaderListener,
   removeFormListenerHome,
+  addFormListenersSearch,
 } from '../base/listeners';
 import { refs } from '../references/refs';
 import { openModal, closeModal } from './handlers';
@@ -60,7 +61,9 @@ function updateInterface(needModalUpdate = true, needGalleryUpdate = true) {
     firstRender = false;
     return;
   }
-
+  if (state.pageType !== PAGE_TYPE.TRENDS) {
+    hideGenres();
+  }
   checkReloadSite();
   removeBtnHeaderListener();
   removeFormListenerHome();
@@ -101,7 +104,7 @@ function updateInterface(needModalUpdate = true, needGalleryUpdate = true) {
         });
       renderHeader(MARKUP_HEADER_TYPE.FORM);
       refs.searchForm[0].elements[0].value = state.search;
-      addFormListenerHome();
+      addFormListenersSearch();
       break;
 
     case PAGE_TYPE.LIB_WATCHED:

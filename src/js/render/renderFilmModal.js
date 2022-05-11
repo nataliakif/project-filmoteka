@@ -4,18 +4,20 @@ import { readState } from '../base/state';
 import { onModalBtnWatchedClick, onModalBtnQueueClick } from '../base/handlers';
 import { switchToNextFilmInGallery, switchToPrevFilmInGallery } from '../utils/modalFilmSwitcher';
 import { setModalSwitchBtnAvailability } from '../utils/modalFilmSwitcher';
+import poster from '../../images/plug/noposter.jpg';
 
 function renderFilmModal(data) {
   const { original_title, genres, poster_path, overview, popularity, vote_average, vote_count } =
     data.data;
   const genreStr = genres.map(genre => genre.name).join(', ');
+  const posterPath = !poster_path ? poster : `https://image.tmdb.org/t/p/w500${poster_path}`;
   const markup = `
   <div class="modal_film_card">
 
         <div class="modal__wrapper">
        
           <div class="modal__image-wrapper">
-              <img class="modal__image" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${original_title}" height="531" />     
+              <img class="modal__image" src="${posterPath}" alt="${original_title}" height="531" />     
           </div>
           <div class="modal__info-wrapper">
             <h2 class="modal__film-titel">${original_title}</h2>
