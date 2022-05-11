@@ -48,7 +48,8 @@
 }
 .modal__image {
   @media screen and (min-width: 1024px) {
-    width: 396px;
+    width: 375px;
+    height: 478px;
   }
 }
 
@@ -200,7 +201,7 @@ tr {
 .modal__arrow-btn {
   align-items: center;
   background-clip: padding-box;
-  background-color: #fa6400   ;
+  background-color: #fa6400;
   border: 1px solid transparent;
   border-radius: 0.25rem;
   box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
@@ -241,7 +242,6 @@ tr {
   }
 }
 
-
 .modal__arrow-image-left {
   transform: rotate(135deg);
   border: solid $white-text-color;
@@ -257,6 +257,3 @@ tr {
   display: inline-block;
   padding: 5px;
 }
-
-
-

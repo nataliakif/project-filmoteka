@@ -6,16 +6,6 @@ function setGenres(data, genres) {
       data.results[i].genres.push(genres.genres.find(({ id }) => id === idToChange));
     }
   }
-
   return data;
 }
-// return data.results.map( film => ({
-//         ...film,
-//         genres: film.genre_ids
-//         .map(id => genres.genres.filter(item => item.id === id))
-//         .flat().map(item=> item.name)
-//       }));
-//       console.log(d)
-//
-
 export { setGenres };

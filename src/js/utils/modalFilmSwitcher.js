@@ -12,6 +12,7 @@ import { getPopularFilms, getBySearchQuery } from '../api/api-service';
 import { scrollToTop } from '../base/scrollToTop';
 import { LS_KEY_TYPE, readLocalStorage } from '../utils/localStorage';
 import { divideOnPages } from '../utils/divideOnPages';
+import { activeGenreId } from '../render/renderGenres';
 
 async function switchToNextFilmInGallery() {
   let needToUpdateGallery = false;
@@ -27,7 +28,13 @@ async function switchToNextFilmInGallery() {
       let newModalId = null;
       switch (state.pageType) {
         case PAGE_TYPE.TRENDS:
-          state.modalFilmId = (await getPopularFilms(state.currentPage)).data.results[0].id;
+          if (activeGenreId) {
+            state.modalFilmId = (
+              await getFilmByGenreId(activeGenreId, state.currentPage)
+            ).data.results[0].id;
+          } else {
+            state.modalFilmId = (await getPopularFilms(state.currentPage)).data.results[0].id;
+          }
           break;
         case PAGE_TYPE.SEARCH:
           state.modalFilmId = (
@@ -119,8 +126,16 @@ function checkSwitchToPrevFilmAvailable() {
 }
 
 function setModalSwitchBtnAvailability() {
-  refs.modalBtnPrev[0].disabled = checkSwitchToPrevFilmAvailable();
-  refs.modalBtnNext[0].disabled = checkSwitchToNextFilmAvailable();
+  const disablePrev = checkSwitchToPrevFilmAvailable();
+  const disableNext = checkSwitchToNextFilmAvailable();
+  refs.modalBtnPrev[0].disabled = disablePrev;
+  refs.modalBtnNext[0].disabled = disableNext;
+  if (disablePrev) {
+    refs.modalBtnPrev[0].style.display = 'none';
+  }
+  if (disableNext) {
+    refs.modalBtnNext[0].style.display = 'none';
+  }
 }
 
 function checkSwitchToNextFilmAvailable() {
