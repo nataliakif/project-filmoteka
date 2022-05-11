@@ -23,11 +23,18 @@ function addFormListenerHome() {
   refs.genresDropdownBtn[0].addEventListener('click', onDropBtnClick);
 }
 
+function addFormListenersSearch() {
+  refs.searchForm[0].addEventListener('submit', onFormSubmit);
+}
+
 function removeFormListenerHome() {
   if (!refs.searchForm[0]) {
     return;
   }
   refs.searchForm[0].removeEventListener('submit', onFormSubmit);
+  if (!refs.genresDropdownBtn[0]) {
+    return;
+  }
   refs.genresDropdownBtn[0].removeEventListener('click', onDropBtnClick);
 }
 
@@ -48,4 +55,5 @@ export {
   removeFormListenerHome,
   addBtnHeaderListener,
   removeBtnHeaderListener,
+  addFormListenersSearch,
 };

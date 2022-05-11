@@ -4,24 +4,23 @@
  */
 
 // Стили для файла с примером HTML-фрагмента
-@import "./base/modern-normalize";
-@import "./base/common";
-@import "./components/container";
-@import "./components/section";
-@import "./base/variables";
-@import "./utils/scrollToTop";
-@import "./utils/visually-hidden";
-@import "./layout/footer";
-@import "./layout/gallery";
-@import "./layout/header";
-@import "./layout/film-card";
-@import "./layout/team-modal.scss";
-@import "./layout/pagination";
-@import "./layout/team-modal.scss";
-@import "./layout/pagination";
-@import "./components/backdrop";
-@import "./components/modal";
-@import "./layout/modal-film-card";
-@import "./layout/plug";
-@import './layout/dropdown-genres'
-
+@import './base/modern-normalize';
+@import './base/common';
+@import './components/container';
+@import './components/section';
+@import './base/variables';
+@import './utils/scrollToTop';
+@import './utils/visually-hidden';
+@import './layout/footer';
+@import './layout/gallery';
+@import './layout/header';
+@import './layout/film-card';
+@import './layout/team-modal.scss';
+@import './layout/pagination';
+@import './layout/team-modal.scss';
+@import './layout/pagination';
+@import './components/backdrop';
+@import './components/modal';
+@import './layout/modal-film-card';
+@import './layout/plug';
+@import './layout/dropdown-genres';

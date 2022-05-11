@@ -22,7 +22,7 @@ const refs = {
   plug: document.querySelector('.plug'),
   genresDropdownBtn: document.getElementsByName('chooseGenre'),
   genresDropdown: document.querySelector('.dropdown_genres'),
-  genresList: document.querySelector('.genres_list')
+  genresList: document.querySelector('.genres_list'),
   modalBtnNext: document.getElementsByName('modalBtnNext'),
   modalBtnPrev: document.getElementsByName('modalBtnPrev'),
 };
