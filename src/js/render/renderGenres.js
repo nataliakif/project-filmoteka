@@ -20,7 +20,9 @@ async function onDropBtnClick(e) {
     }
     return;
   }
-  refs.genresList[0].removeEventListener('click', onGenresClick);
+  if (refs.genresList[0]) {
+    refs.genresList[0].removeEventListener('click', onGenresClick);
+  }
   refs.genresDropdown.innerHTML = '';
   genreListShown = false;
 }
@@ -30,6 +32,7 @@ function hideGenres() {
     refs.genresList[0].removeEventListener('click', onGenresClick);
   }
   refs.genresDropdown.innerHTML = '';
+  genreListShown = false;
 }
 
 function renderGenres(data) {
