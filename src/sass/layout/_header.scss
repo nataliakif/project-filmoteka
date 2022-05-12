@@ -388,6 +388,7 @@ input:checked ~ .slider::before {
   text-align: center;
   color: #ffffff;
   background-color: transparent;
+  border:none;
 }
 .btn-genre__arrow {
   width: 10px;
