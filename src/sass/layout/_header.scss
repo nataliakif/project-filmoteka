@@ -179,7 +179,7 @@
   justify-content: center;
   position: relative;
   margin: auto;
-  margin-bottom: 22px;
+  margin-bottom: 40px;
 
   @media screen and (min-width: 768px) {
     width: 336px;
@@ -366,7 +366,6 @@ input:checked ~ .slider::before {
 .btn-genre {
   display: flex;
   align-items: baseline;
-  margin-top: 40px;
   width: 150px;
 
   &:hover .btn-genre__arrow,
@@ -392,6 +391,7 @@ input:checked ~ .slider::before {
   margin-right: 2px;
   color: #ffffff;
   background-color: transparent;
+  border:none;
 }
 .btn-genre__arrow {
   border: solid 0.5px white;
