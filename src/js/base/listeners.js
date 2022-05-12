@@ -9,6 +9,7 @@ import {
   onCloseModalWindow,
   onOpenTeamModal,
 } from './handlers';
+import { onDropBtnClick } from '../render/renderGenres';
 
 refs.homePageLink.addEventListener('click', homeLinkClick);
 refs.myLibPageLink.addEventListener('click', myLibLinkClick);
@@ -16,8 +17,12 @@ refs.headerLogoLink.addEventListener('click', homeLinkClick);
 refs.gallery.addEventListener('click', onGalleryClick);
 refs.closeModalBtn.addEventListener('click', onCloseModalWindow);
 refs.footerModalLink.addEventListener('click', onOpenTeamModal);
-
 function addFormListenerHome() {
+  refs.searchForm[0].addEventListener('submit', onFormSubmit);
+  refs.genresDropdownBtn[0].addEventListener('click', onDropBtnClick);
+}
+
+function addFormListenersSearch() {
   refs.searchForm[0].addEventListener('submit', onFormSubmit);
 }
 
@@ -26,6 +31,10 @@ function removeFormListenerHome() {
     return;
   }
   refs.searchForm[0].removeEventListener('submit', onFormSubmit);
+  if (!refs.genresDropdownBtn[0]) {
+    return;
+  }
+  refs.genresDropdownBtn[0].removeEventListener('click', onDropBtnClick);
 }
 
 function addBtnHeaderListener() {
@@ -45,4 +54,5 @@ export {
   removeFormListenerHome,
   addBtnHeaderListener,
   removeBtnHeaderListener,
+  addFormListenersSearch,
 };

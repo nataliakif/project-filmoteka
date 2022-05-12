@@ -9,10 +9,16 @@ import {
   removeIdFromLocalStorage,
   checkIdInLocalStorage,
 } from '../utils/localStorage';
-import { checkStorageStatusOfFilm } from '../render/renderFilmModal';
+import { checkStorageStatusOfFilm, removeModalBtnListeners } from '../render/renderFilmModal';
 import { Notyf } from 'notyf';
 import 'notyf/notyf.min.css';
 import { checkOnLastCardInGallery, checkOnFullGallery } from '../utils/checkOnLastCard';
+import {
+  switchToNextFilmInGallery,
+  switchToPrevFilmInGallery,
+  checkSwitchToPrevFilmAvailable,
+  checkSwitchToNextFilmAvailable,
+} from '../utils/modalFilmSwitcher';
 
 const notyf = new Notyf();
 
@@ -71,25 +77,6 @@ function checkReloadSite() {
   }
 }
 
-/// Сделать функуцию на отрисовку и удаление btn фильтра в header
-
-// function addChooseGenre(){
-//   switch(readState().pageType){
-//     case PAGE_TYPE.TRENDS:
-
-//     break;
-//     case PAGE_TYPE.SEARCH:
-
-//     break;
-//     case PAGE_TYPE.LIB_WATCHED:
-
-//     break;
-//     case PAGE_TYPE.LIB_QUEUE:
-
-//     break;
-//   }
-// }
-
 //обработчик submit на форме поиска
 function onFormSubmit(e) {
   e.preventDefault();
@@ -144,18 +131,20 @@ function onPaginatorClick(page) {
 //обработчик клика по галерее
 function onGalleryClick(e) {
   e.preventDefault();
-  let nodeWithId = null;
+  const itemLink = e.target.parentNode.parentNode;
+  let filmId = null;
   if (e.target.nodeName === 'IMG' || e.target.nodeName === 'H2' || e.target.nodeName === 'P') {
-    nodeWithId = e.target.parentNode;
+    filmId = itemLink.parentNode.dataset.id;
   }
-  if (e.target.nodeName === 'A') {
-    nodeWithId = e.target;
+  if (e.target.nodeName === 'DIV') {
+    filmId = itemLink.dataset.id;
   }
-  if (!nodeWithId) {
+  if (!filmId) {
     return;
   }
+
   const state = readState();
-  state.modalFilmId = nodeWithId.dataset.id;
+  state.modalFilmId = filmId;
   state.isModalOpen = true;
   writeState(state);
   updateInterface();
@@ -178,10 +167,28 @@ function onCloseModalWindow() {
   updateInterface();
 }
 //обработчик на ESC на закрытие модалки
-function onEscKeyCloseModal(e) {
+function onKeyBoardClick(e) {
   const ESC_KEY_CODE = 'Escape';
+  const arrowRight = 'ArrowRight';
+  const arrowLeft = 'ArrowLeft';
   if (e.code === ESC_KEY_CODE) {
     onCloseModalWindow();
+  }
+  if (e.code === arrowRight) {
+    if (!readState().modalFilmId) {
+      return;
+    }
+    if (!checkSwitchToNextFilmAvailable()) {
+      switchToNextFilmInGallery();
+    }
+  }
+  if (e.code === arrowLeft) {
+    if (!readState().modalFilmId) {
+      return;
+    }
+    if (!checkSwitchToPrevFilmAvailable()) {
+      switchToPrevFilmInGallery();
+    }
   }
 }
 
@@ -190,26 +197,28 @@ function onModalBackdropClick(e) {
     onCloseModalWindow();
   }
 }
+
 //собрал в 1 функцию все действия для того чтобы модалка открылась из функции updateInterface
 function openModal() {
   refs.modal.classList.remove('is-hidden');
   refs.scrollLock.classList.add('modal-open');
   refs.scrolltop.classList.remove('showBtn');
   refs.backdrop.addEventListener('click', onModalBackdropClick);
-  window.addEventListener('keydown', onEscKeyCloseModal);
+  window.addEventListener('keydown', onKeyBoardClick);
 }
+
 //собрал в 1 функцию все действия для того чтобы модалка закрылась из функции updateInterface
 function closeModal() {
   refs.modal.classList.add('is-hidden');
   refs.scrollLock.classList.remove('modal-open');
   handleScroll();
   refs.backdrop.removeEventListener('click', onModalBackdropClick);
-  window.removeEventListener('keydown', onEscKeyCloseModal);
+  window.removeEventListener('keydown', onKeyBoardClick);
   refs.modalContent.innerHTML = '';
   if (!readState().modalFilmId) {
     return;
   }
-  refs.modalBtnWatched[0].removeEventListener('click', onModalBtnWatchedClick);
+  removeModalBtnListeners();
 }
 
 //обработчик на клик по кнопке Watched в модалке
@@ -222,7 +231,6 @@ function onModalBtnWatchedClick() {
     checkOnLastCardInGallery();
   } else {
     addIdToLocalStorage(filmId, LS_KEY_TYPE.WATCHED);
-    checkOnFullGallery(LS_KEY_TYPE.WATCHED);
     if (checkIdInLocalStorage(filmId, LS_KEY_TYPE.QUEUE)) {
       removeIdFromLocalStorage(filmId, LS_KEY_TYPE.QUEUE);
       checkOnLastCardInGallery();
@@ -247,7 +255,6 @@ function onModalBtnQueueClick() {
     checkOnLastCardInGallery();
   } else {
     addIdToLocalStorage(filmId, LS_KEY_TYPE.QUEUE);
-    checkOnFullGallery(LS_KEY_TYPE.QUEUE);
     if (checkIdInLocalStorage(filmId, LS_KEY_TYPE.WATCHED)) {
       removeIdFromLocalStorage(filmId, LS_KEY_TYPE.WATCHED);
       checkOnLastCardInGallery();

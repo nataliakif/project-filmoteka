@@ -289,14 +289,15 @@ label {
   background-color: rgb(25, 26, 25);
   border-radius: 50px;
   cursor: pointer;
-  border: 1px solid #ffffff;
+  border: 1px solid $white-text-color;
 
   @media screen and (min-width: 768px) {
     right: 32px;
   }
 
-  &:hover {
-    border: 1px solid #ff6b08;
+  &:hover,
+  &:focus {
+    border: 1px solid $accent-color;
     animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
     transform: translate3d(0, 0, 0);
     backface-visibility: hidden;
@@ -341,7 +342,7 @@ label {
 }
 
 input:checked ~ .slider {
-  background-color: rgb(255, 255, 255);
+  background-color: $white-text-color;
 }
 
 .slider::before {
@@ -359,6 +360,50 @@ input:checked ~ .slider {
 
 input:checked ~ .slider::before {
   transform: translateX(23px);
-  background-color: #ff6b08;
+  background-color: $accent-color;
   box-shadow: none;
+}
+.btn-genre {
+  display: flex;
+  align-items: baseline;
+  margin-top: 40px;
+  width: 150px;
+
+  &:hover .btn-genre__arrow,
+  &:focus .btn-genre__arrow {
+    border-color: #ff6b08;
+    border-width: 0 3.5px 3.5px 0;
+  }
+
+  @media screen and (max-width: 767px) {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.btn-genre__choose {
+  padding: 10px 10px;
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.16;
+  align-items: center;
+  text-align: center;
+  margin-right: 2px;
+  color: #ffffff;
+  background-color: transparent;
+}
+.btn-genre__arrow {
+  border: solid 0.5px white;
+  border-width: 0 3.5px 3.5px 0;
+  padding: 3px;
+  transform: rotate(45deg);
+
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-genre__arrow-isActive {
+  border: solid 0.5px #ff6b08;
+  border-width: 0 3.5px 3.5px 0;
+  padding: 3px;
+  transform: rotate(45deg);
 }

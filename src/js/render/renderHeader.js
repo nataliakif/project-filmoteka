@@ -1,6 +1,7 @@
 import { PAGE_TYPE, readState } from '../base/state';
+import { onDropBtnClick } from './renderGenres';
 import { refs } from '../references/refs';
-import { homeMarkup, myLibMarkup } from '../templates/markupHeader';
+import { homeMarkup, myLibMarkup, homeMarkupWithGenres} from '../templates/markupHeader';
 const MARKUP_HEADER_TYPE = {
   FORM: 'form',
   BUTTONS: 'buttons',
@@ -10,9 +11,11 @@ function renderHeader(markupType) {
   const containerMarkup = document.querySelector('.js-container-markup');
   switch (markupType) {
     case MARKUP_HEADER_TYPE.FORM:
-      // if(readState().pageType === PAGE_TYPE.TRENDS){
-      //   ///Добавить разметку фильтра
-      // }
+       if(readState().pageType === PAGE_TYPE.TRENDS){
+       containerMarkup.innerHTML = homeMarkupWithGenres;
+       refs.genresDropdownBtn[0].addEventListener('click', onDropBtnClick);
+       break;
+       }
       containerMarkup.innerHTML = homeMarkup;
       break;
 

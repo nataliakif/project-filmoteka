@@ -2,7 +2,7 @@ import { refs } from '../references/refs';
 import { PAGE_TYPE, readState } from '../base/state';
 import images from '../../images/plug/*.png';
 import { isInteger } from 'lodash';
-
+import poster from '../../images/plug/noposter.jpg';
 function renderGallery(data) {
   //функция которая принимает массив объектов, полученный от api (при чем не важно будут это тренды, либо поисковой запрос пользователя, либо бибилиотека)
   //ничего не возвращает
@@ -23,26 +23,39 @@ function renderGallery(data) {
       if (isInteger(vote_average)) {
         vote_average = vote_average + '.0';
       }
-
+      const posterPath = !poster_path ? poster : `https://image.tmdb.org/t/p/w500${poster_path}`;
       const genreStr = genres.map(genre => genre.name).join(', ');
       if (readState().pageType === PAGE_TYPE.TRENDS) {
         return `
-            <a href="" class="film-card" data-id=${id}>
-              <img class="film-card__image" src='https://image.tmdb.org/t/p/w500/${poster_path}' alt="${title}"/>
-              <h2 class="film-card__title">${title}</h2>
-              <p class="film-card__genre">${genreStr} | ${release_date.substr(0, 4)}</p>       
-            </a>`;
+        <li class="gallery__item" data-id="${id}">
+        <a>
+          <div class="wrapper">
+            <img class="gallery__image" src="${posterPath}" alt="${title}" />
+          </div>
+          <div class="description">
+            <h2 class="gallery__title">${title}</h2>
+            <p class="gallery__genre">${genreStr} | ${release_date.substr(0, 4)}</p>
+          </div>
+        </a>
+      </li>`;
       }
 
       return `
-      <a href="" class="film-card" data-id=${id}>
-        <img class="film-card__image" src='https://image.tmdb.org/t/p/w500/${poster_path}' alt="${title}"/>
-        <h2 class="film-card__title">${title}</h2>
-        <p class="film-card__genre">${genreStr} | ${release_date.substr(
+      <li class="gallery__item" data-id="${id}">
+  <a>
+    <div class="wrapper">
+      <img class="gallery__image" src="${posterPath}" alt="${title}" />
+    </div>
+    <div class="description">
+      <h2 class="gallery__title">${title}</h2>
+      <p class="gallery__genre">${genreStr} | ${release_date.substr(
         0,
         4,
-      )} <span class="film-card__raiting">${vote_average}</span> </p>       
-      </a>`;
+      )}<span class="film-card__raiting">${vote_average}</span>
+      </p>
+    </div>
+  </a>
+</li>`;
     })
     .join('');
   refs.plug.innerHTML = '';
