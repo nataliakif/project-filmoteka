@@ -1,6 +1,5 @@
 .header {
-  display: flex;
-  flex-direction: column;
+  flex: 0 0 auto;
   background-color: $primary-text-color;
   width: 100%;
   height: 230px;
@@ -11,17 +10,31 @@
   background-repeat: no-repeat;
   padding-top: 46px;
 
+  @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+    background-image: linear-gradient($header-color, $header-color),
+      url(../images/header/header-bg-mobile@2x.jpg);
+  }
 
   @media screen and (min-width: 768px) {
     width: 100%;
     background-image: linear-gradient($header-color, $header-color),
       url(../images/header/header-bg-tablet.jpg);
+
+    @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+      background-image: linear-gradient($header-color, $header-color),
+        url(../images/header/header-bg-tablet@2x.jpg);
+    }
   }
 
   @media screen and (min-width: 1024px) {
     width: 100%;
     background-image: linear-gradient($header-color, $header-color),
       url(../images/header/header-bg-desktop.jpg);
+
+    @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+      background-image: linear-gradient($header-color, $header-color),
+        url(../images/header/header-bg-desktop@2x.jpg);
+    }
   }
 }
 //add header class on click "MY LIBRARY"
@@ -35,20 +48,33 @@
   background-size: contain;
   background-repeat: no-repeat;
   padding-top: 46px;
-  margin-bottom: 20px;
+
+
+  @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+    background-image: linear-gradient($header-color, $header-color),
+      url(../images/header/header-lib-bg-mobile@2x.jpg);
+  }
 
   @media screen and (min-width: 768px) {
     width: 100%;
     background-image: linear-gradient($header-color, $header-color),
       url(../images/header/header-lib-bg-tablet.jpg);
-    margin-bottom: 60px;
+
+    @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+      background-image: linear-gradient($header-color, $header-color),
+        url(../images/header/header-lib-bg-tablet@2x.jpg);
+    }
   }
 
   @media screen and (min-width: 1024px) {
     width: 100%;
     background-image: linear-gradient($header-color, $header-color),
       url(../images/header/header-lib-bg-desktop.jpg);
-    margin-bottom: 60px;
+
+    @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+      background-image: linear-gradient($header-color, $header-color),
+        url(../images/header/header-lib-bg-desktop@2x.jpg);
+    }
   }
 }
 //header logo
