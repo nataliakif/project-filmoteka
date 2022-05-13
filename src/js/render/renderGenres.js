@@ -14,17 +14,13 @@ async function onDropBtnClick(e) {
     if (activeGenreId) {
       for (let i = 0; i < refs.genresList[0].children.length; i++) {
         if (refs.genresList[0].children[i].dataset.id === activeGenreId) {
-          refs.genresList[0].children[i].classList.add('active');
+          refs.genresList[0].children[i].irstElementChild.classList.add('active');
         }
       }
     }
     return;
   }
-  if (refs.genresList[0]) {
-    refs.genresList[0].removeEventListener('click', onGenresClick);
-  }
-  refs.genresDropdown.innerHTML = '';
-  genreListShown = false;
+  hideGenres();
 }
 
 function hideGenres() {
@@ -38,16 +34,17 @@ function hideGenres() {
 function renderGenres(data) {
   const markup = data
     .map(genre => {
-      return `<li class ='genres_item' data-id='${genre.id}'>${genre.name}</li>
+      return `<li class="genres_item" data-id="${genre.id}">
+      <a href="" class="genres_link"> ${genre.name}</a>
+    </li>
       `;
     })
     .join('');
   refs.genresDropdown.innerHTML = `<ul class="genres_list" name="genres_list">` + markup + `</ul>`;
 }
 
-// refs.genresList.addEventListener('click', onGenresClick);
-
 function onGenresClick(e) {
+  e.preventDefault();
   const state = readState();
   state.currentPage = 1;
   writeState(state);
@@ -59,13 +56,15 @@ function onGenresClick(e) {
     return;
   }
   for (let i = 0; i < refs.genresList[0].children.length; i++) {
-    if (refs.genresList[0].children[i] !== e.target) {
-      refs.genresList[0].children[i].classList.remove('active');
+    console.log(refs.genresList[0].children[i] !== e.target.parentNode);
+    if (refs.genresList[0].children[i] !== e.target.parentNode) {
+      refs.genresList[0].children[i].firstElementChild.classList.remove('active');
+
       activeGenreId = null;
     }
   }
   e.target.classList.add('active');
-  const genreId = e.target.dataset.id;
+  const genreId = e.target.parentNode.dataset.id;
   activeGenreId = genreId;
   updateInterface();
 }

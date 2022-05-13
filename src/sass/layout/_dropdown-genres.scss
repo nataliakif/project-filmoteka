@@ -5,7 +5,7 @@
   cursor: pointer;
 }
 .genres_list {
-  padding: 20px 10px;
+  padding: 20px;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   grid-gap: 10px;
   display: grid;
@@ -14,7 +14,7 @@
     grid-gap: 15px;
   }
 }
-.genres_item {
+.genres_link {
   display: block;
   padding: 10px 0;
   background: #8c8c8c;
@@ -25,6 +25,7 @@
     color: $primary-text-color;
   }
 }
-.genres_item.active {
+.genres_link.active {
   background: $accent-color;
+  color: $white-text-color;
 }
