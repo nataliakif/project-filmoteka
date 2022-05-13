@@ -21,7 +21,8 @@
   border-radius: 5px;
   color: $white-text-color;
   &:hover {
-    background: $accent-color;
+    background: $white-text-color;
+    color: $primary-text-color;
   }
 }
 .genres_item.active {
