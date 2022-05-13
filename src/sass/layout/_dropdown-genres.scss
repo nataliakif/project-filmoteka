@@ -1,38 +1,28 @@
-.dropdown_genres.show {
-  position: absolute;
-  top:230px;
-  width: 100%;
-  height: 130px;
-  z-index: 1000;
-  padding: 20px 0px;
-  overflow: hidden;
+.dropdown_genres {
   opacity: 0.9;
-  border-bottom: 3px solid $accent-color;
-  text-align: left;
+  text-align: center;
   background: $primary-text-color;
-  box-shadow: 0 1px 5px rgb(155 89 182 / 10%);
-  background-clip: padding-box;
   cursor: pointer;
 }
-
-.dropdown_genres {
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-}
 .genres_list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  padding: 20px 10px;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-gap: 10px;
+  display: grid;
+  border-bottom: 3px solid $accent-color;
+  @media screen and (min-width: 768px) {
+    grid-gap: 15px;
+  }
 }
 .genres_item {
-  display: inline-flex;
-  justify-content: center;
-  padding: 10px 20px;
+  display: block;
+  padding: 10px 0;
   background: #8c8c8c;
   border-radius: 5px;
+  color: $white-text-color;
   &:hover {
     background: $white-text-color;
+    color: $primary-text-color;
   }
 }
 .genres_item.active {
