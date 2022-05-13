@@ -279,6 +279,31 @@
 
 // * Styles for toggle switch(themes)
 
+.switch-theme {
+  position: absolute;
+  right: 13px;
+  bottom: 20px;
+  width: 49px;
+  height: 25px;
+  background-color: rgb(25, 26, 25);
+  border-radius: 50px;
+  cursor: pointer;
+  border: 1px solid $white-text-color;
+
+  @media screen and (min-width: 768px) {
+    right: 32px;
+  }
+
+  &:hover,
+  &:focus {
+    border: 1px solid $accent-color;
+    animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+}
+
 @keyframes shake {
   10%,
   90% {
@@ -308,36 +333,35 @@
 }
 
 .switch-theme__slider {
-   position: absolute;
-   width: 100%;
-   height: 100%;
-   border-radius: 50px;
-   transition: translate 250ms ease;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
+  transition: translate 250ms ease;
 }
 
 input:checked ~ .switch-theme__slider {
-   background-color: $white-text-color;
+  background-color: $white-text-color;
 }
 
 .switch-theme__slider::before {
-   content: "";
-   position: absolute;
-   top: 2px;
-   left: 4px;
-   width: 20px;
-   height: 20px;
-   border-radius: 50%;
-   box-shadow: inset 7px -4px 0px 0px #d8dbe0;
-   background-color: rgb(25, 26, 25);
-   transition: 0.6s;
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 4px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  box-shadow: inset 7px -4px 0px 0px #d8dbe0;
+  background-color: rgb(25, 26, 25);
+  transition: 0.6s;
 }
 
 input:checked ~ .switch-theme__slider::before {
-   transform: translateX(23px);
-   background-color: $accent-color;
-   box-shadow: none;
+  transform: translateX(23px);
+  background-color: $accent-color;
+  box-shadow: none;
 }
-
 // *Genres
 
 .btn-genre {
