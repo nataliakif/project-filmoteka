@@ -279,7 +279,7 @@
 
 // * Styles for toggle switch(themes)
 
-label {
+.switch-theme {
   position: absolute;
   right: 13px;
   bottom: 20px;
@@ -332,7 +332,7 @@ label {
   display: none;
 }
 
-.slider {
+.switch-theme__slider {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -340,11 +340,11 @@ label {
   transition: translate 250ms ease;
 }
 
-input:checked ~ .slider {
+input:checked ~ .switch-theme__slider {
   background-color: $white-text-color;
 }
 
-.slider::before {
+.switch-theme__slider::before {
   content: '';
   position: absolute;
   top: 2px;
@@ -357,7 +357,7 @@ input:checked ~ .slider {
   transition: 0.6s;
 }
 
-input:checked ~ .slider::before {
+input:checked ~ .switch-theme__slider::before {
   transform: translateX(23px);
   background-color: $accent-color;
   box-shadow: none;
