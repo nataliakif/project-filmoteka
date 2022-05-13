@@ -1,4 +1,5 @@
 .footer-modal__window {
+    padding: 30px;
     max-height: calc(100vh - 70px);
     display: flex;
     flex-wrap: wrap;
@@ -8,6 +9,14 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
     background-color: $modal-background-color;
+    @media screen and (min-width: 768px) and (max-width: 1024px) {
+        width: 562px;
+        padding: 42px 30px 41px 20px;
+    }
+    @media screen and (min-width: 1024px) {
+        width: 814px;
+        padding: 40px 16px 40px 16px;
+    }
 }
 
 .footer-modal__window::-webkit-scrollbar {
@@ -16,9 +25,19 @@
 }
 
 .team {
+    @media screen and (min-width: 767px) {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        margin: -15px;
+    }
+}
+
+.team__list {
     overflow: hidden;
     position: relative;
-    margin: 10px;
+    margin-right: 15px;
     border-radius: 5%;
     @media screen and (min-width: 768px) {
         flex-basis: calc(100% / 2 - 40px);
@@ -26,15 +45,27 @@
     @media screen and (min-width: 1024px) {
         flex-basis: calc(100% / 3 - 40px);
     }
+    &:not(:last-child) {
+        @media screen and (max-width: 768px) {
+            margin-bottom: 30px;
+            margin-right: 0;
+        }
+    }
     &:hover,
     &:focus {
         box-shadow: 0px -3px 18px 0px #0000;
         transition: 300ms;
         transform: scale(1.05);
     }
+    &:nth-child(2n) {
+        @media screen and (max-width: 1024px) {
+            margin-right: 0;
+        }
+    }
 }
 
-.team:not(:first-of-type):hover::before,
+.team__list:not(:first-of-type):hover::before,
+.team__list:not(:first-of-type):focus::before,
 .social-list__link {
     content: '';
     background-image: url(/images/team/github.png);
@@ -44,24 +75,36 @@
     background-size: cover;
     left: 0px;
     opacity: .6;
+    transition: 300ms;
+    transform: scale(1.05);
 }
 
 .social-list__link {
     opacity: 0;
 }
 
+.team__box {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+}
+
 .team-logo__name {
     font-weight: 700;
-    font-size: 60px;
+    font-size: 50px;
     display: flex;
     justify-content: center;
+    @media screen and (max-width: 768px) {
+        font-weight: 500;
+        font-size: 40px;
+    }
 }
 
 .team__name {
     display: flex;
     font-weight: 700;
     font-size: 20px;
-    line-height: 2.22;
+    line-height: 1.17;
     justify-content: center;
 }
 
@@ -71,8 +114,9 @@
     color: $white-text-color;
     font-weight: 500;
     font-size: 20px;
-    @media screen and (min-width: 1199px) {
-        margin-bottom: 30px;
+    @media screen and (max-width: 1024px) {
+        line-height: 1.25;
+        font-weight: 300;
     }
 }
 

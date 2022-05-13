@@ -362,6 +362,8 @@ input:checked ~ .switch-theme__slider::before {
   background-color: $accent-color;
   box-shadow: none;
 }
+// *Genres
+
 .btn-genre {
   display: flex;
   align-items: baseline;
@@ -388,6 +390,7 @@ input:checked ~ .switch-theme__slider::before {
   text-align: center;
   color: #ffffff;
   background-color: transparent;
+  border:none;
 }
 .btn-genre__arrow {
   width: 10px;
