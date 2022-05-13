@@ -4,16 +4,35 @@ import { updateInterface } from '../base/update';
 import { readState, writeState } from '../base/state';
 
 let activeGenreId = null;
-
-function onDropBtnClick(e) {
-  refs.genresDropdown.classList.toggle('show');
-  refs.genresList.classList.toggle('show');
-  getGenres().then(data => renderGenres(data.genres));
+let genreListShown = false;
+async function onDropBtnClick(e) {
+  if (!genreListShown) {
+    genreListShown = true;
+    const data = await getGenres();
+    renderGenres(data.genres);
+    refs.genresList[0].addEventListener('click', onGenresClick);
+    if (activeGenreId) {
+      for (let i = 0; i < refs.genresList[0].children.length; i++) {
+        if (refs.genresList[0].children[i].dataset.id === activeGenreId) {
+          refs.genresList[0].children[i].classList.add('active');
+        }
+      }
+    }
+    return;
+  }
+  if (refs.genresList[0]) {
+    refs.genresList[0].removeEventListener('click', onGenresClick);
+  }
+  refs.genresDropdown.innerHTML = '';
+  genreListShown = false;
 }
 
 function hideGenres() {
-  refs.genresList.classList.remove('show');
-  refs.genresDropdown.classList.remove('show');
+  if (refs.genresList[0]) {
+    refs.genresList[0].removeEventListener('click', onGenresClick);
+  }
+  refs.genresDropdown.innerHTML = '';
+  genreListShown = false;
 }
 
 function renderGenres(data) {
@@ -23,15 +42,12 @@ function renderGenres(data) {
       `;
     })
     .join('');
-  refs.genresList.innerHTML = markup;
+  refs.genresDropdown.innerHTML = `<ul class="genres_list" name="genres_list">` + markup + `</ul>`;
 }
 
-refs.genresList.addEventListener('click', onGenresClick);
+// refs.genresList.addEventListener('click', onGenresClick);
 
 function onGenresClick(e) {
-  if (e.target.nodeName !== 'LI') {
-    refs.genresDropdown.classList.remove('show');
-  }
   const state = readState();
   state.currentPage = 1;
   writeState(state);
@@ -42,9 +58,9 @@ function onGenresClick(e) {
     updateInterface();
     return;
   }
-  for (let i = 0; i < refs.genresList.children.length; i++) {
-    if (refs.genresList.children[i] !== e.target) {
-      refs.genresList.children[i].classList.remove('active');
+  for (let i = 0; i < refs.genresList[0].children.length; i++) {
+    if (refs.genresList[0].children[i] !== e.target) {
+      refs.genresList[0].children[i].classList.remove('active');
       activeGenreId = null;
     }
   }

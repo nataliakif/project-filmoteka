@@ -1,54 +1,79 @@
+.header-container {
+  height: 230px;
+  padding-top: 46px;
+  padding-bottom: 10px;
+}
 .header {
-  display: flex;
-  flex-direction: column;
+  flex: 0 0 auto;
   background-color: $primary-text-color;
   width: 100%;
-  height: 230px;
   background-image: linear-gradient($header-color, $header-color),
     url(../images/header/header-bg-mobile.jpg);
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-  padding-top: 46px;
 
+  @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+    background-image: linear-gradient($header-color, $header-color),
+      url(../images/header/header-bg-mobile@2x.jpg);
+  }
 
   @media screen and (min-width: 768px) {
     width: 100%;
     background-image: linear-gradient($header-color, $header-color),
       url(../images/header/header-bg-tablet.jpg);
+
+    @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+      background-image: linear-gradient($header-color, $header-color),
+        url(../images/header/header-bg-tablet@2x.jpg);
+    }
   }
 
   @media screen and (min-width: 1024px) {
     width: 100%;
     background-image: linear-gradient($header-color, $header-color),
       url(../images/header/header-bg-desktop.jpg);
+
+    @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+      background-image: linear-gradient($header-color, $header-color),
+        url(../images/header/header-bg-desktop@2x.jpg);
+    }
   }
 }
 //add header class on click "MY LIBRARY"
 .header_libr {
   background-color: rgb(39, 1, 4);
-  width: 100%;
-  height: 230px;
   background-image: linear-gradient($header-color, $header-color),
     url(../images/header/header-lib-bg-mobile.jpg);
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-  padding-top: 46px;
-  margin-bottom: 20px;
+
+  @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+    background-image: linear-gradient($header-color, $header-color),
+      url(../images/header/header-lib-bg-mobile@2x.jpg);
+  }
 
   @media screen and (min-width: 768px) {
     width: 100%;
     background-image: linear-gradient($header-color, $header-color),
       url(../images/header/header-lib-bg-tablet.jpg);
-    margin-bottom: 60px;
+
+    @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+      background-image: linear-gradient($header-color, $header-color),
+        url(../images/header/header-lib-bg-tablet@2x.jpg);
+    }
   }
 
   @media screen and (min-width: 1024px) {
     width: 100%;
     background-image: linear-gradient($header-color, $header-color),
       url(../images/header/header-lib-bg-desktop.jpg);
-    margin-bottom: 60px;
+
+    @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+      background-image: linear-gradient($header-color, $header-color),
+        url(../images/header/header-lib-bg-desktop@2x.jpg);
+    }
   }
 }
 //header logo
@@ -153,7 +178,7 @@
   justify-content: center;
   position: relative;
   margin: auto;
-  margin-bottom: 22px;
+  margin-bottom: 40px;
 
   @media screen and (min-width: 768px) {
     width: 336px;
@@ -254,10 +279,10 @@
 
 // * Styles for toggle switch(themes)
 
-label {
+.switch-theme {
   position: absolute;
   right: 13px;
-  top: 148px;
+  bottom: 20px;
   width: 49px;
   height: 25px;
   background-color: rgb(25, 26, 25);
@@ -307,7 +332,7 @@ label {
   display: none;
 }
 
-.slider {
+.switch-theme__slider {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -315,11 +340,11 @@ label {
   transition: translate 250ms ease;
 }
 
-input:checked ~ .slider {
+input:checked ~ .switch-theme__slider {
   background-color: $white-text-color;
 }
 
-.slider::before {
+.switch-theme__slider::before {
   content: '';
   position: absolute;
   top: 2px;
@@ -332,15 +357,16 @@ input:checked ~ .slider {
   transition: 0.6s;
 }
 
-input:checked ~ .slider::before {
+input:checked ~ .switch-theme__slider::before {
   transform: translateX(23px);
   background-color: $accent-color;
   box-shadow: none;
 }
+// *Genres
+
 .btn-genre {
   display: flex;
   align-items: baseline;
-  margin-top: 40px;
   width: 150px;
 
   &:hover .btn-genre__arrow,
@@ -356,21 +382,23 @@ input:checked ~ .slider::before {
 }
 
 .btn-genre__choose {
+  display: flex;
   padding: 10px 10px;
-  font-family: 'Roboto';
+  border: none;
   font-weight: 500;
-  font-size: 12px;
-  line-height: 1.16;
-  align-items: center;
+  align-items: baseline;
   text-align: center;
-  margin-right: 2px;
   color: #ffffff;
   background-color: transparent;
+  border:none;
 }
 .btn-genre__arrow {
-  border: solid 0.5px white;
+  width: 10px;
+  height: 10px;
+  margin-left: 7px;
+  border: solid 0.3px white;
   border-width: 0 3.5px 3.5px 0;
-  padding: 3px;
+  padding-bottom: 5px;
   transform: rotate(45deg);
 
   transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
