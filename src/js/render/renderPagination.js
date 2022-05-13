@@ -7,9 +7,14 @@ let pagination = null;
 function renderPagination(pageAmount, currentPage = 1) {
   if (pageAmount === 0) {
     pagination = null;
-    document.querySelector('#tui-pagination-container').innerHTML = '';
+    document.querySelector('#pagination').innerHTML = '';
     return;
   }
+  document.querySelector('#pagination').innerHTML = `
+  <div class="pagination">
+    <div id="tui-pagination-container" class="tui-pagination"></div>
+  </div>
+`;
   pagination = new Pagination('tui-pagination-container', {
     totalItems: pageAmount,
     itemsPerPage: 1,
