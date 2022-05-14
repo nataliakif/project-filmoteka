@@ -10,6 +10,7 @@ import { divideOnPages } from '../utils/divideOnPages';
 import { renderTeamModal } from '../render/renderTeamModal';
 import { setGenres } from './setGenres';
 import { activeGenreId, hideGenres } from '../render/renderGenres';
+import { notyf } from './handlers';
 import {
   getPopularFilms,
   getGenres,
@@ -102,6 +103,9 @@ function updateInterface(needModalUpdate = true, needGalleryUpdate = true) {
           return getGenres().then(genres => setGenres(data.data, genres));
         })
         .then(data => {
+          if (data.results === null || data.results.length === 0) {
+            notyf.error('Search result not successful. Enter the correct movie name');
+          }
           renderGallery(data.results);
           renderPagination(data.total_pages, state.currentPage);
           setDefaultTheme();

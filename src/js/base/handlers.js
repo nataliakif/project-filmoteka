@@ -285,4 +285,5 @@ export {
   onModalBtnWatchedClick,
   onModalBtnQueueClick,
   checkReloadSite,
+  notyf
 };
