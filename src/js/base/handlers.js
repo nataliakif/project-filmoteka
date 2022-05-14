@@ -82,7 +82,7 @@ function onFormSubmit(e) {
   e.preventDefault();
   const query = e.currentTarget.elements.input.value.trim();
   if (query === '') {
-    notyf.error('Search result not successful. Enter the correct movie name and ');
+    notyf.error('Search form is empty. Enter something');
     return;
   }
 
