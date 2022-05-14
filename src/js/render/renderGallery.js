@@ -3,9 +3,6 @@ import { PAGE_TYPE, readState } from '../base/state';
 import images from '../../images/plug/*.png';
 import { isInteger } from 'lodash';
 import poster from '../../images/plug/noposter.jpg';
-import { Notyf } from 'notyf';
-
-const notyf = new Notyf();
 
 function renderGallery(data) {
   //функция которая принимает массив объектов, полученный от api (при чем не важно будут это тренды, либо поисковой запрос пользователя, либо бибилиотека)
