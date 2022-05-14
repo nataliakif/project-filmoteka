@@ -19,10 +19,9 @@
   padding: 10px 0;
   background: #8c8c8c;
   border-radius: 5px;
-  color: $white-text-color;
+  color: $primary-text-color;
   &:hover {
     background: $white-text-color;
-    color: $primary-text-color;
   }
 }
 .genres_link.active {
