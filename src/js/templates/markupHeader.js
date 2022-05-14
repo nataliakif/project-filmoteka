@@ -1,6 +1,6 @@
 const homeMarkupWithGenres = `<form class="header-form js-header-form">
 <input class="header-form__input" placeholder="Search films" type="input" name="input" autocomplete="off">
-<button class="header-form__btn"></button>
+<button class="header-form__btn" aria-label="Search Button"></button>
 </form>
 <div class="btn-genre" >
     <button class="btn-genre__choose" name="chooseGenre">CHOOSE BY GENRE <span class="btn-genre__arrow"></span></button>
@@ -8,7 +8,7 @@ const homeMarkupWithGenres = `<form class="header-form js-header-form">
 
 const homeMarkup = `<form class="header-form js-header-form">
 <input class="header-form__input" placeholder="Search films" type="input" name="input" autocomplete="off">
-<button class="header-form__btn"></button>
+<button class="header-form__btn" aria-label="Search Button"></button>
 </form>`;
 
 const myLibMarkup = `<div class="header-filter">
