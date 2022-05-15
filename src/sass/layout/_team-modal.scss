@@ -1,4 +1,5 @@
 .footer-modal__window {
+    background-color: $footer-background-color;
     padding: 30px;
     width: 300px;
     max-height: calc(100vh - 70px);
@@ -9,7 +10,6 @@
     overflow: auto;
     -ms-overflow-style: none;
     scrollbar-width: none;
-    background-color: $modal-background-color;
     @media screen and (min-width: 768px) and (max-width: 1024px) {
         width: 562px;
         padding: 42px 30px 41px 20px;
@@ -54,9 +54,7 @@
     }
     &:hover,
     &:focus {
-        box-shadow: 0px -3px 18px 0px #0000;
-        transition: 300ms;
-        transform: scale(1.05);
+        transform: scale(1.08);
     }
     &:nth-child(2n) {
         @media screen and (max-width: 1024px) {
@@ -66,8 +64,7 @@
 }
 
 .team__list:not(:first-of-type):hover::before,
-.team__list:not(:first-of-type):focus::before,
-.social-list__link {
+.team__list:not(:first-of-type):focus::before {
     content: '';
     background-image: url(/images/team/github.png);
     width: 50px;
@@ -76,12 +73,16 @@
     background-size: cover;
     left: 0px;
     opacity: .6;
-    transition: 300ms;
-    transform: scale(1.05);
 }
 
 .social-list__link {
     opacity: 0;
+    &:hover,
+    &:focus {
+        transition: background-color ease 250ms, color ease 250ms;
+        transform: scale(1.10);
+        border-radius: #0000;
+    }
 }
 
 .team__box {
@@ -91,6 +92,7 @@
 }
 
 .team-logo__name {
+    color: $primary-text-color;
     font-weight: 700;
     font-size: 50px;
     display: flex;
@@ -107,12 +109,13 @@
     font-size: 20px;
     line-height: 1.17;
     justify-content: center;
+    color: $primary-text-color;
 }
 
 .team__work {
     display: flex;
     justify-content: center;
-    color: $white-text-color;
+    color: $footer-text-color;
     font-weight: 500;
     font-size: 20px;
     @media screen and (max-width: 1024px) {
