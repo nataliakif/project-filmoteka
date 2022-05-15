@@ -8,7 +8,6 @@ function renderGallery(data) {
   //функция которая принимает массив объектов, полученный от api (при чем не важно будут это тренды, либо поисковой запрос пользователя, либо бибилиотека)
   //ничего не возвращает
   if (data === null || data.length === 0) {
-    notyf.error('Search result not successful. Enter the correct movie name');
     const plugMarkup = `
       <img src="${images['noresult']}" alt="Nothing was found" width="240px" class="plug_image">
       <h2 class="plug_title">Opps! There is nothing to show you</h2>
