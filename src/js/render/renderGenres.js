@@ -56,7 +56,6 @@ function onGenresClick(e) {
     return;
   }
   for (let i = 0; i < refs.genresList[0].children.length; i++) {
-    console.log(refs.genresList[0].children[i] !== e.target.parentNode);
     if (refs.genresList[0].children[i] !== e.target.parentNode) {
       refs.genresList[0].children[i].firstElementChild.classList.remove('active');
 
