@@ -42,7 +42,10 @@ function updateInterface(needModalUpdate = true, needGalleryUpdate = true) {
     if (state.modalFilmId === null) {
       renderTeamModal();
     } else {
-      getFilmById(state.modalFilmId).then(renderFilmModal).then(addModalBtnListeners);
+      getFilmById(state.modalFilmId)
+        .then(renderFilmModal)
+        .then(addModalBtnListeners)
+        .then(setDefaultTheme);
     }
     openModal();
     if (

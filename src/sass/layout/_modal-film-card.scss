@@ -11,6 +11,11 @@
     width: 814px;
     padding: 40px 16px 40px 16px;
   }
+  &[data-theme='dark'] {
+    background-color: #191a19;
+    color: #fff;
+    border: 1px solid #ffffff;
+  }
 }
 
 .modal_film_card::-webkit-scrollbar {
@@ -83,6 +88,9 @@ tr {
   width: 105px;
   @media screen and (min-width: 1024px) {
     width: 150px;
+  }
+  &[data-theme='dark'] {
+    color: rgb(181, 177, 177);
   }
 }
 .modal__param-value {
