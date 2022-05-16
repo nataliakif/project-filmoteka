@@ -78,17 +78,22 @@
 }
 //header logo
 .header-logo {
-  &:hover .header-logo__svg,
-  &:focus .header-logo__svg {
+  &:hover .header-logo__svg {
     stroke: $accent-color;
     transform: rotate(45deg);
   }
-  &:hover .header-logo__text,
-  &:focus .header-logo__text {
+  &:hover .header-logo__text {
     color: $accent-color;
   }
 }
 .header-logo__link {
+  &:focus .header-logo__svg {
+    stroke: $accent-color;
+    transform: rotate(45deg);
+  }
+  &:focus .header-logo__text {
+    color: $accent-color;
+  }
   @media screen and (min-width: 768px) {
     display: flex;
     align-items: center;
