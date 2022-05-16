@@ -100,7 +100,8 @@
 }
 .header-logo__svg {
   stroke: #818181;
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
   @media screen and (min-width: 768px) {
     margin-right: 10px;
   }
@@ -390,7 +391,7 @@ input:checked ~ .switch-theme__slider::before {
   text-align: center;
   color: #ffffff;
   background-color: transparent;
-  border:none;
+  border: none;
 }
 .btn-genre__arrow {
   width: 10px;
