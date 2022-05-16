@@ -1,46 +1,40 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Filmoteka</title>
     <link rel="shortcut icon" href="images/film-32.png" type="image/x-icon" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css"
-      integrity="sha512-ISS7cAi1PEhQ8jnbJpJZMd29NlhNj4AWYyLOSp2CE/CsHxTCu+r+t0D2yoJudVrd0/8fTVPUVDzY5Tvli75u/g=="
-      crossorigin="anonymous"
-    />
-  </head>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css" integrity="sha512-ISS7cAi1PEhQ8jnbJpJZMd29NlhNj4AWYyLOSp2CE/CsHxTCu+r+t0D2yoJudVrd0/8fTVPUVDzY5Tvli75u/g==" crossorigin="anonymous" />
+</head>
 
-  <body data-modal-scroll-lock>
+<body data-modal-scroll-lock>
     <!-- Так добавляются фрагменты в главные HTML-файлы страниц. -->
 
     <div class="main-wrapper">
-      <header class="header">
-        <include src="./partials/header.html"></include>
-      </header>
+        <header class="header">
+            <include src="./partials/header.html"></include>
+        </header>
 
-      <main>
-        <include src="./partials/genres.html"></include>
-        <include src="./partials/gallery.html"></include>
-      </main>
+        <main>
+            <include src="./partials/genres.html"></include>
+            <include src="./partials/gallery.html"></include>
+        </main>
 
-      <footer class="footer">
-        <include src="./partials/footer.html"></include>
-      </footer>
+        <footer class="footer">
+            <include src="./partials/footer.html"></include>
+        </footer>
 
-      <include src="./partials/modal.html"></include>
-      <include src="./partials/scrollToTop.html"></include>
+        <include src="./partials/modal.html"></include>
+        <include src="./partials/scrollToTop.html"></include>
     </div>
 
     <!-- Скрипт идёт последним в разметке. В нём уже подключен главный SASS-файл. -->
     <script src="./index.js"></script>
-  </body>
+</body>
+
 </html>
