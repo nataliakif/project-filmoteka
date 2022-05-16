@@ -5,7 +5,7 @@ import '../../sass/layout/_pagination.scss';
 let pagination = null;
 
 function renderPagination(pageAmount, currentPage = 1) {
-  if (pageAmount === 0) {
+  if (pageAmount === 0 || pageAmount === 1) {
     pagination = null;
     document.querySelector('#pagination').innerHTML = '';
     return;

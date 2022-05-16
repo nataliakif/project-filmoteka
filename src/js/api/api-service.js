@@ -6,31 +6,10 @@ async function getBySearchQuery(query, page) {
   const response = await axios.get(
     `${BASE_URL}search/movie?api_key=${API_KEY}&query=${query}&page=${page}`,
   );
-  // .then(response => {
-  //   return getGenres().then(genresList => {
-  //     return response.data.results.map( film => ({
-  //       ...film,
-  //       genres: film.genre_ids
-  //       .map(id => genresList.filter(el => el.id === id))
-  //       .flat().map(el=> el.name)
-  //     }));
-  //   });
-  //   });
-
   return response;
 }
 async function getPopularFilms(page) {
   const response = axios.get(`${BASE_URL}trending/movie/week?api_key=${API_KEY}&page=${page}`);
-  // .then(response => {
-  // return getGenres().then(genresList => {
-  //   return response.data.results.map( film => ({
-  //     ...film,
-  //     genres: film.genre_ids
-  //     .map(id => genresList.filter(item => item.id === id))
-  //     .flat().map(item=> item.name)
-  //   }));
-  // })}
-  // );
   return response;
 }
 async function getGenres() {
@@ -50,14 +29,17 @@ async function getFilmsByIdArray(arrayOfIds) {
   const data = await Promise.all(promises);
   return data;
 }
-async function getFilmByGenreId(id,page){
-  const response =await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=${id}&page=${page}`);
+async function getFilmByGenreId(id, page) {
+  const response = await axios.get(
+    `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=${id}&page=${page}`,
+  );
   return response;
 }
 export {
-   getBySearchQuery, 
-   getPopularFilms, 
-   getFilmById,
-   getGenres, 
-   getFilmsByIdArray, 
-   getFilmByGenreId};
+  getBySearchQuery,
+  getPopularFilms,
+  getFilmById,
+  getGenres,
+  getFilmsByIdArray,
+  getFilmByGenreId,
+};
