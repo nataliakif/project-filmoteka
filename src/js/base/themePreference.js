@@ -37,6 +37,12 @@ const changeThemeToDark = () => {
     .forEach(el => el.setAttribute('data-theme', 'dark'));
   document.querySelector('.footer-box__text--after').setAttribute('data-theme', 'dark');
   document.querySelector('.footer__link').setAttribute('data-theme', 'dark');
+  if (document.querySelector('.modal_film_card')) {
+    document.querySelector('.modal_film_card').setAttribute('data-theme', 'dark');
+    document
+      .querySelectorAll('.modal__param-titel')
+      .forEach(el => el.setAttribute('data-theme', 'dark'));
+  }
   document.querySelectorAll('.wrapper').forEach(el => el.setAttribute('data-theme', 'dark'));
   document.querySelectorAll('.gallery__title').forEach(el => el.setAttribute('data-theme', 'dark'));
   localStorage.setItem('data-theme', 'dark'); // save theme to local storage

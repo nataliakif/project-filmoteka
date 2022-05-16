@@ -5,7 +5,7 @@ import '../../sass/layout/_pagination.scss';
 let pagination = null;
 
 function renderPagination(pageAmount, currentPage = 1) {
-  if (pageAmount === 0 || pageAmount === 1) {
+  if (pageAmount === 0) {
     pagination = null;
     document.querySelector('#pagination').innerHTML = '';
     return;
@@ -43,6 +43,9 @@ function renderPagination(pageAmount, currentPage = 1) {
   });
 
   pagination.on('afterMove', ({ page }) => onPaginatorClick(page));
+  if (pageAmount === 1) {
+    document.querySelector('#tui-pagination-container').style.display = 'none';
+  }
 }
 
 export { renderPagination, pagination };
