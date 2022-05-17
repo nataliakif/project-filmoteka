@@ -14,7 +14,7 @@ async function onDropBtnClick(e) {
     if (activeGenreId) {
       for (let i = 0; i < refs.genresList[0].children.length; i++) {
         if (refs.genresList[0].children[i].dataset.id === activeGenreId) {
-          refs.genresList[0].children[i].irstElementChild.classList.add('active');
+          refs.genresList[0].children[i].firstElementChild.classList.add('active');
         }
       }
     }

@@ -8,7 +8,7 @@ import {
 import { updateInterface } from '../base/update';
 import { refs } from '../references/refs';
 import { pagination } from '../render/renderPagination';
-import { getPopularFilms, getBySearchQuery } from '../api/api-service';
+import { getPopularFilms, getBySearchQuery, getFilmByGenreId } from '../api/api-service';
 import { scrollToTop } from '../base/scrollToTop';
 import { LS_KEY_TYPE, readLocalStorage } from '../utils/localStorage';
 import { divideOnPages } from '../utils/divideOnPages';
@@ -77,9 +77,15 @@ async function switchToPrevFilmInGallery() {
       scrollToTop();
       switch (state.pageType) {
         case PAGE_TYPE.TRENDS:
-          state.modalFilmId = (await getPopularFilms(state.currentPage)).data.results[
-            HOME_ELEMENTS_PER_PAGE - 1
-          ].id;
+          if (activeGenreId) {
+            state.modalFilmId = (
+              await getFilmByGenreId(activeGenreId, state.currentPage)
+            ).data.results[HOME_ELEMENTS_PER_PAGE - 1].id;
+          } else {
+            state.modalFilmId = (await getPopularFilms(state.currentPage)).data.results[
+              HOME_ELEMENTS_PER_PAGE - 1
+            ].id;
+          }
           break;
         case PAGE_TYPE.SEARCH:
           state.modalFilmId = (
