@@ -29,7 +29,7 @@ function renderGallery(data) {
       if (readState().pageType === PAGE_TYPE.TRENDS) {
         return `
         <li class="gallery__item" data-id="${id}">
-        <a href="">
+        <a href="#">
           <div class="wrapper">
             <img class="gallery__image" src="${posterPath}" alt="${title}" />
           </div>
