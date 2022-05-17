@@ -52,8 +52,7 @@
             margin-right: 0;
         }
     }
-    &:hover,
-    &:focus {
+    &:hover {
         transform: scale(1.08);
     }
     &:nth-child(2n) {
@@ -63,8 +62,7 @@
     }
 }
 
-.team__list:not(:first-of-type):hover::before,
-.team__list:not(:first-of-type):focus::before {
+.team__list:not(:first-of-type):hover::before {
     content: '';
     background-image: url(/images/team/github.png);
     width: 50px;
@@ -73,15 +71,22 @@
     background-size: cover;
     left: 0px;
     opacity: .6;
+    &:focus .team__list:not(:first-of-type)::before {
+        transform: scale(1.08);
+    }
 }
 
 .social-list__link {
     opacity: 0;
-    &:hover,
-    &:focus {
-        transition: background-color ease 250ms, color ease 250ms;
-        transform: scale(1.10);
-        border-radius: #0000;
+}
+
+.social-list__item {
+    outline: none;
+    &:focus .team__name {
+        transform: scale(1.08);
+    }
+    &:focus .team__work {
+        transform: scale(1.08);
     }
 }
 
