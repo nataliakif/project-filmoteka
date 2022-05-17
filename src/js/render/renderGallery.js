@@ -52,7 +52,7 @@ function renderGallery(data) {
       <p class="gallery__genre">${genreStr} | ${release_date.substr(
         0,
         4,
-      )}<span class="film-card__raiting">${vote_average}</span>
+      )}<span class="gallery__raiting">${vote_average}</span>
       </p>
     </div>
   </a>
